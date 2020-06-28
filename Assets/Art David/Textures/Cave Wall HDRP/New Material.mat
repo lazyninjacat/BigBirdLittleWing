@@ -163,14 +163,14 @@ Material:
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
     - _HeightAmplitude: 0.057499997
-    - _HeightCenter: 0.5
+    - _HeightCenter: 0.662
     - _HeightMapParametrization: 1
     - _HeightMax: 1
     - _HeightMin: -1
     - _HeightOffset: 0
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 5.75
-    - _HeightTessCenter: 0.5
+    - _HeightTessCenter: 0.662
     - _InvTilingScale: 1
     - _Ior: 1.5
     - _IridescenceMask: 1
