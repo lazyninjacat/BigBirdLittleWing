@@ -24177,6 +24177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish Done
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73dd367e25ec34940a07d21e3712e96b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73dd367e25ec34940a07d21e3712e96b, type: 3}
 --- !u!4 &2050219053 stripped
