@@ -63,7 +63,7 @@ MonoBehaviour:
     showEyeDropper: 1
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 10
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
@@ -336,7 +336,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.489
+    m_Value: 0.156
     min: 0
     max: 1
   scatter:
@@ -451,7 +451,7 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 12.1
+    m_Value: 9.6
   compensation:
     m_OverrideState: 0
     m_Value: 0

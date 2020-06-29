@@ -350,6 +350,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5449f16f8d6c3734b8cad350a1036c94, type: 2}
   - {fileID: 11400000, guid: 89e4994260dc6b743abdce6c7d35a36f, type: 2}
   - {fileID: 11400000, guid: 81ef2894469a1b64ebdd56ee469b05b0, type: 2}
+  - {fileID: 11400000, guid: a0f27fddb1e242042bc5d5e9ed0c6d37, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
   afterPostProcessCustomPostProcesses: []
