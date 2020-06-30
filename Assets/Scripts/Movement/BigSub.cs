@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using RootMotion.FinalIK;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class BigSub : PlayerController
     [SerializeField] private float grabberDistanceMax = 8f;
     [SerializeField] private float grabberDistanceMin = 2f;
     public Vector3 grabObjDistance;
+    [SerializeField] CCDIK _ik;
+    [SerializeField] Transform _defaultIk;
 
     //spotlight
     public GameObject _spotlight;
@@ -28,6 +31,7 @@ public class BigSub : PlayerController
     {
         base.Start();
         Cursor.lockState = CursorLockMode.Locked;
+        _ik.solver.target = _defaultIk;
         currentState = state.MOVEEMPTY;
     }
 
@@ -77,7 +81,7 @@ public class BigSub : PlayerController
     public void SubRotate()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, 
-                             Quaternion.Euler(-1f *_lookStorage.y,0.0f/* _lookStorage.x*/, 0f),
+                             Quaternion.Euler(-1f *_lookStorage.y, _lookStorage.x, 0f),
                              _turnSpeed * Time.fixedDeltaTime);
     }
     public void TryGrab()
@@ -89,11 +93,16 @@ public class BigSub : PlayerController
             //set as child
             grabbedObject.transform.parent = transform;
             grabObjDistance = grabbedObject.transform.localPosition;
+            _ik.solver.target = grabbedObject.transform;
+
             //turn off gravity from rigidbody?
             grabbedObject.GetComponent<Rigidbody>().useGravity = false;
             Cursor.lockState = CursorLockMode.Locked;
             currentState = state.MOVEGRAB;
         }
+        else
+            _ik.solver.target = _defaultIk;
+
     }
     public void ReleaseGrab()
     {
@@ -103,6 +112,7 @@ public class BigSub : PlayerController
         grabbedObject = null;
         Cursor.lockState = CursorLockMode.Locked;
         currentState = state.MOVEEMPTY;
+        _ik.solver.target = _defaultIk;
     }    
     public void MoveGrab()
     {
