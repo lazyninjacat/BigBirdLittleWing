@@ -48,12 +48,12 @@ Material:
     m_Floats:
     - Vector1_2E531BFC: 0.3
     - Vector1_36E70E43: 0.09
-    - Vector1_41C457AE: 0.21
+    - Vector1_41C457AE: 0.11
     - Vector1_4D2813D4: 2
     - Vector1_58D22470: 0.5
-    - Vector1_5A880A6D: 0.7
+    - Vector1_5A880A6D: 1
     - Vector1_9D7842B9: 0.36
-    - Vector1_9EB14BC9: 1.11
+    - Vector1_9EB14BC9: 2
     - Vector1_B34DB197: 1
     - Vector1_DFB8FF13: 5
     - _AlphaCutoffEnable: 0
