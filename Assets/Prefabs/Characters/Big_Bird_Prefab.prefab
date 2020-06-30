@@ -411,17 +411,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7435633232212138212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355280246fa12854db9a7770d2618410, type: 3}
+  m_Script: {fileID: 11500000, guid: c2d697bf45e1a1e4fab95be9c3ba8488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 7435633232212138215}
-  cameraPosition: {fileID: 7435633232324851351}
+  cameraPosition: {fileID: 5178568422128872603}
   rb: {fileID: 7435633232212138209}
   anim: {fileID: 7530846810822218816}
   _inputs: {x: 0, y: 0}
-  _lookSensitivity: 15
+  _lookSensitivity: 2
   speed: 0.5
-  maxVelocity: 1
+  maxVelocity: 2
   _lookCoOrds: {x: 0, y: 0}
   _lookStorage: {x: 0, y: 0}
   _turnSpeed: 2
@@ -430,13 +430,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483648
   grabbedObject: {fileID: 0}
-  grabberSpeedH: 2
-  grabberSpeedV: 3
+  grabberSpeedH: 5
+  grabberSpeedV: 2
   grabberDistanceMax: 8
   grabberDistanceMin: 2
   grabObjDistance: {x: 0, y: 0, z: 0}
-  _spotlight: {fileID: 7435633231576758449}
-  maxSpotlightVelocity: 1
+  _spotlight: {fileID: 0}
+  maxSpotlightVelocity: 0.5
   currentState: 0
 --- !u!136 &2281406827897821892
 CapsuleCollider:

@@ -13,7 +13,7 @@ public class GlobalFlock : MonoBehaviour
 
     public void FishSpeed(float speedMult)
     {
-        Debug.Log(speedMult);
+       // Debug.Log(speedMult);
         for (int i = 0; i < numFish; i++)
         {
             allFish[i].GetComponent<Flock>().speedMult = speedMult;
