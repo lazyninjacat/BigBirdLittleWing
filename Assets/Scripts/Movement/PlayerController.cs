@@ -18,7 +18,7 @@ public abstract class PlayerController : MonoBehaviour
     public float maxVelocity = 2f;
     public Vector2 _lookCoOrds;
     public Vector2 _lookStorage;
-    public float _turnSpeed = 2;
+    public float _turnSpeed = 4;
 
     //basic run function
     public abstract void RunUpdate();

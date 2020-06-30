@@ -21,7 +21,8 @@ public class BigSub : PlayerController
     public Vector3 grabObjDistance;
     [SerializeField] CCDIK _ik;
     [SerializeField] Transform _defaultIk;
-
+    Vector3 _ref = Vector3.zero;
+    [SerializeField] float _smoothing;
     //spotlight
     public GameObject _spotlight;
     [Tooltip("The velocity of the rigid body must be under this value for the spotlight to rotate")]
@@ -93,6 +94,8 @@ public class BigSub : PlayerController
             //set as child
             grabbedObject.transform.parent = transform;
             grabObjDistance = grabbedObject.transform.localPosition;
+
+            //set IK target to the grabbed object
             _ik.solver.target = grabbedObject.transform;
 
             //turn off gravity from rigidbody?
@@ -101,6 +104,7 @@ public class BigSub : PlayerController
             currentState = state.MOVEGRAB;
         }
         else
+            //reset Ik target
             _ik.solver.target = _defaultIk;
 
     }
@@ -112,12 +116,13 @@ public class BigSub : PlayerController
         grabbedObject = null;
         Cursor.lockState = CursorLockMode.Locked;
         currentState = state.MOVEEMPTY;
+        //reset Ik target
         _ik.solver.target = _defaultIk;
     }    
     public void MoveGrab()
     {
         //forward back
-        if(Input.mouseScrollDelta.y != 0f)
+        if (Input.mouseScrollDelta.y != 0f)
         {
             //move distance to from 
             if(grabObjDistance.z + (Input.mouseScrollDelta.y * grabberSpeedV * Time.fixedDeltaTime) < grabberDistanceMax &&
@@ -221,6 +226,7 @@ public class BigSub : PlayerController
             case state.MOVEGRAB:
                 MoveGrab();
                 UpdateGrab();
+                SubRotate();
                 break;
             default:
                 break;

@@ -44,7 +44,7 @@ public class SmallSub : PlayerController
             _lookStorage.y = Mathf.Clamp(_lookStorage.y, -90f, 90f);
 
             Debug.Log(_lookStorage);
-            transform.rotation = Quaternion.Euler(_lookStorage.y * -1, _lookStorage.x, 0.0f);
+            transform.rotation = Quaternion.Euler(_lookStorage.y * -1 * _turnSpeed, _lookStorage.x * _turnSpeed, _lookStorage.y);
         }
 
         if(mouseWheelInput != 0f)
