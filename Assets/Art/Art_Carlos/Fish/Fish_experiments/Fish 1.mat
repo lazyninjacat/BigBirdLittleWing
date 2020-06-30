@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fish 1
+  m_Shader: {fileID: -6465566751694194690, guid: ce62a4aaa50d567468caa83dd6936417,
+    type: 3}
+  m_ShaderKeywords: _DOUBLESIDED_ON
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - DistortionVectors
+  - TransparentBackface
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_31FD4B30:
+        m_Texture: {fileID: 2800000, guid: 8239b9380812a02428fba3040939a08c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_94AE3819:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B4AAD2CF:
+        m_Texture: {fileID: 2800000, guid: 80ddb877d87e6044d9deeef4f7e981b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FD309117:
+        m_Texture: {fileID: 2800000, guid: ea72c8e018ccf744fb3f0a32c8b0b010, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_AFA8282D_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 85f023076801c104f8951d3f3c955cd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_2E531BFC: 1
+    - Vector1_36E70E43: -5.99
+    - Vector1_41C457AE: 0.01
+    - Vector1_4D2813D4: 2
+    - Vector1_58D22470: 0.5
+    - Vector1_5A880A6D: 0.3
+    - Vector1_9D7842B9: 1
+    - Vector1_9EB14BC9: 0.2
+    - Vector1_B34DB197: 0.01
+    - Vector1_DFB8FF13: 5
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
+    - _BlendMode: 0
+    - _CullMode: 0
+    - _CullModeForward: 0
+    - _DiffusionProfileHash: 3.7927928
+    - _DoubleSidedEnable: 1
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
+    - _EnableFogOnTransparent: 1
+    - _ReceivesSSR: 1
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 1
+    - _SrcBlend: 1
+    - _StencilRef: 4
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 14
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _SurfaceType: 0
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentSortPriority: 0
+    - _TransparentZWrite: 1
+    - _UseShadowThreshold: 0
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    m_Colors:
+    - Color_F9CE4D4B: {r: 0, g: 0, b: 0, a: 1}
+    - Vector3_76B03109: {r: 20, g: 0, b: 0, a: 0}
+    - Vector3_ED65CB1D: {r: 0.04, g: 0, b: 0, a: 0}
+    - _DiffusionProfileAsset: {r: -8.529066e-27, g: 1.1481448e+22, b: -1.6624519e+28,
+        a: -4.8605775e-10}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &283513742686610267
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
