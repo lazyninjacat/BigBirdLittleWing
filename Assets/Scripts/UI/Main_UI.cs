@@ -25,7 +25,7 @@ public class Main_UI : MonoBehaviour
             }
         }
 
-        if (PauseMenu.activeSelf && Input.GetKeyDown("q key"))
+        if (PauseMenu.activeSelf && Input.GetKeyDown("q"))
         {
             SceneManager.LoadScene("StartMenuScene");
         }

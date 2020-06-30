@@ -6,10 +6,11 @@ using UnityEngine;
 public class SmallSub : PlayerController
 {
     public float mouseWheelInput;
+    private readonly int ballast = 20;
     public override void RunUpdate()
     {
         //get input info
-        _inputs = new Vector2(0f, Input.GetAxis("Vertical"));
+        _inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         mouseWheelInput = Input.mouseScrollDelta.y;
 
         //get rotation info
@@ -48,7 +49,7 @@ public class SmallSub : PlayerController
 
         if(mouseWheelInput != 0f)
         {
-            rb.AddForce(new Vector3(0f, mouseWheelInput, 0f));
+            rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
             if (rb.velocity.magnitude > maxVelocity)
             {
                 rb.velocity = rb.velocity.normalized * maxVelocity;

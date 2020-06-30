@@ -71,14 +71,13 @@ public class BigSub : PlayerController
         if (_lookCoOrds != Vector2.zero)
         {            
             _lookStorage += _lookCoOrds * Time.deltaTime * _lookSensitivity;
-            //Debug.Log(_lookStorage);
             _spotlight.transform.rotation = Quaternion.Euler(_lookStorage.y * -1f, _lookStorage.x, 0.0f);
         }
     }
     public void SubRotate()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, 
-                             Quaternion.Euler(-1f *_lookStorage.y, _lookStorage.x, 0f),
+                             Quaternion.Euler(-1f *_lookStorage.y,0.0f/* _lookStorage.x*/, 0f),
                              _turnSpeed * Time.fixedDeltaTime);
     }
     public void TryGrab()

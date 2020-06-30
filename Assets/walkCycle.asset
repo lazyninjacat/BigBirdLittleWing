@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f59e54f2bfd184b9dd451a678d089b, type: 3}
   m_Name: walkCycle
   m_EditorClassIdentifier: 
-  PositionNoise: []
+  PositionNoise:
+  - X:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Y:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Z:
+      Frequency: 0.76
+      Amplitude: 1.43
+      Constant: 0
   OrientationNoise:
   - X:
       Frequency: 0.4
@@ -23,8 +35,8 @@ MonoBehaviour:
       Amplitude: 10
       Constant: 0
     Z:
-      Frequency: 0
-      Amplitude: 0
+      Frequency: 1
+      Amplitude: 6
       Constant: 0
   - X:
       Frequency: 1.44
