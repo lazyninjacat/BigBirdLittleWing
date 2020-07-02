@@ -94,25 +94,26 @@ public class BigSub : PlayerController
     public void TryGrab()
     {
         //see if grab object
-        grabbedObject = GrabObject();
-        if (grabbedObject != null)
-        {
-            //set as child
-            grabbedObject.transform.parent = transform;
-            grabObjDistance = grabbedObject.transform.localPosition;
-            grabbedObject.transform.localRotation = Quaternion.identity;
-            //set IK target to the grabbed object
-            _ik.solver.target = grabbedObject.transform;
-
-            //turn off gravity from rigidbody?
-            grabbedObject.GetComponent<Rigidbody>().useGravity = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            currentState = state.MOVEGRAB;
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("GState"))
+        {           
+            grabbedObject = GrabObject();
+            if (grabbedObject != null)
+            {
+                //set as child
+                grabbedObject.transform.parent = transform;
+                grabObjDistance = grabbedObject.transform.localPosition;
+                grabbedObject.transform.localRotation = Quaternion.identity;
+                //set IK target to the grabbed object
+                _ik.solver.target = grabbedObject.transform;
+                //turn off gravity from rigidbody?
+                grabbedObject.GetComponent<Rigidbody>().useGravity = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                currentState = state.MOVEGRAB;
+            }
+            else
+                //reset Ik target
+                _ik.solver.target = _defaultIk;
         }
-        else
-            //reset Ik target
-            _ik.solver.target = _defaultIk;
-
     }
     public void ReleaseGrab()
     {
@@ -124,7 +125,9 @@ public class BigSub : PlayerController
         currentState = state.MOVEEMPTY;
         //reset Ik target
         _ik.solver.target = _defaultIk;
-    }    
+        //close arm animator
+        anim.SetBool("Arm", false);
+    }
     public void MoveGrab()
     {
         //forward back
@@ -162,6 +165,7 @@ public class BigSub : PlayerController
                 if (Input.GetMouseButtonUp(1))
                 {
                     currentState = state.TRYGRAB;
+                    anim.SetBool("Arm", true);
                     Stop();
                     Cursor.lockState = CursorLockMode.Confined;
                 }
@@ -181,6 +185,7 @@ public class BigSub : PlayerController
                 break;
             case state.TRYGRAB:
                 MouseInput();
+                Spotlight();
                 if(Input.GetMouseButtonUp(0))
                 {
                     TryGrab();
@@ -188,6 +193,8 @@ public class BigSub : PlayerController
                 if(Input.GetMouseButtonUp(1))
                 {
                     currentState = state.MOVEEMPTY;
+                    anim.SetBool("Arm", false);
+
                     Cursor.lockState = CursorLockMode.Locked;
                 }                
                 break;
@@ -229,6 +236,10 @@ public class BigSub : PlayerController
                 UpdateGrab();
                 break;
             case state.TRYGRAB:
+                if (_lookCoOrds != Vector2.zero)
+                {
+                    _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
+                }
                 break;
             case state.MOVEGRAB:
                 MoveGrab();
