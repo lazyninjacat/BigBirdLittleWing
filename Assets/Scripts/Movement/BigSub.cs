@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class BigSub : PlayerController
 {
+    /// <summary>
+    /// TO DO: 
+    /// 
+    /// Done:
+    /// Figure out why the arm moves strangely along the x axis when an object is grabbed ~Kyle
+    /// </summary>
     //???
     [SerializeField] float _speedCur = 2;
     float _carryDistance;
@@ -94,7 +100,7 @@ public class BigSub : PlayerController
             //set as child
             grabbedObject.transform.parent = transform;
             grabObjDistance = grabbedObject.transform.localPosition;
-
+            grabbedObject.transform.localRotation = Quaternion.identity;
             //set IK target to the grabbed object
             _ik.solver.target = grabbedObject.transform;
 
@@ -134,12 +140,13 @@ public class BigSub : PlayerController
 
         if(_lookCoOrds != Vector2.zero)
         {
-            grabObjDistance += ((transform.right * _lookCoOrds.x) + (transform.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
+            grabObjDistance += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
         }
     }
     public void UpdateGrab()
     {
         grabbedObject.transform.localPosition = grabObjDistance;
+        grabbedObject.transform.localRotation = Quaternion.identity;
     }
 
     public enum state { NONE, MOVEEMPTY, MOVEWITHGRAB, TRYGRAB, MOVEGRAB }
@@ -206,18 +213,18 @@ public class BigSub : PlayerController
         {
             case state.MOVEEMPTY:
                 Move();
-                if(rb.velocity.magnitude < maxSpotlightVelocity)
-                {
+                //if(rb.velocity.magnitude < maxSpotlightVelocity)
+                //{
                     Spotlight();
-                }
+               // }
                 SubRotate();
                 break;
             case state.MOVEWITHGRAB:
                 Move();
-                if (rb.velocity.magnitude < maxSpotlightVelocity)
-                {
+                //if (rb.velocity.magnitude < maxSpotlightVelocity)
+                //{
                     Spotlight();
-                }
+                //}
                 SubRotate();
                 UpdateGrab();
                 break;
