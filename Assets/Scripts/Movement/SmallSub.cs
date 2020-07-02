@@ -43,7 +43,7 @@ public class SmallSub : PlayerController
             _lookStorage += _lookCoOrds * Time.fixedDeltaTime * _lookSensitivity;
             _lookStorage.y = Mathf.Clamp(_lookStorage.y, -90f, 90f);
 
-            Debug.Log(_lookStorage);
+            //Debug.Log(_lookStorage);
             transform.rotation = Quaternion.Euler(_lookStorage.y * -1 * _turnSpeed, _lookStorage.x * _turnSpeed, _lookStorage.y);
         }
 
