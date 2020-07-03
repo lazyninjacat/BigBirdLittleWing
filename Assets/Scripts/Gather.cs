@@ -10,13 +10,16 @@ public class Gather : MonoBehaviour
     
     [SerializeField] Image EnergyBarUI;
     public int totalEnergy;
-
     public bool isCounting;
+
+    public List<GameObject> energyGeodesInSceneList;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        energyGeodesInSceneList = new List<GameObject>();
+        energyGeodesInSceneList = GameObject.FindGameObjectsWithTag("EnergyGeode").ToList();
         totalEnergy = 25;
         UpdateEnergyBarUI();
     }
@@ -58,7 +61,7 @@ public class Gather : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "EnergyGeode");
+        if (energyGeodesInSceneList.Contains(collision.gameObject))
         {
             Debug.Log("gathering started");
             totalEnergy++;
@@ -68,7 +71,7 @@ public class Gather : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "EnergyGeode") ;
+        if (energyGeodesInSceneList.Contains(collision.gameObject))
         {
             Debug.Log("gathering ended");
         }

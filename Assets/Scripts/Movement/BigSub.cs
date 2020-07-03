@@ -2,9 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BigSub : PlayerController
 {
+    /////////////////////////////////////////
+    /// EnegyCharge stuff
+    [SerializeField] GameObject EnergyChargeBarUI;
+    public int totalEnergy;
+    public bool isCharged;
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+
+    
     /// <summary>
     /// TO DO: 
     /// 
@@ -157,98 +167,146 @@ public class BigSub : PlayerController
 
     public override void RunUpdate()
     {
-        switch (currentState)
-        {
-            case state.MOVEEMPTY:
-                MouseInput();
-                KeyboardInput();
-                if (Input.GetMouseButtonUp(1))
-                {
-                    currentState = state.TRYGRAB;
-                    anim.SetBool("Arm", true);
-                    Stop();
-                    Cursor.lockState = CursorLockMode.Confined;
-                }
-                break;
-            case state.MOVEWITHGRAB:
-                MouseInput();
-                KeyboardInput();
-                if (Input.GetMouseButtonUp(0))
-                {
-                    ReleaseGrab();
-                }
-                if (Input.GetMouseButtonUp(1))
-                {
-                    Stop();
-                    currentState = state.MOVEGRAB;
-                }
-                break;
-            case state.TRYGRAB:
-                MouseInput();
-                Spotlight();
-                if(Input.GetMouseButtonUp(0))
-                {
-                    TryGrab();
-                }
-                if(Input.GetMouseButtonUp(1))
-                {
-                    currentState = state.MOVEEMPTY;
-                    anim.SetBool("Arm", false);
+        /////////////////////////////////////////
+        /// EnegyCharge stuff
 
-                    Cursor.lockState = CursorLockMode.Locked;
-                }                
-                break;
-            case state.MOVEGRAB:
-                MouseInput();
-                if(Input.GetMouseButtonUp(0))
-                {
-                    ReleaseGrab();
-                }
-                if(Input.GetMouseButtonUp(1))
-                {
-                    currentState = state.MOVEWITHGRAB;
-                }
-                break;
-            default:
-                break;
+        if (totalEnergy > 0)
+        {
+            isCharged = true;
         }
+        else
+        {
+            isCharged = false;
+        }
+        //////////////////////////////////////////
+        //////////////////////////////////////////
+
+
+        if (isCharged)
+        {
+            switch (currentState)
+            {
+                case state.MOVEEMPTY:
+                    MouseInput();
+                    KeyboardInput();
+                    if (Input.GetMouseButtonUp(1))
+                    {
+                        currentState = state.TRYGRAB;
+                        anim.SetBool("Arm", true);
+                        Stop();
+                        Cursor.lockState = CursorLockMode.Confined;
+                    }
+                    break;
+                case state.MOVEWITHGRAB:
+                    MouseInput();
+                    KeyboardInput();
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        ReleaseGrab();
+                    }
+                    if (Input.GetMouseButtonUp(1))
+                    {
+                        Stop();
+                        currentState = state.MOVEGRAB;
+                    }
+                    break;
+                case state.TRYGRAB:
+                    MouseInput();
+                    Spotlight();
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        TryGrab();
+                    }
+                    if (Input.GetMouseButtonUp(1))
+                    {
+                        currentState = state.MOVEEMPTY;
+                        anim.SetBool("Arm", false);
+
+                        Cursor.lockState = CursorLockMode.Locked;
+                    }
+                    break;
+                case state.MOVEGRAB:
+                    MouseInput();
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        ReleaseGrab();
+                    }
+                    if (Input.GetMouseButtonUp(1))
+                    {
+                        currentState = state.MOVEWITHGRAB;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            Debug.Log("Energy is empty! Need to re-charge in order to operate big sub");
+        }
+
     }
 
     public override void RunFixedUpdate()
     {
-        switch (currentState)
+        
+        /////////////////////////////////////////
+        /// EnegyCharge stuff
+        if (totalEnergy > 0)
         {
-            case state.MOVEEMPTY:
-                Move();
-                //if(rb.velocity.magnitude < maxSpotlightVelocity)
-                //{
-                    Spotlight();
-               // }
-                SubRotate();
-                break;
-            case state.MOVEWITHGRAB:
-                Move();
-                //if (rb.velocity.magnitude < maxSpotlightVelocity)
-                //{
-                    Spotlight();
-                //}
-                SubRotate();
-                UpdateGrab();
-                break;
-            case state.TRYGRAB:
-                if (_lookCoOrds != Vector2.zero)
-                {
-                    _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
-                }
-                break;
-            case state.MOVEGRAB:
-                MoveGrab();
-                UpdateGrab();
-                SubRotate();
-                break;
-            default:
-                break;
+            isCharged = true;
         }
+        else
+        {
+            isCharged = false;
+        }
+        //////////////////////////////////////////
+        //////////////////////////////////////////
+
+
+
+        if (isCharged)
+        {
+            switch (currentState)
+            {
+                case state.MOVEEMPTY:
+                    Move();
+                    //if(rb.velocity.magnitude < maxSpotlightVelocity)
+                    //{
+                    Spotlight();
+                    // }
+                    SubRotate();
+                    break;
+                case state.MOVEWITHGRAB:
+                    Move();
+                    //if (rb.velocity.magnitude < maxSpotlightVelocity)
+                    //{
+                    Spotlight();
+                    //}
+                    SubRotate();
+                    UpdateGrab();
+                    break;
+                case state.TRYGRAB:
+                    if (_lookCoOrds != Vector2.zero)
+                    {
+                        _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
+                    }
+                    break;
+                case state.MOVEGRAB:
+                    MoveGrab();
+                    UpdateGrab();
+                    SubRotate();
+                    break;
+                default:
+                    break;
+            }
+           
+        }
+        else
+        {
+            Debug.Log("Energy is empty! Need to re-charge in order to operate big sub");
+        }
+
     }
 
 
@@ -292,6 +350,17 @@ public class BigSub : PlayerController
     {
         
     }
+
+
+
+    ///////////////////////////////////////////
+    /// EnergyCharge Stuff
+    /// 
+
+
+
+
+
 }
 
 
