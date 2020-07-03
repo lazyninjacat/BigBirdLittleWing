@@ -24,6 +24,8 @@ public class Sonar : MonoBehaviour
     void Update()
     {
         
+
+
         if (Input.GetKeyDown("left ctrl"))
         {
             if (sonarIsReady)
@@ -49,6 +51,7 @@ public class Sonar : MonoBehaviour
             Debug.Log("Cooldown Timer: " + ((sonarCooldownTimer-1) - i));
 
             yield return new WaitForSeconds(1);
+
         }
         sonarIsReady = true;
         Debug.Log("Sonar is Ready");
