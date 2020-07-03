@@ -21,11 +21,7 @@ public class BigSub : PlayerController
     /// Done:
     /// Figure out why the arm moves strangely along the x axis when an object is grabbed ~Kyle
     /// </summary>
-    //???
     [SerializeField] float _speedCur = 2;
-    float _carryDistance;
-    private readonly float _carrySpeed = 15f;
-    bool _isInvert = false;
 
     //grabber
     [SerializeField] private LayerMask grabLayer;
@@ -37,6 +33,7 @@ public class BigSub : PlayerController
     public Vector3 grabObjDistance;
     [SerializeField] CCDIK _ik;
     [SerializeField] Transform _defaultIk;
+    Transform _defaulIKRestPos;
     Vector3 _ref = Vector3.zero;
     [SerializeField] float _smoothing;
     //spotlight
@@ -50,6 +47,7 @@ public class BigSub : PlayerController
         Cursor.lockState = CursorLockMode.Locked;
         _ik.solver.target = _defaultIk;
         currentState = state.MOVEEMPTY;
+        _defaulIKRestPos = _defaultIk;
     }
 
     public void MouseInput()
@@ -105,7 +103,7 @@ public class BigSub : PlayerController
     {
         //see if grab object
         if (anim.GetCurrentAnimatorStateInfo(0).IsTag("GState"))
-        {           
+        {
             grabbedObject = GrabObject();
             if (grabbedObject != null)
             {
@@ -121,8 +119,11 @@ public class BigSub : PlayerController
                 currentState = state.MOVEGRAB;
             }
             else
+            {
                 //reset Ik target
                 _ik.solver.target = _defaultIk;
+                _defaultIk = _defaulIKRestPos;
+            }
         }
     }
     public void ReleaseGrab()
@@ -135,6 +136,7 @@ public class BigSub : PlayerController
         currentState = state.MOVEEMPTY;
         //reset Ik target
         _ik.solver.target = _defaultIk;
+        _defaultIk = _defaulIKRestPos;
         //close arm animator
         anim.SetBool("Arm", false);
     }
@@ -154,6 +156,7 @@ public class BigSub : PlayerController
         if(_lookCoOrds != Vector2.zero)
         {
             grabObjDistance += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
+           // grabObjDistance = new Vector2(Mathf.Clamp(grabObjDistance.x, -40, 40), Mathf.Clamp(grabObjDistance.y, -10, 40));
         }
     }
     public void UpdateGrab()
