@@ -7,6 +7,7 @@ public class SmallSub : PlayerController
 {
     public float mouseWheelInput;
     private readonly int ballast = 20;
+    Quaternion _rot;
     public override void RunUpdate()
     {
         //get input info
@@ -44,7 +45,11 @@ public class SmallSub : PlayerController
             _lookStorage.y = Mathf.Clamp(_lookStorage.y, -90f, 90f);
 
             //Debug.Log(_lookStorage);
-            transform.rotation = Quaternion.Euler(_lookStorage.y * -1 * _turnSpeed, _lookStorage.x * _turnSpeed, _lookStorage.y);
+            _rot = Quaternion.Euler(_lookStorage.y * -1 * _turnSpeed, _lookStorage.x * _turnSpeed, _lookStorage.y);
+
+            _rot.x = Mathf.Clamp(_rot.x, -80, 80);
+            _rot.y = Mathf.Clamp(_rot.y, -45, 45);
+            transform.rotation = _rot;
         }
 
         if(mouseWheelInput != 0f)
