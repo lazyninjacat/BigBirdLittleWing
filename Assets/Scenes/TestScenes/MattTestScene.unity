@@ -4760,7 +4760,7 @@ GameObject:
   - component: {fileID: 576499774}
   - component: {fileID: 576499773}
   m_Layer: 5
-  m_Name: EnergyBar
+  m_Name: EnergyBarLW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12280,7 +12280,6 @@ MonoBehaviour:
   m_Script: {fileID: 1768690371}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
 --- !u!4 &1513673368
 Transform:
   m_ObjectHideFlags: 19
@@ -17855,8 +17854,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &397751347459356209
-MeshCollider:
+--- !u!65 &397751347459356209
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -17865,10 +17864,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5984252932659198769, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.35384634, y: 0.2733853, z: 0.29905266}
+  m_Center: {x: -0.000000014901161, y: -0.0000004246831, z: -0.000000067055225}
 --- !u!54 &397751347459356210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17896,8 +17894,8 @@ GameObject:
   - component: {fileID: 3394201002496158330}
   - component: {fileID: 4726735811892324269}
   - component: {fileID: 9189941554014732591}
-  - component: {fileID: 840673089287469942}
   - component: {fileID: 840673089287469941}
+  - component: {fileID: 840673089287469942}
   m_Layer: 31
   m_Name: BlueGeode_4
   m_TagString: EnergyGeode
@@ -17921,8 +17919,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &840673089287469942
-MeshCollider:
+--- !u!65 &840673089287469942
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -17931,10 +17929,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2653008532667479787, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.20683779, y: 0.172018, z: 0.17119989}
+  m_Center: {x: 0.000007405877, y: 0.00000410527, z: -0.0000000484288}
 --- !u!23 &1153148555626481711
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18077,9 +18074,9 @@ GameObject:
   - component: {fileID: 2341072044298821708}
   - component: {fileID: 2897683708747439372}
   - component: {fileID: 5177709923014413418}
-  - component: {fileID: 1671211709584756453}
   - component: {fileID: 1671211709584756452}
   - component: {fileID: 1671211709584756454}
+  - component: {fileID: 1671211709584756453}
   m_Layer: 31
   m_Name: RedGeode_2
   m_TagString: EnergyGeode
@@ -18103,8 +18100,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &1671211709584756453
-MeshCollider:
+--- !u!65 &1671211709584756453
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18113,10 +18110,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 614965557785505475, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.24909517, y: 0.2469936, z: 0.173837}
+  m_Center: {x: -0.000008121133, y: -0.0000031217933, z: -0.00001533702}
 --- !u!111 &1671211709584756454
 Animation:
   m_ObjectHideFlags: 0
@@ -18258,8 +18254,8 @@ GameObject:
   - component: {fileID: 92834194536911994}
   - component: {fileID: 7417811486670665513}
   - component: {fileID: 1648451878528346324}
-  - component: {fileID: 2534661384177422143}
   - component: {fileID: 2534661384177422142}
+  - component: {fileID: 2534661384177422143}
   m_Layer: 31
   m_Name: BlueGeode_3
   m_TagString: EnergyGeode
@@ -18283,8 +18279,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &2534661384177422143
-MeshCollider:
+--- !u!65 &2534661384177422143
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18293,10 +18289,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1323849832473852608, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.14822933, y: 0.14342913, z: 0.16408503}
+  m_Center: {x: 0.00000036135316, y: 0.0000006817281, z: 0.000000048428774}
 --- !u!33 &2897683708747439372
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18399,8 +18394,8 @@ GameObject:
   - component: {fileID: 3392364364873333864}
   - component: {fileID: 9221362706777791533}
   - component: {fileID: 1153148555626481711}
-  - component: {fileID: 4466792524503597681}
   - component: {fileID: 4466792524503597680}
+  - component: {fileID: 4466792524503597681}
   m_Layer: 31
   m_Name: RedGeode_1
   m_TagString: EnergyGeode
@@ -18424,8 +18419,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &4466792524503597681
-MeshCollider:
+--- !u!65 &4466792524503597681
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18434,10 +18429,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1020873582336906536, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.38420928, y: 0.32307506, z: 0.34728655}
+  m_Center: {x: -0.000007756054, y: 0.00000075250864, z: -0.000015325844}
 --- !u!1 &4517904003509190621
 GameObject:
   m_ObjectHideFlags: 0
@@ -18449,8 +18443,8 @@ GameObject:
   - component: {fileID: 8727132674265726427}
   - component: {fileID: 6916235873965680400}
   - component: {fileID: 2435095213682685307}
-  - component: {fileID: 4517904003509190623}
   - component: {fileID: 4517904003509190622}
+  - component: {fileID: 4517904003509190623}
   m_Layer: 31
   m_Name: YellowGeode_2
   m_TagString: EnergyGeode
@@ -18474,8 +18468,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &4517904003509190623
-MeshCollider:
+--- !u!65 &4517904003509190623
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18484,10 +18478,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -966229927059968183, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.21311802, y: 0.15216495, z: 0.17164402}
+  m_Center: {x: -0.000000011175871, y: -0.00000048428774, z: -0.00000008940697}
 --- !u!33 &4726735811892324269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18516,8 +18509,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &4805100359371856094
-MeshCollider:
+--- !u!65 &4805100359371856094
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18526,10 +18519,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4936958389587421406, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.18665367, y: 0.16310135, z: 0.1707902}
+  m_Center: {x: -0.00000047311187, y: -0.000000078231096, z: 0.00000013038516}
 --- !u!54 &4805100359371856095
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18877,8 +18869,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &6827051708289852496
-MeshCollider:
+--- !u!65 &6827051708289852496
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18887,10 +18879,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7879124669489970541, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.19244601, y: 0.1914081, z: 0.24833545}
+  m_Center: {x: -0.00000020861626, y: -0.00000048428774, z: 0.000000055879354}
 --- !u!54 &6827051708289852497
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19020,8 +19011,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &7499195088112826937
-MeshCollider:
+--- !u!65 &7499195088112826937
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19030,10 +19021,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1388182644008317442, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.37245983, y: 0.35064507, z: 0.33241028}
+  m_Center: {x: 0.00000015646219, y: -0.00000043213367, z: -0.00000011920929}
 --- !u!54 &7499195088112826938
 Rigidbody:
   m_ObjectHideFlags: 0
