@@ -1,6 +1,7 @@
 ﻿using RootMotion.FinalIK;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ public class BigSub : PlayerController
     /// Refactor controller support into the playerManager
     ///
     /// Done:
+    /// Clamp Arm Rotation ~ Kyle
     /// Clamp Rotation of _spotlight on x and y rotations ~ Kyle
     /// Figure out why the arm moves strangely along the x axis when an object is grabbed ~Kyle
     /// </summary>
@@ -36,7 +38,7 @@ public class BigSub : PlayerController
     public Vector3 grabObjDistance;
     [SerializeField] CCDIK _ik;
     [SerializeField] Transform _defaultIk;
-    Transform _defaulIKRestPos;
+    [SerializeField] GameObject _defaulIKRestPos;
     Vector3 _ref = Vector3.zero;
     [SerializeField] float _smoothing;
     //spotlight
@@ -56,41 +58,37 @@ public class BigSub : PlayerController
         Cursor.lockState = CursorLockMode.Locked;
         _ik.solver.target = _defaultIk;
         currentState = state.MOVEEMPTY;
-        _defaulIKRestPos = _defaultIk;
+        _defaulIKRestPos.transform.position = _defaultIk.position;
     }
-
-    public void MouseInput()
+        
+    public void GetInputs()
     {
-        //get rotation info
-        if(isCon) 
-            _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y"));
-        else
-        _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-    }        
-    public void KeyboardInput()
-    {
+        ////get rotation info
+        _lookCoOrds = (isCon) ? _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y")) : _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         //get input info
         _inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-    }        
-    public void Move()
+    }      
+    
+    public void Move(float _speed)
     {
         //sub movement        
         if (_inputs == Vector2.zero)
         {
-            //slow down sub by -velocity
-            if (rb.velocity != Vector3.zero)
-            {
-                //rb.velocity = transform.forward * rb.velocity.magnitude;
-                rb.AddForce(-rb.velocity * speed);
-            }
+            if (rb.velocity != Vector3.zero) //slow down sub by -velocity
+                rb.AddForce(-rb.velocity * _speed);
         }
-        else
+        else //move Sub along z and x axis
         {
-            rb.AddForce((transform.forward * _inputs.y + transform.right * _inputs.x).normalized * speed);
+            rb.AddForce((transform.forward * _inputs.y + transform.right * _inputs.x).normalized * _speed);
             if (rb.velocity.magnitude > maxVelocity)
-            {
                 rb.velocity = rb.velocity.normalized * maxVelocity;
-            }
+        }
+
+        if (mouseWheelInput != 0f)
+        {
+            rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
+            if (rb.velocity.magnitude > maxVelocity)
+                rb.velocity = rb.velocity.normalized * maxVelocity;
         }
     }
     public void Stop()
@@ -103,43 +101,35 @@ public class BigSub : PlayerController
         {            
             _lookStorage += _lookCoOrds * Time.deltaTime * _lookSensitivity;
             _spotlight.transform.rotation = Quaternion.Euler(_lookStorage.y * -1f, _lookStorage.x, 0.0f);
-            _spotlight.transform.rotation = ClampSpot(_spotlight.transform.rotation);
+            _spotlight.transform.rotation = RotationClamp(_spotlight.transform.rotation);
         }
     }
 
-    /// Clamp _spotlight
-        Quaternion ClampSpot(Quaternion q)
-         {
-             q.x /= q.w;
-             q.y /= q.w;
-             q.z /= q.w;
-             q.w = 1.0f;
-             q.z = 0.0f;   
- 
-             float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
-             float angleY = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.y);
-             angleX = Mathf.Clamp(angleX, -45, 45);
-        //angleY = Mathf.Clamp(angleY, -65, 65);
-             q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad* angleX);
- 
-             return q;
-         }
+    Quaternion RotationClamp(Quaternion q)
+    {
+        q.x /= q.w;
+        q.y /= q.w;
+        q.z /= q.w;
+        q.w = 1.0f;
+        q.z = 0.0f;
+
+        float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
+        float angleY = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.y);
+        angleX = Mathf.Clamp(angleX, -45, 45);
+        q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
+
+        return q;
+    }
 
 public void SubRotate()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, 
                              Quaternion.Euler(0.0f, _lookStorage.x, 0f),
-                             _turnSpeed * Time.fixedDeltaTime);
-
-        if (mouseWheelInput != 0f)
-        {
-            rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
-            if (rb.velocity.magnitude > maxVelocity)
-            {
-                rb.velocity = rb.velocity.normalized * maxVelocity;
-            }
-        }
+                             _turnSpeed * Time.fixedDeltaTime);       
     }
+
+    #region Grabber
+
     public void TryGrab()
     {
         //see if grab object
@@ -156,14 +146,13 @@ public void SubRotate()
                 _ik.solver.target = grabbedObject.transform;
                 //turn off gravity from rigidbody?
                 grabbedObject.GetComponent<Rigidbody>().useGravity = false;
-                Cursor.lockState = CursorLockMode.Locked;
                 currentState = state.MOVEGRAB;
             }
             else
             {
                 //reset Ik target
                 _ik.solver.target = _defaultIk;
-                _defaultIk = _defaulIKRestPos;
+                _defaultIk = _defaulIKRestPos.transform;
             }
         }
     }
@@ -177,7 +166,7 @@ public void SubRotate()
         currentState = state.MOVEEMPTY;
         //reset Ik target
         _ik.solver.target = _defaultIk;
-        _defaultIk = _defaulIKRestPos;
+        _defaultIk = _defaulIKRestPos.transform;
         //close arm animator
         anim.SetBool("Arm", false);
     }
@@ -204,6 +193,7 @@ public void SubRotate()
         grabbedObject.transform.localPosition = grabObjDistance;
         grabbedObject.transform.localRotation = Quaternion.identity;
     }
+    #endregion
 
     public enum state { NONE, MOVEEMPTY, MOVEWITHGRAB, TRYGRAB, MOVEGRAB }
     public state currentState = state.NONE;
@@ -241,19 +231,16 @@ public void SubRotate()
             switch (currentState)
             {
                 case state.MOVEEMPTY:
-                    MouseInput();
-                    KeyboardInput();
+                    GetInputs();
                     if (Input.GetMouseButtonUp(1))
                     {
                         currentState = state.TRYGRAB;
                         anim.SetBool("Arm", true);
                         Stop();
-                        Cursor.lockState = CursorLockMode.Confined;
                     }
                     break;
                 case state.MOVEWITHGRAB:
-                    MouseInput();
-                    KeyboardInput();
+                    GetInputs();
                     if (Input.GetMouseButtonUp(0))
                     {
                         ReleaseGrab();
@@ -265,8 +252,7 @@ public void SubRotate()
                     }
                     break;
                 case state.TRYGRAB:
-                    MouseInput();
-                    Spotlight();
+                    GetInputs();
                     if (Input.GetMouseButtonUp(0))
                     {
                         TryGrab();
@@ -275,12 +261,10 @@ public void SubRotate()
                     {
                         currentState = state.MOVEEMPTY;
                         anim.SetBool("Arm", false);
-
-                        Cursor.lockState = CursorLockMode.Locked;
                     }
                     break;
                 case state.MOVEGRAB:
-                    MouseInput();
+                    GetInputs();
                     if (Input.GetMouseButtonUp(0))
                     {
                         ReleaseGrab();
@@ -324,7 +308,7 @@ public void SubRotate()
             switch (currentState)
             {
                 case state.MOVEEMPTY:
-                    Move();
+                    Move(speed);
                     //if(rb.velocity.magnitude < maxSpotlightVelocity)
                     //{
                     Spotlight();
@@ -332,18 +316,21 @@ public void SubRotate()
                     SubRotate();
                     break;
                 case state.MOVEWITHGRAB:
-                    Move();
-                    //if (rb.velocity.magnitude < maxSpotlightVelocity)
-                    //{
+                    Move(speed - 1);
                     Spotlight();
-                    //}
                     SubRotate();
                     UpdateGrab();
                     break;
                 case state.TRYGRAB:
+                    //SubRotate();
+                    Spotlight();
+                    Move(speed-1);
                     if (_lookCoOrds != Vector2.zero)
                     {
-                        _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
+                        if(Vector3.Distance(_defaultIk.position,_defaulIKRestPos.transform.position) < 2) 
+                             _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
+                         else
+                            _defaultIk.transform.localPosition = Vector3.Slerp(_defaultIk.transform.localPosition, _defaulIKRestPos.transform.localPosition, _smoothing * Time.deltaTime);
                     }
                     break;
                 case state.MOVEGRAB:
@@ -366,16 +353,6 @@ public void SubRotate()
 
     public override void RunLateUpdate()
     {
-        //if(!_isInvert)
-        //{
-        //    _spot.transform.localRotation = Quaternion.Euler(_lookStorage.y * -1, _lookStorage.x, 0.0f);
-        //    _subOne.transform.localRotation = Quaternion.Slerp(_subOne.transform.rotation, Quaternion.Euler(0.0f, _lookStorage.x, 0.0f), _turnSpeed * Time.deltaTime);
-        //}
-        //else
-        //{
-        //    _spot.transform.localRotation = Quaternion.Euler(_lookStorage.y * 1, _lookStorage.x, 0.0f);
-        //    _subOne.transform.localRotation = Quaternion.Slerp(_subOne.transform.rotation, Quaternion.Euler(0.0f, _lookStorage.x, 0.0f), _turnSpeed * Time.deltaTime);
-        //}
     }
     
 
