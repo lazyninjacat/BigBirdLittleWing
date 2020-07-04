@@ -10,13 +10,14 @@ public class Gather : MonoBehaviour
     
     [SerializeField] Image EnergyBarLW;
     [SerializeField] Image EnergyBarBB;
+
     public int totalEnergyLW;
-    public bool isCountingLW;
     public int totalEnergyBB;
-    public bool isCountingBB;
+
+    private bool isCountingBB;
+    private bool isCountingLW;
 
     public List<GameObject> energyGeodesInSceneList;
-
 
     void Start()
     {
