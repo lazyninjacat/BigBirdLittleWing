@@ -36,9 +36,10 @@ public class GlobalFlock : MonoBehaviour
 
         for (int i = 0; i < numFish; i++)
         {
-            Vector3 pos = new Vector3(Random.Range(-swimLimits.x,swimLimits.x),
-                                     Random.Range(-swimLimits.y, swimLimits.y),
-                                     Random.Range(-swimLimits.z, swimLimits.z));
+            Vector3 pos = new Vector3(Random.Range(transform.position.x - swimLimits.x,transform.position.x - swimLimits.x),
+                                     Random.Range(transform.position.y - swimLimits.y, transform.position.y - swimLimits.y),
+                                     Random.Range(transform.position.z - swimLimits.z, transform.position.z + swimLimits.z));
+
             allFish[i] = (GameObject)Instantiate(fishprefab, pos, Quaternion.identity);
             allFish[i].GetComponent<Flock>().myManager = this;
         }
@@ -51,9 +52,9 @@ public class GlobalFlock : MonoBehaviour
     {
         if (Random.Range (0,10000) < 50)
         {
-               goalPos = new Vector3(Random.Range(-swimLimits.x, swimLimits.x),
-                                     Random.Range(-swimLimits.y, swimLimits.y),
-                                     Random.Range(-swimLimits.z, swimLimits.z));
+               goalPos = new Vector3(Random.Range(transform.position.x - swimLimits.x, transform.position.x + swimLimits.x),
+                                     Random.Range(transform.position.y - swimLimits.y, transform.position.y + swimLimits.y),
+                                     Random.Range(transform.position.z - swimLimits.z, transform.position.z + swimLimits.z));
         }
     }
 }
