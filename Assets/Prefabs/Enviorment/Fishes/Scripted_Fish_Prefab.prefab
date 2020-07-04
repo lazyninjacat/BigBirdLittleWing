@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1528783736211870163}
   - component: {fileID: 2287034392291092308}
   m_Layer: 0
-  m_Name: Fishe
+  m_Name: Scripted_Fish_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1024473006356967430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 72.401, y: 4.885, z: 5.356}
-  m_LocalScale: {x: 5.943617, y: 5.943617, z: 5.943617}
+  m_LocalScale: {x: 14, y: 14, z: 14}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
