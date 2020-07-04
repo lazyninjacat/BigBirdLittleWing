@@ -235,6 +235,7 @@ public void SubRotate()
                     if (Input.GetMouseButtonUp(1))
                     {
                         currentState = state.TRYGRAB;
+                        AudioManager.a_Instance.PlayOneShotByName("ArmOpen");
                         anim.SetBool("Arm", true);
                         Stop();
                     }

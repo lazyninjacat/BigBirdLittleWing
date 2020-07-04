@@ -28,13 +28,18 @@ public class AudioManager : MonoBehaviour
     #region Audio Clips
     public SfxClip[] sfx;
     public LevelMusic[] lvl_Music;
+    public static AudioManager a_Instance;
     #endregion
 
     readonly float levelMusicDelay = 1.3f;
 
     private void Awake()
     {
-
+        if (a_Instance == null)
+            a_Instance = this;
+        else if (a_Instance != this)
+            Destroy(a_Instance);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
