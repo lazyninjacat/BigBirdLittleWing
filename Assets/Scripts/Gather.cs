@@ -9,22 +9,27 @@ public class Gather : MonoBehaviour
 {
     
     [SerializeField] Image EnergyBarUI;
+
     public int totalEnergy;
     public bool isCounting;
 
     public List<GameObject> energyGeodesInSceneList;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         energyGeodesInSceneList = new List<GameObject>();
         energyGeodesInSceneList = GameObject.FindGameObjectsWithTag("EnergyGeode").ToList();
+
+        foreach (GameObject geode in energyGeodesInSceneList)
+        {
+            geode.GetComponent<Animation>().Play("energyGeodeIdle");
+        }
+
         totalEnergy = 25;
         UpdateEnergyBarUI();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -64,8 +69,23 @@ public class Gather : MonoBehaviour
         if (energyGeodesInSceneList.Contains(collision.gameObject))
         {
             Debug.Log("gathering started");
+
+            int energyAmount = Int16.Parse(collision.gameObject.name);
+
+            StartCoroutine(GatherHelper(energyAmount));
+
+            collision.gameObject.GetComponent<Animation>().Stop("energyGeodeIdle");
+            collision.gameObject.GetComponent<Animation>().Play("geodeGatherDim");
+        }
+    }
+
+    private IEnumerator GatherHelper(int energyAmount)
+    {
+        for (int i = energyAmount; i > 0; i--)
+        {
             totalEnergy++;
             UpdateEnergyBarUI();
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -76,5 +96,4 @@ public class Gather : MonoBehaviour
             Debug.Log("gathering ended");
         }
     }
-
 }

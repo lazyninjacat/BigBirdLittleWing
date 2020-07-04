@@ -11941,6 +11941,7 @@ MonoBehaviour:
   m_Script: {fileID: 1768690371}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &1513673368
 Transform:
   m_ObjectHideFlags: 19
@@ -15267,7 +15268,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.918
+  weight: 0.695
   sharedProfile: {fileID: 11400000, guid: 517e6e52a62263b4b9bdec6db64233cf, type: 2}
 --- !u!4 &2015617756
 Transform:
@@ -17042,8 +17043,9 @@ GameObject:
   - component: {fileID: 1452567591787623447}
   - component: {fileID: 397751347459356210}
   - component: {fileID: 397751347459356209}
+  - component: {fileID: 397751347459356211}
   m_Layer: 31
-  m_Name: YellowGeode_1
+  m_Name: 3
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17078,6 +17080,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!111 &397751347459356211
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397751347459356208}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &840673089287469940
 GameObject:
   m_ObjectHideFlags: 0
@@ -17091,8 +17110,9 @@ GameObject:
   - component: {fileID: 9189941554014732591}
   - component: {fileID: 840673089287469941}
   - component: {fileID: 840673089287469942}
+  - component: {fileID: 840673089287469943}
   m_Layer: 31
-  m_Name: BlueGeode_4
+  m_Name: 2
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17127,6 +17147,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20683779, y: 0.172018, z: 0.17119989}
   m_Center: {x: 0.000007405877, y: 0.00000410527, z: -0.0000000484288}
+--- !u!111 &840673089287469943
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840673089287469940}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!23 &1153148555626481711
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17273,7 +17310,7 @@ GameObject:
   - component: {fileID: 1671211709584756454}
   - component: {fileID: 1671211709584756453}
   m_Layer: 31
-  m_Name: RedGeode_2
+  m_Name: 5
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17320,8 +17357,9 @@ Animation:
   m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!33 &2098938449489751749
@@ -17451,8 +17489,9 @@ GameObject:
   - component: {fileID: 1648451878528346324}
   - component: {fileID: 2534661384177422142}
   - component: {fileID: 2534661384177422143}
+  - component: {fileID: 2534661384177422144}
   m_Layer: 31
-  m_Name: BlueGeode_3
+  m_Name: 1
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17487,6 +17526,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14822933, y: 0.14342913, z: 0.16408503}
   m_Center: {x: 0.00000036135316, y: 0.0000006817281, z: 0.000000048428774}
+--- !u!111 &2534661384177422144
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2534661384177422141}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!33 &2897683708747439372
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17591,8 +17647,9 @@ GameObject:
   - component: {fileID: 1153148555626481711}
   - component: {fileID: 4466792524503597680}
   - component: {fileID: 4466792524503597681}
+  - component: {fileID: 4466792524503597682}
   m_Layer: 31
-  m_Name: RedGeode_1
+  m_Name: 6
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17627,6 +17684,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.38420928, y: 0.32307506, z: 0.34728655}
   m_Center: {x: -0.000007756054, y: 0.00000075250864, z: -0.000015325844}
+--- !u!111 &4466792524503597682
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4466792524503597679}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4517904003509190621
 GameObject:
   m_ObjectHideFlags: 0
@@ -17640,8 +17714,9 @@ GameObject:
   - component: {fileID: 2435095213682685307}
   - component: {fileID: 4517904003509190622}
   - component: {fileID: 4517904003509190623}
+  - component: {fileID: 4517904003509190624}
   m_Layer: 31
-  m_Name: YellowGeode_2
+  m_Name: 3
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17676,6 +17751,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.21311802, y: 0.15216495, z: 0.17164402}
   m_Center: {x: -0.000000011175871, y: -0.00000048428774, z: -0.00000008940697}
+--- !u!111 &4517904003509190624
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517904003509190621}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!33 &4726735811892324269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17697,8 +17789,9 @@ GameObject:
   - component: {fileID: 2473915834240677286}
   - component: {fileID: 4805100359371856095}
   - component: {fileID: 4805100359371856094}
+  - component: {fileID: 4805100359371856096}
   m_Layer: 31
-  m_Name: YellowGeode_3
+  m_Name: 5
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17733,6 +17826,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!111 &4805100359371856096
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805100359371856093}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &4805976655044773758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18057,8 +18167,9 @@ GameObject:
   - component: {fileID: 213993337770839929}
   - component: {fileID: 6827051708289852497}
   - component: {fileID: 6827051708289852496}
+  - component: {fileID: 6827051708289852498}
   m_Layer: 31
-  m_Name: BlueGeode_2
+  m_Name: 4
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18093,6 +18204,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!111 &6827051708289852498
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827051708289852495}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!33 &6916235873965680400
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18199,8 +18327,9 @@ GameObject:
   - component: {fileID: 8286059557831086609}
   - component: {fileID: 7499195088112826938}
   - component: {fileID: 7499195088112826937}
+  - component: {fileID: 7499195088112826939}
   m_Layer: 31
-  m_Name: BlueGeode_1
+  m_Name: 8
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18235,6 +18364,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!111 &7499195088112826939
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499195088112826936}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d4d6c43a3f6305e43befb33c2e956781, type: 2}
+  - {fileID: 7400000, guid: 10c46b2d1279c2f4fad08d63506ccb23, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!4 &7621040165712361624
 Transform:
   m_ObjectHideFlags: 0
