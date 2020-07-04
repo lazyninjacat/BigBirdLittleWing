@@ -1567,6 +1567,16 @@ PrefabInstance:
       propertyPath: _turnSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7435633232212138214, guid: 0bcca4172e8a83246a3d543de7d43daa,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435633232212138214, guid: 0bcca4172e8a83246a3d543de7d43daa,
+        type: 3}
+      propertyPath: maxVelocity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7435633232212138215, guid: 0bcca4172e8a83246a3d543de7d43daa,
         type: 3}
       propertyPath: m_LocalPosition.x
