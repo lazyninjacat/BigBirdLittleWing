@@ -107,7 +107,7 @@ public class BigSub : PlayerController
         }
     }
 
-    /// Clamp _spot
+    /// Clamp _spotlight
         Quaternion ClampSpot(Quaternion q)
          {
              q.x /= q.w;
@@ -124,11 +124,13 @@ public class BigSub : PlayerController
  
              return q;
          }
+
 public void SubRotate()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, 
                              Quaternion.Euler(0.0f, _lookStorage.x, 0f),
                              _turnSpeed * Time.fixedDeltaTime);
+
         if (mouseWheelInput != 0f)
         {
             rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
