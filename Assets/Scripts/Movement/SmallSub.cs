@@ -8,14 +8,20 @@ public class SmallSub : PlayerController
     public float mouseWheelInput;
     private readonly int ballast = 20;
     Quaternion _rot;
+    private bool isCon;
     public override void RunUpdate()
     {
+        if (isCon != FindObjectOfType<BigSub>().isCon)
+            isCon = FindObjectOfType<BigSub>().isCon;
         //get input info
         _inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         mouseWheelInput = Input.mouseScrollDelta.y;
 
         //get rotation info
-        _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        if (isCon)
+            _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y"));
+        else
+            _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
 
     public override void RunFixedUpdate()

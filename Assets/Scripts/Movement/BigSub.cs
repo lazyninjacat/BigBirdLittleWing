@@ -17,8 +17,11 @@ public class BigSub : PlayerController
     
     /// <summary>
     /// TO DO: 
-    /// 
+    /// Finish controller support for big and little subs
+    /// Refactor controller support into the playerManager
+    ///
     /// Done:
+    /// Clamp Rotation of _spotlight on x and y rotations ~ Kyle
     /// Figure out why the arm moves strangely along the x axis when an object is grabbed ~Kyle
     /// </summary>
     [SerializeField] float _speedCur = 2;
@@ -44,6 +47,9 @@ public class BigSub : PlayerController
     public float mouseWheelInput;
     private readonly int ballast = 20;
 
+    //Controller Support
+    public bool isCon;
+
     protected override void Start()
     {
         base.Start();
@@ -56,6 +62,9 @@ public class BigSub : PlayerController
     public void MouseInput()
     {
         //get rotation info
+        if(isCon) 
+            _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y"));
+        else
         _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }        
     public void KeyboardInput()
@@ -94,9 +103,28 @@ public class BigSub : PlayerController
         {            
             _lookStorage += _lookCoOrds * Time.deltaTime * _lookSensitivity;
             _spotlight.transform.rotation = Quaternion.Euler(_lookStorage.y * -1f, _lookStorage.x, 0.0f);
+            _spotlight.transform.rotation = ClampSpot(_spotlight.transform.rotation);
         }
     }
-    public void SubRotate()
+
+    /// Clamp _spot
+        Quaternion ClampSpot(Quaternion q)
+         {
+             q.x /= q.w;
+             q.y /= q.w;
+             q.z /= q.w;
+             q.w = 1.0f;
+             q.z = 0.0f;   
+ 
+             float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
+             float angleY = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.y);
+             angleX = Mathf.Clamp(angleX, -45, 45);
+        //angleY = Mathf.Clamp(angleY, -65, 65);
+             q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad* angleX);
+ 
+             return q;
+         }
+public void SubRotate()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, 
                              Quaternion.Euler(0.0f, _lookStorage.x, 0f),
@@ -194,8 +222,18 @@ public class BigSub : PlayerController
         //////////////////////////////////////////
         //////////////////////////////////////////
 
-        mouseWheelInput = Input.mouseScrollDelta.y;
-
+        /// Controller support////////////////////
+        if (isCon)
+        {
+            mouseWheelInput = Input.GetAxis("Con Left Trig") + Input.GetAxis("Con Right Trig");
+            if (_lookSensitivity != 300) _lookSensitivity = 300;
+        }
+        else
+        {
+            mouseWheelInput = Input.mouseScrollDelta.y;
+            if (_lookSensitivity != 20) _lookSensitivity = 20;
+        }
+        /////////////////////////////////////////
         if (isCharged)
         {
             switch (currentState)
