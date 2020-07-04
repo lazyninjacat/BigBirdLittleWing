@@ -8,10 +8,12 @@ using UnityEngine.UI;
 public class Gather : MonoBehaviour
 {
     
-    [SerializeField] Image EnergyBarUI;
-
-    public int totalEnergy;
-    public bool isCounting;
+    [SerializeField] Image EnergyBarLW;
+    [SerializeField] Image EnergyBarBB;
+    public int totalEnergyLW;
+    public bool isCountingLW;
+    public int totalEnergyBB;
+    public bool isCountingBB;
 
     public List<GameObject> energyGeodesInSceneList;
 
@@ -26,41 +28,74 @@ public class Gather : MonoBehaviour
             geode.GetComponent<Animation>().Play("energyGeodeIdle");
         }
 
-        totalEnergy = 25;
-        UpdateEnergyBarUI();
+        totalEnergyLW = 25;
+        UpdateEnergyBarLW();
+
+        totalEnergyBB = 25;
+        UpdateEnergyBarBB();
     }
 
     void Update()
     {
 
-        if (!isCounting && totalEnergy > 0)
+        if (!isCountingLW && totalEnergyLW > 0)
         {
-            StartCoroutine(EnergyDrain());
+            StartCoroutine(EnergyDrainLW());
+        }
+
+        if (!isCountingBB && totalEnergyBB > 0)
+        {
+            StartCoroutine(EnergyDrainBB());
         }
     }
 
-    private IEnumerator EnergyDrain()
+    private IEnumerator EnergyDrainLW()
     {
-        isCounting = true;
+        isCountingLW = true;
         yield return new WaitForSeconds(10);
-        totalEnergy--;
-        UpdateEnergyBarUI();
-        isCounting = false;
+        totalEnergyLW--;
+        UpdateEnergyBarLW();
+        isCountingLW = false;
     }
 
-    private void UpdateEnergyBarUI()
+    private IEnumerator EnergyDrainBB()
     {
-        if (totalEnergy <= 0)
+        isCountingBB = true;
+        yield return new WaitForSeconds(10);
+        totalEnergyBB--;
+        UpdateEnergyBarBB();
+        isCountingBB = false;
+    }
+
+    private void UpdateEnergyBarLW()
+    {
+        if (totalEnergyLW <= 0)
         {
-            EnergyBarUI.fillAmount = 0;
+            EnergyBarLW.fillAmount = 0;
         }
-        else if (totalEnergy < 50)
+        else if (totalEnergyLW < 50)
         {
-            EnergyBarUI.fillAmount = ((float)totalEnergy / 50);
+            EnergyBarLW.fillAmount = ((float)totalEnergyLW / 50);
         }
-        else if (totalEnergy >= 50)
+        else if (totalEnergyLW >= 50)
         {
-            EnergyBarUI.fillAmount = 1;
+            EnergyBarLW.fillAmount = 1;
+        }
+    }
+
+    private void UpdateEnergyBarBB()
+    {
+        if (totalEnergyBB <= 0)
+        {
+            EnergyBarBB.fillAmount = 0;
+        }
+        else if (totalEnergyBB < 50)
+        {
+            EnergyBarBB.fillAmount = ((float)totalEnergyBB / 50);
+        }
+        else if (totalEnergyBB >= 50)
+        {
+            EnergyBarBB.fillAmount = 1;
         }
     }
 
@@ -72,28 +107,53 @@ public class Gather : MonoBehaviour
 
             int energyAmount = Int16.Parse(collision.gameObject.name);
 
-            StartCoroutine(GatherHelper(energyAmount));
+            StartCoroutine(GatherHelperLW(energyAmount));
 
             collision.gameObject.GetComponent<Animation>().Stop("energyGeodeIdle");
             collision.gameObject.GetComponent<Animation>().Play("geodeGatherDim");
         }
-    }
-
-    private IEnumerator GatherHelper(int energyAmount)
-    {
-        for (int i = energyAmount; i > 0; i--)
+        else if (collision.gameObject.tag == "BB")
         {
-            totalEnergy++;
-            UpdateEnergyBarUI();
-            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(EnergyTransferHelper());
         }
     }
+
 
     private void OnCollisionExit(Collision collision)
     {
         if (energyGeodesInSceneList.Contains(collision.gameObject))
         {
             Debug.Log("gathering ended");
+        }
+    }
+
+    private IEnumerator GatherHelperLW(int energyAmount)
+    {
+        for (int i = energyAmount; i > 0; i--)
+        {
+            totalEnergyLW++;
+            UpdateEnergyBarLW();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private IEnumerator EnergyTransferHelper()
+    {
+        for (int i = 1; i < totalEnergyLW; i++)
+        {
+            if (totalEnergyBB < 50)
+            {
+                totalEnergyLW--;
+                totalEnergyBB++;
+                UpdateEnergyBarLW();
+                UpdateEnergyBarBB();
+                yield return new WaitForSeconds(0.25f);
+            }
+            else
+            {
+                break;
+            }
+       
         }
     }
 }
