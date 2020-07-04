@@ -40,6 +40,9 @@ public class BigSub : PlayerController
     public GameObject _spotlight;
     [Tooltip("The velocity of the rigid body must be under this value for the spotlight to rotate")]
     public float maxSpotlightVelocity = 0.5f;
+    /// Move sub up/down
+    public float mouseWheelInput;
+    private readonly int ballast = 20;
 
     protected override void Start()
     {
@@ -58,12 +61,12 @@ public class BigSub : PlayerController
     public void KeyboardInput()
     {
         //get input info
-        _inputs = new Vector2(0f, Input.GetAxis("Vertical"));
+        _inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }        
     public void Move()
     {
         //sub movement        
-        if (_inputs.y == 0f)
+        if (_inputs == Vector2.zero)
         {
             //slow down sub by -velocity
             if (rb.velocity != Vector3.zero)
@@ -73,8 +76,8 @@ public class BigSub : PlayerController
             }
         }
         else
-        {            
-            rb.AddForce((transform.forward * _inputs.y).normalized * speed);
+        {
+            rb.AddForce((transform.forward * _inputs.y + transform.right * _inputs.x).normalized * speed);
             if (rb.velocity.magnitude > maxVelocity)
             {
                 rb.velocity = rb.velocity.normalized * maxVelocity;
@@ -96,8 +99,16 @@ public class BigSub : PlayerController
     public void SubRotate()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, 
-                             Quaternion.Euler(-1f *_lookStorage.y, _lookStorage.x, 0f),
+                             Quaternion.Euler(0.0f, _lookStorage.x, 0f),
                              _turnSpeed * Time.fixedDeltaTime);
+        if (mouseWheelInput != 0f)
+        {
+            rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
+            if (rb.velocity.magnitude > maxVelocity)
+            {
+                rb.velocity = rb.velocity.normalized * maxVelocity;
+            }
+        }
     }
     public void TryGrab()
     {
@@ -156,7 +167,6 @@ public class BigSub : PlayerController
         if(_lookCoOrds != Vector2.zero)
         {
             grabObjDistance += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
-           // grabObjDistance = new Vector2(Mathf.Clamp(grabObjDistance.x, -40, 40), Mathf.Clamp(grabObjDistance.y, -10, 40));
         }
     }
     public void UpdateGrab()
@@ -184,6 +194,7 @@ public class BigSub : PlayerController
         //////////////////////////////////////////
         //////////////////////////////////////////
 
+        mouseWheelInput = Input.mouseScrollDelta.y;
 
         if (isCharged)
         {
