@@ -8,7 +8,8 @@ public class SmallSub : PlayerController
     public float mouseWheelInput;
     private readonly int ballast = 20;
     Quaternion _rot;
-    private bool isCon;
+    public bool isCon;
+    [SerializeField] float _lerpSpeed;
     public override void RunUpdate()
     {
         if (isCon != FindObjectOfType<BigSub>().isCon)
@@ -18,10 +19,10 @@ public class SmallSub : PlayerController
         mouseWheelInput = Input.mouseScrollDelta.y;
 
         //get rotation info
-        if (isCon)
-            _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y"));
-        else
-            _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        _lookCoOrds = (isCon) ? _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y")) : _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouseWheelInput = (isCon) ? mouseWheelInput = Input.GetAxis("Con Left Trig") + Input.GetAxis("Con Right Trig") : mouseWheelInput = Input.mouseScrollDelta.y;
+        _lookSensitivity = (isCon) ? _lookSensitivity = 200 : _lookSensitivity = 20;
+
     }
 
     public override void RunFixedUpdate()
@@ -48,17 +49,16 @@ public class SmallSub : PlayerController
         if (_lookCoOrds != Vector2.zero)
         {
             _lookStorage += _lookCoOrds * Time.fixedDeltaTime * _lookSensitivity;
-            _lookStorage.y = Mathf.Clamp(_lookStorage.y, -90f, 90f);
 
-            //Debug.Log(_lookStorage);
-            _rot = Quaternion.Euler(_lookStorage.y * -1 * _turnSpeed, _lookStorage.x * _turnSpeed, _lookStorage.y);
-
-            _rot.x = Mathf.Clamp(_rot.x, -80, 80);
-            _rot.y = Mathf.Clamp(_rot.y, -45, 45);
-            transform.rotation = _rot;
+            _rot = Quaternion.Slerp(transform.rotation,
+                                 Quaternion.Euler((_lookStorage.y * 5) * -1,_lookStorage.x, 0f),
+                                 _turnSpeed * Time.fixedDeltaTime);
+           
+            transform.rotation = RotationClamp(_rot);
+           
         }
 
-        if(mouseWheelInput != 0f)
+        if (mouseWheelInput != 0f)
         {
             rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
             if (rb.velocity.magnitude > maxVelocity)
@@ -67,7 +67,22 @@ public class SmallSub : PlayerController
             }
         }
     }
+    Quaternion RotationClamp(Quaternion q)
+    {
+        q.x /= q.w;
+        q.y /= q.w;
+        q.z /= q.w;
+        q.w = 1.0f;
 
+        float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
+        float angleZ = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.z);
+        //angleZ = Mathf.Clamp(angleZ, -15, 15);
+        angleX = Mathf.Clamp(angleX, -60, 60);
+
+        q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
+
+        return q;
+    }
     public override void RunLateUpdate()
     {
         
