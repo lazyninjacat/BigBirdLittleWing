@@ -8,7 +8,7 @@ public class SmallSub : PlayerController
     public float mouseWheelInput;
     private readonly int ballast = 20;
     Quaternion _rot;
-    public bool isCon;
+    private bool isCon;
     [SerializeField] float _lerpSpeed;
     public override void RunUpdate()
     {
@@ -21,7 +21,7 @@ public class SmallSub : PlayerController
         //get rotation info
         _lookCoOrds = (isCon) ? _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y")) : _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         mouseWheelInput = (isCon) ? mouseWheelInput = Input.GetAxis("Con Left Trig") + Input.GetAxis("Con Right Trig") : mouseWheelInput = Input.mouseScrollDelta.y;
-        _lookSensitivity = (isCon) ? _lookSensitivity = 200 : _lookSensitivity = 20;
+        _lookSensitivity = (isCon) ? _lookSensitivity = 300 : _lookSensitivity = 20;
 
     }
 
@@ -51,7 +51,7 @@ public class SmallSub : PlayerController
             _lookStorage += _lookCoOrds * Time.fixedDeltaTime * _lookSensitivity;
 
             _rot = Quaternion.Slerp(transform.rotation,
-                                 Quaternion.Euler((_lookStorage.y * 5) * -1,_lookStorage.x, 0f),
+                                 Quaternion.Euler((_lookStorage.y * 4) * -1,_lookStorage.x * 3, 0f),
                                  _turnSpeed * Time.fixedDeltaTime);
            
             transform.rotation = RotationClamp(_rot);
@@ -67,6 +67,7 @@ public class SmallSub : PlayerController
             }
         }
     }
+
     Quaternion RotationClamp(Quaternion q)
     {
         q.x /= q.w;
