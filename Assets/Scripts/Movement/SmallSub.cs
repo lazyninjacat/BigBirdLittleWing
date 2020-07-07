@@ -10,6 +10,7 @@ public class SmallSub : PlayerController
     Quaternion _rot;
     private bool isCon;
     [SerializeField] float _lerpSpeed;
+    public bool _inv;
     public override void RunUpdate()
     {
         if (isCon != FindObjectOfType<BigSub>().isCon)
@@ -19,6 +20,7 @@ public class SmallSub : PlayerController
         mouseWheelInput = Input.mouseScrollDelta.y;
 
         //get rotation info
+        if(_inv) _lookCoOrds = (isCon) ? _lookCoOrds = new Vector2(-Input.GetAxis("Con X"), Input.GetAxis("Con Y")) : _lookCoOrds = new Vector2(-Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         _lookCoOrds = (isCon) ? _lookCoOrds = new Vector2(Input.GetAxis("Con X"), Input.GetAxis("Con Y")) : _lookCoOrds = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         mouseWheelInput = (isCon) ? mouseWheelInput = Input.GetAxis("Con Left Trig") + Input.GetAxis("Con Right Trig") : mouseWheelInput = Input.mouseScrollDelta.y;
         _lookSensitivity = (isCon) ? _lookSensitivity = 300 : _lookSensitivity = 20;

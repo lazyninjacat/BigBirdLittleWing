@@ -200,6 +200,12 @@ public void SubRotate()
 
     public override void RunUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (isCon) isCon = false;
+            else isCon = true;
+        }
+
         /////////////////////////////////////////
         /// EnegyCharge stuff
 
