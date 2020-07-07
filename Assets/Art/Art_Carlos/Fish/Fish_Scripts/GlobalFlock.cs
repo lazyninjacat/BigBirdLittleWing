@@ -10,7 +10,8 @@ public class GlobalFlock : MonoBehaviour
     public  GameObject[] allFish = new GameObject[numFish];
     public Vector3 goalPos;
     public Vector3 swimLimits = new Vector3(5, 5, 5);
-
+    PlayerManager _player;
+    public Transform _playerPos;
     public void FishSpeed(float speedMult)
     {
        // Debug.Log(speedMult);
@@ -33,7 +34,7 @@ public class GlobalFlock : MonoBehaviour
     {
         myFlock = this;
         goalPos = this.transform.position;
-
+        _player = FindObjectOfType<PlayerManager>();
         for (int i = 0; i < numFish; i++)
         {
             Vector3 pos = new Vector3(Random.Range(transform.position.x - swimLimits.x,transform.position.x - swimLimits.x),
@@ -50,6 +51,7 @@ public class GlobalFlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _playerPos = _player.currentSub.transform;
         if (Random.Range (0,10000) < 50)
         {
                goalPos = new Vector3(Random.Range(transform.position.x - swimLimits.x, transform.position.x + swimLimits.x),
