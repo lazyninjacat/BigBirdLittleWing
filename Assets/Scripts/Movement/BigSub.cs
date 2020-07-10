@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class BigSub : PlayerController
@@ -165,12 +164,12 @@ public void SubRotate()
         grabbedObject.GetComponent<Rigidbody>().useGravity = true;
         grabbedObject = null;
         Cursor.lockState = CursorLockMode.Locked;
-        currentState = state.MOVEEMPTY;
+        currentState = state.TRYGRAB;
         //reset Ik target
         _ik.solver.target = _defaultIk;
         _defaultIk = _defaulIKRestPos.transform;
         //close arm animator
-      //  anim.SetBool("Arm", false);
+        //anim.SetBool("Arm", false);
     }
     public void MoveGrab()
     {
@@ -253,6 +252,7 @@ public void SubRotate()
                     if (Input.GetMouseButtonUp(0))
                     {
                         ReleaseGrab();
+                        currentState = state.TRYGRAB;
                     }
                     if (Input.GetMouseButtonUp(1))
                     {
@@ -266,11 +266,11 @@ public void SubRotate()
                     {
                         TryGrab();
                     }
-                    //if (Input.GetMouseButtonUp(1))
-                    //{
-                    //    currentState = state.MOVEEMPTY;
-                    //    anim.SetBool("Arm", false);
-                    //}
+                    if (Input.GetMouseButtonUp(1))
+                    {
+                        currentState = state.MOVEEMPTY;
+                       // anim.SetBool("Arm", false);
+                    }
                     break;
                 case state.MOVEGRAB:
                     GetInputs();
@@ -337,14 +337,13 @@ public void SubRotate()
                     if (_lookCoOrds != Vector2.zero)
                     {
                         if(Vector3.Distance(_defaultIk.position,_defaulIKRestPos.transform.position) < 2) 
-                             _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;                        
+                             _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
+                         else
+                            _defaultIk.transform.localPosition = Vector3.Slerp(_defaultIk.transform.localPosition, _defaulIKRestPos.transform.localPosition, _smoothing * Time.deltaTime);
                     }
-                    else
-                        _defaultIk.transform.localPosition = Vector3.Slerp(_defaultIk.transform.localPosition, _defaulIKRestPos.transform.localPosition, _smoothing * Time.deltaTime);
                     break;
                 case state.MOVEGRAB:
                     MoveGrab();
-                    Move(speed - 1);
                     UpdateGrab();
                     SubRotate();
                     break;
@@ -386,10 +385,9 @@ public void SubRotate()
 
     //    return null;
     //}
-
     GameObject GrabObject()
     {
-        GameObject closest  = null;
+        GameObject closest = null;
         Collider[] hitColliders = Physics.OverlapSphere(_defaulIKRestPos.transform.position, 3f, grabLayer);
         foreach (var hitCollider in hitColliders)
         {
@@ -406,6 +404,7 @@ public void SubRotate()
         }
         return closest;
     }
+
     public override void Walking(float speed, GameObject obj)
     {
         
