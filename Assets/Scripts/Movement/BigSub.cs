@@ -18,14 +18,18 @@ public class BigSub : PlayerController
     
     /// <summary>
     /// TO DO: 
+    /// Animate the arm extending to grab object
+    /// Animate claws opening/closing to grab
     /// Finish controller support for big and little subs
     /// Refactor controller support into the playerManager
     ///
     /// Done:
+    /// Arm pickup/drop working **no errors or weird behaviors**
     /// Clamp Arm Rotation ~ Kyle
     /// Clamp Rotation of _spotlight on x and y rotations ~ Kyle
     /// Figure out why the arm moves strangely along the x axis when an object is grabbed ~Kyle
     /// </summary>
+    
     [SerializeField] float _speedCur = 2;
 
     //grabber
@@ -39,9 +43,9 @@ public class BigSub : PlayerController
     [SerializeField] CCDIK _ik;
     [SerializeField] Transform _defaultIk;
     [SerializeField] GameObject _defaulIKRestPos;
-    Vector3 _ref = Vector3.zero;
-    [SerializeField] float _smoothing;
+    [SerializeField] float _smoothing = 0.7f;
     float _distanceFromPickup = Mathf.Infinity;
+    GameObject closest = null; 
     //spotlight
     public GameObject _spotlight;
     [Tooltip("The velocity of the rigid body must be under this value for the spotlight to rotate")]
@@ -136,7 +140,10 @@ public void SubRotate()
         //see if grab object
         if (anim.GetCurrentAnimatorStateInfo(0).IsTag("GState"))
         {
-            grabbedObject = GrabObject();
+            if (grabbedObject == null)
+            {
+                grabbedObject = GrabObject();
+            }
             if (grabbedObject != null)
             {
                 //set as child
@@ -164,25 +171,25 @@ public void SubRotate()
         grabbedObject.GetComponent<Rigidbody>().useGravity = true;
         grabbedObject = null;
         Cursor.lockState = CursorLockMode.Locked;
-        currentState = state.TRYGRAB;
         //reset Ik target
         _ik.solver.target = _defaultIk;
         _defaultIk = _defaulIKRestPos.transform;
+        currentState = state.TRYGRAB;
         //close arm animator
         //anim.SetBool("Arm", false);
     }
     public void MoveGrab()
     {
-        //forward back
-        if (Input.mouseScrollDelta.y != 0f)
-        {
-            //move distance to from 
-            if(grabObjDistance.z + (Input.mouseScrollDelta.y * grabberSpeedV * Time.fixedDeltaTime) < grabberDistanceMax &&
-               grabObjDistance.z + (Input.mouseScrollDelta.y * grabberSpeedV * Time.fixedDeltaTime) > grabberDistanceMin)
-            {
-                grabObjDistance += new Vector3(0f, 0f, Input.mouseScrollDelta.y * grabberSpeedV * Time.fixedDeltaTime);
-            }
-        }
+        ////forward back
+        //if (Input.mouseScrollDelta.y != 0f)
+        //{
+        //    //move distance to from 
+        //    if(grabObjDistance.z + (Input.mouseScrollDelta.y * grabberSpeedV * Time.fixedDeltaTime) < grabberDistanceMax &&
+        //       grabObjDistance.z + (Input.mouseScrollDelta.y * grabberSpeedV * Time.fixedDeltaTime) > grabberDistanceMin)
+        //    {
+        //        grabObjDistance += new Vector3(0f, 0f, Input.mouseScrollDelta.y * grabberSpeedV * Time.fixedDeltaTime);
+        //    }
+        //}
 
         if(_lookCoOrds != Vector2.zero)
         {
@@ -252,7 +259,7 @@ public void SubRotate()
                     if (Input.GetMouseButtonUp(0))
                     {
                         ReleaseGrab();
-                        currentState = state.TRYGRAB;
+                        currentState = state.MOVEEMPTY;
                     }
                     if (Input.GetMouseButtonUp(1))
                     {
@@ -269,7 +276,7 @@ public void SubRotate()
                     if (Input.GetMouseButtonUp(1))
                     {
                         currentState = state.MOVEEMPTY;
-                       // anim.SetBool("Arm", false);
+                        anim.SetBool("Arm", false);
                     }
                     break;
                 case state.MOVEGRAB:
@@ -387,11 +394,11 @@ public void SubRotate()
     //}
     GameObject GrabObject()
     {
-        GameObject closest = null;
-        Collider[] hitColliders = Physics.OverlapSphere(_defaulIKRestPos.transform.position, 3f, grabLayer);
+        closest = null;
+        Collider[] hitColliders = Physics.OverlapSphere(_defaulIKRestPos.transform.position, 2f, grabLayer);
         foreach (var hitCollider in hitColliders)
         {
-            if (Vector3.Distance(_defaulIKRestPos.transform.position, hitCollider.transform.position) < 3)
+            if (Vector3.Distance(_defaulIKRestPos.transform.position, hitCollider.transform.position) < 2)
             {
                 Vector3 dist = hitCollider.transform.position - _defaulIKRestPos.transform.position;
                 float currentDistance = dist.sqrMagnitude;
@@ -400,9 +407,12 @@ public void SubRotate()
                     closest = hitCollider.gameObject;
                     _distanceFromPickup = currentDistance;
                 }
+                return closest;
             }
+            else
+                return closest;
         }
-        return closest;
+            return closest;
     }
 
     public override void Walking(float speed, GameObject obj)
