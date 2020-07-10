@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] GameObject LittleWingCam;
 
     private Camera mainCamera;
-    private PlayerController currentSub;
+    public PlayerController currentSub;
 
     private void SwapPlayer()
     {

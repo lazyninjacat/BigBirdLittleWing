@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class BigSub : PlayerController
@@ -41,6 +42,7 @@ public class BigSub : PlayerController
     [SerializeField] GameObject _defaulIKRestPos;
     Vector3 _ref = Vector3.zero;
     [SerializeField] float _smoothing;
+    float _distanceFromPickup = Mathf.Infinity;
     //spotlight
     public GameObject _spotlight;
     [Tooltip("The velocity of the rigid body must be under this value for the spotlight to rotate")]
@@ -168,7 +170,7 @@ public void SubRotate()
         _ik.solver.target = _defaultIk;
         _defaultIk = _defaulIKRestPos.transform;
         //close arm animator
-        anim.SetBool("Arm", false);
+      //  anim.SetBool("Arm", false);
     }
     public void MoveGrab()
     {
@@ -200,6 +202,12 @@ public void SubRotate()
 
     public override void RunUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (isCon) isCon = false;
+            else isCon = true;
+        }
+
         /////////////////////////////////////////
         /// EnegyCharge stuff
 
@@ -258,11 +266,11 @@ public void SubRotate()
                     {
                         TryGrab();
                     }
-                    if (Input.GetMouseButtonUp(1))
-                    {
-                        currentState = state.MOVEEMPTY;
-                        anim.SetBool("Arm", false);
-                    }
+                    //if (Input.GetMouseButtonUp(1))
+                    //{
+                    //    currentState = state.MOVEEMPTY;
+                    //    anim.SetBool("Arm", false);
+                    //}
                     break;
                 case state.MOVEGRAB:
                     GetInputs();
@@ -329,13 +337,14 @@ public void SubRotate()
                     if (_lookCoOrds != Vector2.zero)
                     {
                         if(Vector3.Distance(_defaultIk.position,_defaulIKRestPos.transform.position) < 2) 
-                             _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;
-                         else
-                            _defaultIk.transform.localPosition = Vector3.Slerp(_defaultIk.transform.localPosition, _defaulIKRestPos.transform.localPosition, _smoothing * Time.deltaTime);
+                             _defaultIk.transform.localPosition += ((Vector3.right * _lookCoOrds.x) + (Vector3.up * _lookCoOrds.y)) * grabberSpeedH * Time.fixedDeltaTime;                        
                     }
+                    else
+                        _defaultIk.transform.localPosition = Vector3.Slerp(_defaultIk.transform.localPosition, _defaulIKRestPos.transform.localPosition, _smoothing * Time.deltaTime);
                     break;
                 case state.MOVEGRAB:
                     MoveGrab();
+                    Move(speed - 1);
                     UpdateGrab();
                     SubRotate();
                     break;
@@ -355,29 +364,48 @@ public void SubRotate()
     public override void RunLateUpdate()
     {
     }
-    
 
-    private GameObject GrabObject()
+
+    //private GameObject GrabObject()
+    //{
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(ray, out hit))
+    //    {
+    //        //check for geod layer
+    //        if (grabLayer == (grabLayer | (1 << hit.collider.gameObject.layer)))
+    //        {
+    //            if (Vector3.Distance(hit.collider.transform.position, transform.position) < grabberDistanceMax &&
+    //            Vector3.Distance(hit.collider.transform.position, transform.position) > grabberDistanceMin)
+    //            {
+    //                Debug.Log("Grabbed Object: " + hit.collider.gameObject.name);
+    //                return hit.collider.gameObject;
+    //            }
+    //        }
+    //    }
+
+    //    return null;
+    //}
+
+    GameObject GrabObject()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        GameObject closest  = null;
+        Collider[] hitColliders = Physics.OverlapSphere(_defaulIKRestPos.transform.position, 3f, grabLayer);
+        foreach (var hitCollider in hitColliders)
         {
-            //check for geod layer
-            if (grabLayer == (grabLayer | (1 << hit.collider.gameObject.layer)))
+            if (Vector3.Distance(_defaulIKRestPos.transform.position, hitCollider.transform.position) < 3)
             {
-                if (Vector3.Distance(hit.collider.transform.position, transform.position) < grabberDistanceMax &&
-                Vector3.Distance(hit.collider.transform.position, transform.position) > grabberDistanceMin)
+                Vector3 dist = hitCollider.transform.position - _defaulIKRestPos.transform.position;
+                float currentDistance = dist.sqrMagnitude;
+                if (currentDistance < _distanceFromPickup)
                 {
-                    Debug.Log("Grabbed Object: " + hit.collider.gameObject.name);
-                    return hit.collider.gameObject;
+                    closest = hitCollider.gameObject;
+                    _distanceFromPickup = currentDistance;
                 }
             }
         }
-
-        return null;
+        return closest;
     }
-
     public override void Walking(float speed, GameObject obj)
     {
         

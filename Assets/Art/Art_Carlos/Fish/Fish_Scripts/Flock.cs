@@ -62,25 +62,37 @@ public class Flock : MonoBehaviour
         Vector3 goalPos = myManager.goalPos;
 
         float dist;
-
+        float pdist;
         int groupSize = 0;
         foreach (GameObject go in gos)
         {
-            if(go != this.gameObject)
+            if (go != this.gameObject)
             {
                 dist = Vector3.Distance(go.transform.position, this.transform.position);
-                if(dist <= neighbourDistance)
+                pdist = Vector3.Distance(this.transform.position, myManager._playerPos.position);
+                if (dist <= neighbourDistance)
                 {
                     vcentre += go.transform.position;
                     groupSize++;
 
-                    if(dist < 2.0f)
+                    if (dist < 2.0f)
                     {
                         vavoid = vavoid + (this.transform.position - go.transform.position);
                     }
-
                     Flock anotherFlock = go.GetComponent<Flock>();
                     gSpeed = gSpeed + anotherFlock.speed;
+                }
+                if (pdist <= neighbourDistance)
+                {
+                    vcentre += myManager._playerPos.position + go.transform.position;
+                    groupSize++;
+
+                    if (pdist < 2.0f)
+                    {
+                        vavoid = vavoid + (this.transform.position - myManager._playerPos.position);
+                    }
+                    Flock anotherFlock = go.GetComponent<Flock>();
+                    gSpeed = gSpeed + anotherFlock.speed + myManager._playerPos.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
                 }
             }
         }
@@ -96,5 +108,6 @@ public class Flock : MonoBehaviour
                                                        Quaternion.LookRotation(direction),
                                                        rotationSpeed * Time.deltaTime);
         }
+  
     }
 }

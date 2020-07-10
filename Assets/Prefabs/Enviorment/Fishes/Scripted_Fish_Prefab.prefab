@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3662451227483792665}
   - component: {fileID: 1528783736211870163}
   - component: {fileID: 2287034392291092308}
+  - component: {fileID: 3050749701198304293}
   m_Layer: 0
   m_Name: Scripted_Fish_Prefab
   m_TagString: Untagged
@@ -96,3 +97,16 @@ MonoBehaviour:
   speedMult: 1
   speed: 0.02
   turning: 0
+--- !u!65 &3050749701198304293
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024473006356967430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009354665, y: 0.028004711, z: 0.037826724}
+  m_Center: {x: -0.000017975222, y: 0.0004144874, z: 0.00011521391}
