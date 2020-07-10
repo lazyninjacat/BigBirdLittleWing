@@ -45,7 +45,9 @@ public class BigSub : PlayerController
     [SerializeField] GameObject _defaulIKRestPos;
     [SerializeField] float _smoothing = 0.7f;
     float _distanceFromPickup = Mathf.Infinity;
-    GameObject closest = null; 
+    GameObject closest = null;
+    [SerializeField] Material _edgeGlow;
+    Material _default;
     //spotlight
     public GameObject _spotlight;
     [Tooltip("The velocity of the rigid body must be under this value for the spotlight to rotate")]
@@ -398,6 +400,7 @@ public void SubRotate()
         Collider[] hitColliders = Physics.OverlapSphere(_defaulIKRestPos.transform.position, 2f, grabLayer);
         foreach (var hitCollider in hitColliders)
         {
+           // hitCollider.gameObject.GetComponent<MeshRenderer>().material = _edgeGlow;
             if (Vector3.Distance(_defaulIKRestPos.transform.position, hitCollider.transform.position) < 2)
             {
                 Vector3 dist = hitCollider.transform.position - _defaulIKRestPos.transform.position;
