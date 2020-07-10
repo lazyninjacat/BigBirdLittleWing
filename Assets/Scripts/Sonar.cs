@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Sonar : MonoBehaviour
 {
-    private bool sonarIsReady;
+    public bool sonarIsReady;
     public int sonarCooldownTimer;
     [SerializeField] GameObject sonarCharge;
     [SerializeField] GameObject sonarSphere;
