@@ -8,6 +8,7 @@ TagManager:
   - EnergyGeode
   - BB
   - LW
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - PostProcessing
   - EnergyGeode
   - Anemone
-  - 
+  - Fish
   - 
   - 
   - 

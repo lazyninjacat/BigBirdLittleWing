@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hologram
+  m_Name: Hologram 1
   m_Shader: {fileID: -6465566751694194690, guid: 4b5f8d3f2526fc54cb9b2cd2bd48c423,
     type: 3}
   m_ShaderKeywords: 
@@ -22,19 +22,13 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_39291B0C:
-        m_Texture: {fileID: 2800000, guid: 61c0b9c0523734e0e91bc6043c72a490, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - Texture2D_D0A472F4:
-        m_Texture: {fileID: 2800000, guid: cd460ee4ac5c1e746b7a734cc7cc64dd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 16d574e53541bba44a84052fa38778df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_48E37721: 0.15
-    - Vector1_49DDB009: 0.1
+    - Vector1_49DDB009: 23
     m_Colors:
-    - Color_7DFB5854: {r: 0, g: 0.12041883, b: 0.24999997, a: 0}
-    - Color_A71ACC39: {r: 5.992157, g: 4.5803924, b: 0, a: 0}
-    - Vector2_37B2C5FB: {r: 2, g: 1, b: 0, a: 0}
-    - Vector2_C16DA677: {r: 0, g: 0, b: 0, a: 0}
+    - Color_7DFB5854: {r: 0.0070754588, g: 0.25653583, b: 0.5, a: 0}
+    - Color_A71ACC39: {r: 4.6492147, g: 3.55385, b: 0, a: 0}
+    - Vector2_37B2C5FB: {r: 2, g: 2, b: 0, a: 0}
