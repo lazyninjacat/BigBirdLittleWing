@@ -8,15 +8,13 @@ public class Seeding : MonoBehaviour
     public enum PlantType { Algae_Red, Anemone, SeaWeed }
     public PlantType _plantType;
     public Vector3 seedArea = new Vector3(2, 1, 2);
-    static int numberAlgaeSeeds = 5000;
-    public static int numbeSeaWeedSeeds = 500;
-    public static int numberAnemoneSeeds = 10;
+    static int _maxSeeds = 1000;
 
     [SerializeField] GameObject seedPrefab;
-    GameObject[] AlgaeSeeds = new GameObject[numberAlgaeSeeds];
-    GameObject[] AnemoneSeeds = new GameObject[numberAnemoneSeeds];
-    GameObject[] SeaWeedSeeds = new GameObject[numbeSeaWeedSeeds];
-
+    GameObject[] AlgaeSeeds = new GameObject[_maxSeeds];
+    GameObject[] AnemoneSeeds = new GameObject[_maxSeeds];
+    GameObject[] SeaWeedSeeds = new GameObject[_maxSeeds];
+    public int _seedNumber;
 
     public float seedingDistance;
       private void OnDrawGizmosSelected()
@@ -30,33 +28,38 @@ public class Seeding : MonoBehaviour
         switch (_plantType)
         {
             case PlantType.Algae_Red:
-                for (int i = 0; i < numberAlgaeSeeds; i++)
+                for (int i = 0; i < _seedNumber; i++)
                 {
                     Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
                                              Random.Range(transform.position.y - seedArea.y, transform.position.y - seedArea.y),
                                              Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
 
                     AlgaeSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
+                    AlgaeSeeds[i].transform.parent = this.transform;
                 }
                 break;
             case PlantType.Anemone:
-                for (int i = 0; i < numberAnemoneSeeds; i++)
+                for (int i = 0; i < _seedNumber; i++)
                 {
                     Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
                                              Random.Range(transform.position.y - seedArea.y, transform.position.y - seedArea.y),
                                              Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
 
                     AnemoneSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
+                    AnemoneSeeds[i].transform.parent = this.transform;
+
                 }
                 break;
             case PlantType.SeaWeed:
-                for (int i = 0; i < numbeSeaWeedSeeds; i++)
+                for (int i = 0; i < _seedNumber; i++)
                 {
                     Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
                                              Random.Range(transform.position.y - seedArea.y, transform.position.y - seedArea.y),
                                              Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
 
                     SeaWeedSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
+                    SeaWeedSeeds[i].GetComponent<growth>()._isSeaweed = true;
+                    SeaWeedSeeds[i].transform.parent = this.transform;
                 }
                 break;
             default:

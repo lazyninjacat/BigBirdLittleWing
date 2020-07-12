@@ -13,6 +13,7 @@ public class growth : MonoBehaviour
     public bool _canGrow;
     float _scale;
     float _destructTimer = 5;
+    public bool _isSeaweed;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class growth : MonoBehaviour
         if (_canGrow)
         {
             _plant = (GameObject)Instantiate(_plantPrefab, _spawnPoint, _rot);
+            _plant.transform.parent = this.transform.parent;
             _plant.transform.localScale = new Vector3(_scale, _scale, _scale);
             Destroy(this.gameObject);
         }
@@ -41,7 +43,12 @@ public class growth : MonoBehaviour
             _rb.isKinematic = true;
             _spawnPoint = spawn.point;
             _spawnPoint.y = _spawnPoint.y + 0.1f;
-            _rot = Quaternion.FromToRotation(Vector3.up, spawn.normal);
+            if (!_isSeaweed)
+            {
+                _rot = Quaternion.FromToRotation(Vector3.up, spawn.normal);
+            }
+            else
+                _rot = Quaternion.FromToRotation(Vector3.up,Vector3.zero);
             _canGrow = true;
         }
     }
