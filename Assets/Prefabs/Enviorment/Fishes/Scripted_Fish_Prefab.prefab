@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1528783736211870163}
   - component: {fileID: 2287034392291092308}
   - component: {fileID: 3050749701198304293}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Scripted_Fish_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
