@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main;
+        //mainCamera = Camera.main;
         currentSub = players[currentPlayerIndex];
         //CameraSetup();
         SwapActiveCamera();
