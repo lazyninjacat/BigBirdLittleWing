@@ -71,7 +71,7 @@ public class Seeding : MonoBehaviour
                                              Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
                                              Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
 
-                    SeaWeedSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
+                    FishEggs[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
                     SeaWeedSeeds[i].transform.parent = this.transform;
                 }
                 break;

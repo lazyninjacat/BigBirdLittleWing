@@ -12,7 +12,7 @@ public class growth : MonoBehaviour
     Vector3 _spawnPoint;
     public bool _canGrow;
     float _scale;
-    float _destructTimer = 5;
+    float _destructTimer = 10;
     public bool _isSeaweed;
     // Start is called before the first frame update
     void Start()
