@@ -43,7 +43,11 @@ public class Intro_Sequence : MonoBehaviour
         Text5.SetActive(false);
         Text6.SetActive(true);
         yield return new WaitUntil(() => !Text6.GetComponent<Animation>().isPlaying);
+        Text6.SetActive(false);
+
         BackgroundPanel.GetComponent<Animation>().Play();
+        yield return new WaitUntil(() => !BackgroundPanel.GetComponent<Animation>().isPlaying);
+
         SurfaceCam.SetActive(false);
         PlayerCam.SetActive(true);
     }
