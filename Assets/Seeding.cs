@@ -6,7 +6,7 @@ using UnityEngine.PlayerLoop;
 public class Seeding : MonoBehaviour
 {
 
-    public enum PlantType { Algae_Red, Anemone, SeaWeed, Fish }
+    public enum PlantType { Algae_Red, Anemone, SeaWeed, Fish, Coral }
     public PlantType _plantType;
     public Vector3 seedArea = new Vector3(2, 1, 2);
     static int _maxSeeds = 1000;
@@ -15,6 +15,7 @@ public class Seeding : MonoBehaviour
     GameObject[] AlgaeSeeds = new GameObject[_maxSeeds];
     GameObject[] AnemoneSeeds = new GameObject[_maxSeeds];
     GameObject[] SeaWeedSeeds = new GameObject[_maxSeeds];
+    GameObject[] CoralSeeds = new GameObject[_maxSeeds];
     GameObject[] FishEggs = new GameObject[_maxSeeds];
     public int _seedNumber;
 
@@ -72,7 +73,19 @@ public class Seeding : MonoBehaviour
                                              Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
 
                     FishEggs[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
-                    SeaWeedSeeds[i].transform.parent = this.transform;
+                    FishEggs[i].transform.parent = this.transform;
+                }
+                break;
+            case PlantType.Coral:
+                for (int i = 0; i < _seedNumber; i++)
+                {
+                    Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
+                                             Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
+                                             Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
+
+                    CoralSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
+                    CoralSeeds[i].transform.parent = this.transform;
+
                 }
                 break;
             default:
@@ -99,9 +112,11 @@ public class Seeding : MonoBehaviour
                                                  Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
                                                  Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
 
-                        SeaWeedSeeds[i].transform.position = pos;
+                        FishEggs[i].transform.position = pos;
                     }
                 }
+                break;
+            case PlantType.Coral:
                 break;
             default:
                 break;
