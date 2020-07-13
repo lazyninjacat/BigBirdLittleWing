@@ -27,7 +27,7 @@ public class Sonar : MonoBehaviour
         
 
 
-        if (Input.GetKeyDown("left ctrl"))
+        if (Input.GetButtonDown("Radar"))
         {
             if (sonarIsReady)
             {

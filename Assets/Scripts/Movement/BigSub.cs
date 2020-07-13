@@ -251,7 +251,7 @@ public void SubRotate()
             {
                 case state.MOVEEMPTY:
                     GetInputs();
-                    if (Input.GetMouseButtonUp(1))
+                    if (Input.GetButtonUp("Arm"))
                     {
                         currentState = state.TRYGRAB;
                         AudioManager.a_Instance.PlayOneShotByName("ArmOpen");
@@ -261,12 +261,12 @@ public void SubRotate()
                     break;
                 case state.MOVEWITHGRAB:
                     GetInputs();
-                    if (Input.GetMouseButtonUp(0))
+                    if (Input.GetButtonUp("Grab"))
                     {
                         ReleaseGrab();
                         currentState = state.MOVEEMPTY;
                     }
-                    if (Input.GetMouseButtonUp(1))
+                    if (Input.GetButtonUp("Arm"))
                     {
                         Stop();
                         currentState = state.MOVEGRAB;
@@ -274,11 +274,11 @@ public void SubRotate()
                     break;
                 case state.TRYGRAB:
                     GetInputs();
-                    if (Input.GetMouseButtonUp(0))
+                    if (Input.GetButtonUp("Grab"))
                     {
                         TryGrab();
                     }
-                    if (Input.GetMouseButtonUp(1))
+                    if (Input.GetButtonUp("Arm"))
                     {
                         currentState = state.MOVEEMPTY;
                         anim.SetBool("Arm", false);
@@ -286,11 +286,11 @@ public void SubRotate()
                     break;
                 case state.MOVEGRAB:
                     GetInputs();
-                    if (Input.GetMouseButtonUp(0))
+                    if (Input.GetButtonUp("Grab"))
                     {
                         ReleaseGrab();
                     }
-                    if (Input.GetMouseButtonUp(1))
+                    if (Input.GetButtonUp("Arm"))
                     {
                         currentState = state.MOVEWITHGRAB;
                     }
