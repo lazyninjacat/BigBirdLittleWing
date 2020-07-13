@@ -19,12 +19,12 @@ public abstract class PlayerController : MonoBehaviour
     public Vector2 _lookCoOrds;
     public Vector2 _lookStorage;
     public float _turnSpeed = 4;
+    public bool _inv;
 
     //basic run function
     public abstract void RunUpdate();
     public abstract void RunFixedUpdate();
     public abstract void RunLateUpdate();
-    public abstract void Walking(float speed, GameObject obj);
 
     protected virtual void Start()
     {

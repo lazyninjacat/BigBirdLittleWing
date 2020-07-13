@@ -7,7 +7,6 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] PlayerController[] players;
     [SerializeField] int currentPlayerIndex = 0;
-    [SerializeField] KeyCode switchPlayers = KeyCode.Space;
 
     [SerializeField] GameObject BigBirdCam;
     [SerializeField] GameObject LittleWingCam;
@@ -60,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         //check for sub switch here
-        if(Input.GetKeyUp(switchPlayers))
+        if(Input.GetButtonUp("PlayerSwap"))
         {
             SwapPlayer();
         }
