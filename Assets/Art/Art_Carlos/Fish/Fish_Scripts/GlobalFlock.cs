@@ -42,6 +42,7 @@ public class GlobalFlock : MonoBehaviour
                                      Random.Range(transform.position.z - swimLimits.z, transform.position.z + swimLimits.z));
 
             allFish[i] = (GameObject)Instantiate(fishprefab, pos, Quaternion.identity);
+            allFish[i].transform.parent = this.transform.parent.transform.parent;
             allFish[i].GetComponent<Flock>().myManager = this;
         }
 
@@ -52,7 +53,7 @@ public class GlobalFlock : MonoBehaviour
     void Update()
     {
         _playerPos = _player.currentSub.transform;
-        if (Random.Range (0,10000) < 50)
+        if (Random.Range (0,100000) < 5)
         {
                goalPos = new Vector3(Random.Range(transform.position.x - swimLimits.x, transform.position.x + swimLimits.x),
                                      Random.Range(transform.position.y - swimLimits.y, transform.position.y + swimLimits.y),
