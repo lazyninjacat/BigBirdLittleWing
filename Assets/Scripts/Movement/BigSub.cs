@@ -179,8 +179,6 @@ public void SubRotate()
         _ik.solver.target = _defaultIk;
         _defaultIk = _defaulIKRestPos.transform;
         currentState = state.TRYGRAB;
-        //close arm animator
-        //anim.SetBool("Arm", false);
     }
     public void MoveGrab()
     {
@@ -212,7 +210,7 @@ public void SubRotate()
 
     public override void RunUpdate()
     {
-
+        grabberSpeedH = (isCon) ? grabberSpeedH = 50 : grabberSpeedH = 5;
         if (Input.GetKeyDown(KeyCode.C))
         {
             if (isCon) isCon = false;
