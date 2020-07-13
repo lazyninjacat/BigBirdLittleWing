@@ -12,6 +12,9 @@ public class GlobalFlock : MonoBehaviour
     public Vector3 swimLimits = new Vector3(5, 5, 5);
     PlayerManager _player;
     public Transform _playerPos;
+
+    public enum GameType { Menu, Game};
+    public GameType _gameType = GameType.Game;
     public void FishSpeed(float speedMult)
     {
        // Debug.Log(speedMult);
@@ -52,12 +55,28 @@ public class GlobalFlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _playerPos = _player.currentSub.transform;
-        if (Random.Range (0,100000) < 5)
+        switch (_gameType)
         {
-               goalPos = new Vector3(Random.Range(transform.position.x - swimLimits.x, transform.position.x + swimLimits.x),
-                                     Random.Range(transform.position.y - swimLimits.y, transform.position.y + swimLimits.y),
-                                     Random.Range(transform.position.z - swimLimits.z, transform.position.z + swimLimits.z));
+            case GameType.Menu:
+                if (Random.Range(0, 100000) < 5)
+                {
+                    goalPos = new Vector3(Random.Range(transform.position.x - swimLimits.x, transform.position.x + swimLimits.x),
+                                          Random.Range(transform.position.y - swimLimits.y, transform.position.y + swimLimits.y),
+                                          Random.Range(transform.position.z - swimLimits.z, transform.position.z + swimLimits.z));
+                }
+                break;
+            case GameType.Game:
+                _playerPos = _player.currentSub.transform;
+                if (Random.Range(0, 100000) < 5)
+                {
+                    goalPos = new Vector3(Random.Range(transform.position.x - swimLimits.x, transform.position.x + swimLimits.x),
+                                          Random.Range(transform.position.y - swimLimits.y, transform.position.y + swimLimits.y),
+                                          Random.Range(transform.position.z - swimLimits.z, transform.position.z + swimLimits.z));
+                }
+                break;
+            default:
+                break;
         }
+     
     }
 }
