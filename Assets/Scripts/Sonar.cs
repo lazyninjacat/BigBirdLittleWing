@@ -10,7 +10,7 @@ public class Sonar : MonoBehaviour
     public int sonarCooldownTimer;
     [SerializeField] GameObject sonarCharge;
     [SerializeField] GameObject sonarSphere;
-    
+    [SerializeField] Camera _sonarCam;
     
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,7 @@ public class Sonar : MonoBehaviour
         sonarIsReady = true;
         sonarSphere.SetActive(false);
         StartCoroutine(SonarCountdown());
+        _sonarCam.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class Sonar : MonoBehaviour
             {
                 sonarIsReady = false;
                 sonarSphere.SetActive(true);
-
+                _sonarCam.gameObject.SetActive(true);
                 StartCoroutine(SonarCountdown());
             }
             else
@@ -54,6 +55,8 @@ public class Sonar : MonoBehaviour
 
         }
         sonarIsReady = true;
+        _sonarCam.gameObject.SetActive(false);
+
         Debug.Log("Sonar is Ready");
         sonarSphere.SetActive(false);
     }
