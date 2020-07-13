@@ -19,7 +19,7 @@ public class Intro_Sequence : MonoBehaviour
     {
         PlayerCam.SetActive(false);
         SurfaceCam.SetActive(true);
-        BackgroundPanel.SetActive(true);
+        //BackgroundPanel.SetActive(true);
         StartCoroutine(StartSequence());
     }
 
@@ -45,10 +45,9 @@ public class Intro_Sequence : MonoBehaviour
         yield return new WaitUntil(() => !Text6.GetComponent<Animation>().isPlaying);
         Text6.SetActive(false);
 
-        BackgroundPanel.GetComponent<Animation>().Play();
-        yield return new WaitUntil(() => !BackgroundPanel.GetComponent<Animation>().isPlaying);
+        //BackgroundPanel.GetComponent<Animation>().Play();
+        //yield return new WaitUntil(() => !BackgroundPanel.GetComponent<Animation>().isPlaying);
 
-        SurfaceCam.SetActive(false);
         PlayerCam.SetActive(true);
     }
 
