@@ -140,6 +140,8 @@ public void SubRotate()
     public void TryGrab()
     {
         //see if grab object
+        _defaultIk = _defaulIKRestPos.transform;
+
         if (anim.GetCurrentAnimatorStateInfo(0).IsTag("GState"))
         {
             if (grabbedObject == null)
@@ -210,6 +212,7 @@ public void SubRotate()
 
     public override void RunUpdate()
     {
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             if (isCon) isCon = false;
@@ -352,9 +355,10 @@ public void SubRotate()
                     }
                     break;
                 case state.MOVEGRAB:
+                    Move(speed - 1);
+                    Spotlight();
                     MoveGrab();
                     UpdateGrab();
-                    SubRotate();
                     break;
                 default:
                     break;

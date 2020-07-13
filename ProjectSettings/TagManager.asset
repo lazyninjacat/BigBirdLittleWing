@@ -38,10 +38,10 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - StoneIdle
   - BigSub
   - SmallSub
-  - Stone
+  - StoneScan
   m_SortingLayers:
   - name: Default
     uniqueID: 0

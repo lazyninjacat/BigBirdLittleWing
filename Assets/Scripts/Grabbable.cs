@@ -27,7 +27,7 @@ public class Grabbable : MonoBehaviour
         if(_sonarActive.sonarIsReady)
             {
                 GetComponent<MeshRenderer>().material = _mats[0];
-                this.gameObject.layer = 2;
+                this.gameObject.layer = 28;
             }
     }
 }
