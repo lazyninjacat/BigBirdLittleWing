@@ -22,6 +22,7 @@ public class Grabbable : MonoBehaviour
             {
                 if (!_sonarActive.sonarIsReady)
                 {
+                   // GetComponent<MeshRenderer>().material.Lerp(_mats[0], _mats[1], .5f * Time.deltaTime);
                     GetComponent<MeshRenderer>().material = _mats[1];
                     this.gameObject.layer = 31;
                 }

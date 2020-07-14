@@ -11,30 +11,29 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 4b5f8d3f2526fc54cb9b2cd2bd48c423,
     type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
-  disabledShaderPasses:
-  - MOTIONVECTORS
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_39291B0C:
-        m_Texture: {fileID: 2800000, guid: 61c0b9c0523734e0e91bc6043c72a490, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7715ad31a5979f4dbf93e80ca3a92df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_D0A472F4:
-        m_Texture: {fileID: 2800000, guid: 05aa43dbbeddb24419e5b5b6e734d595, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9789d23040cb1fb45ad60392430c3c15, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_48E37721: 1
+    - Vector1_48E37721: 3
     - Vector1_49DDB009: 0.5
     m_Colors:
-    - Color_7DFB5854: {r: 1, g: 0.5253696, b: 0, a: 0}
-    - Color_A71ACC39: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_37B2C5FB: {r: 0.5, g: 1, b: 0, a: 0}
-    - Vector2_C16DA677: {r: 3, g: 5, b: 0, a: 0}
+    - Color_7DFB5854: {r: 1, g: 0.29803923, b: 0, a: 0}
+    - Color_A71ACC39: {r: 34.635296, g: 8.784314, b: 0, a: 0}
+    - Vector2_37B2C5FB: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_C16DA677: {r: 1, g: 1, b: 1, a: 0}

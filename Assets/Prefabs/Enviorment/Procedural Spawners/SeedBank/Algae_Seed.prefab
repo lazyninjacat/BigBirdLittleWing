@@ -61,9 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2f3eacb7269364d91c88073fa4bcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _plantPrefab: {fileID: 4930562444282887529, guid: e383d6dc9698bf54684b83dcd6571192,
-    type: 3}
+  _plantPrefab:
+  - {fileID: 4930562444282887529, guid: e383d6dc9698bf54684b83dcd6571192, type: 3}
+  - {fileID: 4930562444282887529, guid: 327dd028e1916f44abfea901f65542d5, type: 3}
+  - {fileID: 4930562444282887529, guid: 5bd2cb8e8782fd94bab61a753c0e9a3c, type: 3}
   _canGrow: 0
+  _isSeaweed: 0
+  _isColor: 0
 --- !u!135 &8729271522997343566
 SphereCollider:
   m_ObjectHideFlags: 0

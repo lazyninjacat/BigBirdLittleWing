@@ -240,6 +240,7 @@ public class BigSub : PlayerController
 
         if (mouseWheelInput != 0f)
         {
+            //AudioManager.a_Instance.PlayOneShotByName("Bubble");
             rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
             if (rb.velocity.magnitude > maxVelocity)
                 rb.velocity = rb.velocity.normalized * maxVelocity;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.PlayerLoop;
 
 public class Seeding : MonoBehaviour
@@ -8,88 +9,52 @@ public class Seeding : MonoBehaviour
 
     public enum PlantType { Algae_Red, Anemone, SeaWeed, Fish, Coral }
     public PlantType _plantType;
-    public Vector3 seedArea = new Vector3(2, 1, 2);
-    static int _maxSeeds = 1000;
+    public Vector3 _Bounds = new Vector3(2, 1, 2);
+    static int _maxObj = 1000;
 
-    [SerializeField] GameObject seedPrefab;
-    GameObject[] AlgaeSeeds = new GameObject[_maxSeeds];
-    GameObject[] AnemoneSeeds = new GameObject[_maxSeeds];
-    GameObject[] SeaWeedSeeds = new GameObject[_maxSeeds];
-    GameObject[] CoralSeeds = new GameObject[_maxSeeds];
-    GameObject[] FishEggs = new GameObject[_maxSeeds];
-    public int _seedNumber;
-
-    public float seedingDistance;
+    [SerializeField] GameObject _spawnPrefab;
+    GameObject[] _objIndex = new GameObject[_maxObj];
+    public int _spawnCount;
       private void OnDrawGizmosSelected()
     {       
         Gizmos.color = new Color(0, 1, 0, 1);
-        Gizmos.DrawCube(transform.position, new Vector3(seedArea.x * 2, seedArea.y * 2, seedArea.z * 2));
+        Gizmos.DrawCube(transform.position, new Vector3(_Bounds.x * 2, _Bounds.y * 2, _Bounds.z * 2));
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        switch (_plantType)
+        for (int i = 0; i < _spawnCount; i++)
         {
-            case PlantType.Algae_Red:
-                for (int i = 0; i < _seedNumber; i++)
-                {
-                    Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
-                                             Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
-                                             Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
+            Vector3 pos = new Vector3(Random.Range(transform.position.x - _Bounds.x, transform.position.x + _Bounds.x),
+                                     Random.Range(transform.position.y - _Bounds.y, transform.position.y + _Bounds.y),
+                                     Random.Range(transform.position.z - _Bounds.z, transform.position.z + _Bounds.z));
 
-                    AlgaeSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
-                    AlgaeSeeds[i].transform.parent = this.transform;
-                }
-                break;
-            case PlantType.Anemone:
-                for (int i = 0; i < _seedNumber; i++)
-                {
-                    Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
-                                             Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
-                                             Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
+            _objIndex[i] = (GameObject)Instantiate(_spawnPrefab, pos, Quaternion.identity);
+            _objIndex[i].transform.parent = this.transform;
 
-                    AnemoneSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
-                    AnemoneSeeds[i].transform.parent = this.transform;
-
-                }
-                break;
-            case PlantType.SeaWeed:
-                for (int i = 0; i < _seedNumber; i++)
-                {
-                    Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
-                                             Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
-                                             Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
-
-                    SeaWeedSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
-                    SeaWeedSeeds[i].GetComponent<growth>()._isSeaweed = true;
-                    SeaWeedSeeds[i].transform.parent = this.transform;
-                }
-                break;
-            case PlantType.Fish:
-                for (int i = 0; i < _seedNumber; i++)
-                {
-                    Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
-                                             Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
-                                             Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
-
-                    FishEggs[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
-                    FishEggs[i].transform.parent = this.transform;
-                }
-                break;
-            case PlantType.Coral:
-                for (int i = 0; i < _seedNumber; i++)
-                {
-                    Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
-                                             Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
-                                             Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
-
-                    CoralSeeds[i] = (GameObject)Instantiate(seedPrefab, pos, Quaternion.identity);
-                    CoralSeeds[i].transform.parent = this.transform;
-
-                }
-                break;
-            default:
-                break;
+            switch (_plantType)
+            {
+                case PlantType.Algae_Red:
+                    _objIndex[i].GetComponent<growth>()._isColor = true;
+                    _objIndex[i].layer = 12;
+                    break;
+                case PlantType.Anemone:
+                    _objIndex[i].layer = 10;
+                    break;
+                case PlantType.SeaWeed:
+                    _objIndex[i].layer = 12;
+                    _objIndex[i].GetComponent<growth>()._isSeaweed = true;
+                    break;
+                case PlantType.Fish:
+                    _objIndex[i].layer = 11;
+                    break;
+                case PlantType.Coral:
+                    _objIndex[i].layer = 12;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -106,13 +71,12 @@ public class Seeding : MonoBehaviour
             case PlantType.Fish:
                 if (Random.Range(0, 10000) < 50)
                 {
-                    for (int i = 0; i < _seedNumber; i++)
+                    for (int i = 0; i < _spawnCount; i++)
                     {
-                        Vector3 pos = new Vector3(Random.Range(transform.position.x - seedArea.x, transform.position.x + seedArea.x),
-                                                 Random.Range(transform.position.y - seedArea.y, transform.position.y + seedArea.y),
-                                                 Random.Range(transform.position.z - seedArea.z, transform.position.z + seedArea.z));
-
-                        FishEggs[i].transform.position = pos;
+                        Vector3 pos = new Vector3(Random.Range(transform.position.x - _Bounds.x, transform.position.x + _Bounds.x),
+                                                 Random.Range(transform.position.y - _Bounds.y, transform.position.y + _Bounds.y),
+                                                 Random.Range(transform.position.z - _Bounds.z, transform.position.z + _Bounds.z));
+                        _objIndex[i].transform.position = pos;
                     }
                 }
                 break;
@@ -120,8 +84,7 @@ public class Seeding : MonoBehaviour
                 break;
             default:
                 break;
-        }
-      
+        }    
     }
     ///Rules
     ///if too close destroy one of the seedlings

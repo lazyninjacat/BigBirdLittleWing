@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8274475601431943531}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.8, y: 15.8, z: -29.3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccb95eca272caa469a311f995e52c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedArea: {x: 50, y: 1, z: 50}
-  seedPrefab: {fileID: 545594327191432053, guid: cb5235774a72d1f439c66fb957cfd395,
+  _plantType: 0
+  _Bounds: {x: 50, y: 1, z: 50}
+  _spawnPrefab: {fileID: 545594327191432053, guid: cb5235774a72d1f439c66fb957cfd395,
     type: 3}
+  _spawnCount: 500
   seedingDistance: 0

@@ -40,7 +40,8 @@ public class Sonar : MonoBehaviour
             }
             else
             {
-                Debug.Log("Sonar not ready yet");
+                return;
+             //   Debug.Log("Sonar not ready yet");
             }
         }
     }
@@ -48,10 +49,10 @@ public class Sonar : MonoBehaviour
     private IEnumerator SonarCountdown()
     {
         sonarCharge.GetComponent<Animation>().Play();
-        Debug.Log("Sonar cooldown start");
+       // Debug.Log("Sonar cooldown start");
         for (int i = 0; i < sonarCooldownTimer - 1; i++)
         {
-            Debug.Log("Cooldown Timer: " + ((sonarCooldownTimer-1) - i));
+           // Debug.Log("Cooldown Timer: " + ((sonarCooldownTimer-1) - i));
 
             yield return new WaitForSeconds(1);
 
@@ -59,7 +60,7 @@ public class Sonar : MonoBehaviour
         sonarIsReady = true;
         _sonarCam.gameObject.SetActive(false);
 
-        Debug.Log("Sonar is Ready");
+      //  Debug.Log("Sonar is Ready");
         sonarSphere.SetActive(false);
     }
 
