@@ -39,6 +39,7 @@ public class growth : MonoBehaviour
             if (_isColor)
             {
                 _plant = (GameObject)Instantiate(_plantPrefab[Random.Range(0,_plantPrefab.Length)], _spawnPoint, _rot);
+                _plant.layer = this.gameObject.layer;
                 _plant.transform.parent = this.transform.parent;
                 _plant.transform.localScale = _cache;
                 Destroy(this.gameObject);
@@ -46,6 +47,7 @@ public class growth : MonoBehaviour
             else
             {
                 _plant = (GameObject)Instantiate(_plantPrefab[0], _spawnPoint, _rot);
+                _plant.layer = this.gameObject.layer;
                 _plant.transform.parent = this.transform.parent;
                 _plant.transform.localScale = _cache;
                 Destroy(this.gameObject);

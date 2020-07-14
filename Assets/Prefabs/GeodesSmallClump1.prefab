@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2302615585209117959}
   - component: {fileID: 2302615585209117958}
   - component: {fileID: 2302615585209118073}
+  - component: {fileID: 9143684104366687310}
   m_Layer: 31
   m_Name: 1
   m_TagString: EnergyGeode
@@ -128,6 +129,22 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &9143684104366687310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302615585209117956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37668a43f25c95c4ebb7ef76039173a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mats:
+  - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
+  - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
+  activate: 0
 --- !u!1 &3995482375538923853
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +159,7 @@ GameObject:
   - component: {fileID: 3995482375538923852}
   - component: {fileID: 3995482375538923855}
   - component: {fileID: 3995482375538923854}
+  - component: {fileID: 6609258798037781314}
   m_Layer: 31
   m_Name: 2
   m_TagString: EnergyGeode
@@ -256,6 +274,22 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &6609258798037781314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995482375538923853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37668a43f25c95c4ebb7ef76039173a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mats:
+  - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
+  - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
+  activate: 0
 --- !u!1 &4384366066620749584
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +339,7 @@ GameObject:
   - component: {fileID: 1619732833512327570}
   - component: {fileID: 8983079735240931305}
   - component: {fileID: 371340830048066347}
+  - component: {fileID: 7951408039288513833}
   m_Layer: 31
   m_Name: 1
   m_TagString: EnergyGeode
@@ -419,6 +454,22 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &7951408039288513833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884877026869624032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37668a43f25c95c4ebb7ef76039173a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mats:
+  - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
+  - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
+  activate: 0
 --- !u!1 &6296852908974255009
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +484,7 @@ GameObject:
   - component: {fileID: 4035436445654459025}
   - component: {fileID: 5880102555805712611}
   - component: {fileID: 8040282749846132550}
+  - component: {fileID: 5887929781042260360}
   m_Layer: 31
   m_Name: 2
   m_TagString: EnergyGeode
@@ -547,6 +599,22 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &5887929781042260360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296852908974255009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37668a43f25c95c4ebb7ef76039173a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mats:
+  - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
+  - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
+  activate: 0
 --- !u!1 &7090612972081792630
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +629,7 @@ GameObject:
   - component: {fileID: 7090612972081792616}
   - component: {fileID: 7090612972081792617}
   - component: {fileID: 7090612972081792619}
+  - component: {fileID: 6644519003904730856}
   m_Layer: 31
   m_Name: 4
   m_TagString: EnergyGeode
@@ -675,3 +744,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &6644519003904730856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090612972081792630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37668a43f25c95c4ebb7ef76039173a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mats:
+  - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
+  - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
+  activate: 0

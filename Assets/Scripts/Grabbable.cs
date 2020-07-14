@@ -22,17 +22,16 @@ public class Grabbable : MonoBehaviour
             {
                 if (!_sonarActive.sonarIsReady)
                 {
-                   // GetComponent<MeshRenderer>().material.Lerp(_mats[0], _mats[1], .5f * Time.deltaTime);
                     GetComponent<MeshRenderer>().material = _mats[1];
                     this.gameObject.layer = 31;
                 }
-            }
-            if (_sonarActive.sonarIsReady)
-            {
-                GetComponent<MeshRenderer>().material = _mats[0];
-                this.gameObject.layer = 28;
-                activate = false;
-            }
+            }        
+        }
+        if (_sonarActive.sonarIsReady)
+        {
+            GetComponent<MeshRenderer>().material = _mats[0];
+            this.gameObject.layer = 28;
+            activate = false;
         }
     }
     private void OnTriggerEnter(Collider other)

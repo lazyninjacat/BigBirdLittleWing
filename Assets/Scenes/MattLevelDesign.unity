@@ -14892,6 +14892,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 321392411}
     m_Modifications:
+    - target: {fileID: 1111258012473998644, guid: a2e2a8c120b9f88499125001562ed3c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108245463522563992, guid: a2e2a8c120b9f88499125001562ed3c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 5896746955850329169, guid: a2e2a8c120b9f88499125001562ed3c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14951,6 +14961,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GeodesMediumClump1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896746955850329170, guid: a2e2a8c120b9f88499125001562ed3c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075475344905334603, guid: a2e2a8c120b9f88499125001562ed3c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521176686488396303, guid: a2e2a8c120b9f88499125001562ed3c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284821235025385030, guid: a2e2a8c120b9f88499125001562ed3c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e2a8c120b9f88499125001562ed3c5, type: 3}
@@ -16820,6 +16850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 791037500, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4026540032
+      objectReference: {fileID: 0}
     - target: {fileID: 380406467546219130, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
       propertyPath: speed
