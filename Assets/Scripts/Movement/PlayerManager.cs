@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] PlayerController[] players;
+    [SerializeField]public PlayerController[] players;
     [SerializeField] int currentPlayerIndex = 0;
 
     [SerializeField] GameObject BigBirdCam;

@@ -84,12 +84,12 @@ Material:
     - _CullModeForward: 0
     - _Cutoff: 0.5
     - _DepthControl: 2
-    - _DepthPower: 1.5
+    - _DepthPower: 0.38
     - _DetailNormalMapScale: 1
     - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
-    - _EmissionIntensity: 100
+    - _EmissionIntensity: 654.68
     - _EnableFogOnTransparent: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -143,6 +143,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColour: {r: 0, g: 0.24705882, b: 0.46666667, a: 0.5254902}
+    - _EmissionColour: {r: 0.05833925, g: 0.6393239, b: 0.6509434, a: 0.5254902}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _UVTiling: {r: 0, g: 0, b: 0, a: 0}

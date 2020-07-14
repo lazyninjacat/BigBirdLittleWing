@@ -10,7 +10,7 @@ public class SmallSub : PlayerController
     Quaternion _rot;
     private bool isCon;
     [SerializeField] float _lerpSpeed;
-
+    [SerializeField] Material[] _mat;
     public override void RunUpdate()
     {
         if (isCon != FindObjectOfType<BigSub>().isCon)

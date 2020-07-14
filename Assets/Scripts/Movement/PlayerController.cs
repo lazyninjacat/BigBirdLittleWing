@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class PlayerController : MonoBehaviour
 {
-    [SerializeField] public Transform body;
-    [SerializeField] public Transform cameraPosition;
     public Rigidbody rb;
     public Animator anim;
     

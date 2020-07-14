@@ -8,6 +8,7 @@ public class Sonar : MonoBehaviour
 {
     public bool sonarIsReady;
     public int sonarCooldownTimer;
+    PlayerManager _player;
     [SerializeField] GameObject sonarCharge;
     [SerializeField] GameObject sonarSphere;
     [SerializeField] Camera _sonarCam;
@@ -18,6 +19,7 @@ public class Sonar : MonoBehaviour
         sonarIsReady = true;
         sonarSphere.SetActive(false);
         StartCoroutine(SonarCountdown());
+        _player = FindObjectOfType<PlayerManager>();
         _sonarCam.gameObject.SetActive(false);
     }
 
@@ -27,7 +29,7 @@ public class Sonar : MonoBehaviour
         
 
 
-        if (Input.GetButtonDown("Radar"))
+        if (Input.GetButtonDown("Radar") && _player.currentSub == _player.players[0])
         {
             if (sonarIsReady)
             {
