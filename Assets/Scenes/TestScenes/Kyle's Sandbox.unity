@@ -1300,11 +1300,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6966708081944541275, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7095373581184559545, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
       propertyPath: m_Name
@@ -1365,11 +1360,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7436069969906831485, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6d57e6d1a7b451e4c9e7a7d25f07561c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8, type: 3}
 --- !u!1001 &1122009525
@@ -2480,7 +2470,6 @@ MonoBehaviour:
   m_Script: {fileID: 1768690371}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
 --- !u!4 &1513673368
 Transform:
   m_ObjectHideFlags: 19
