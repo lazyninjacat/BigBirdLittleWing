@@ -20,11 +20,20 @@ public class Grabbable : MonoBehaviour
         {
             if (Vector3.Distance(this.transform.position, _player.currentSub.transform.position) <= 50)
             {
-                if (!_sonarActive.sonarIsReady)
+                if (!_sonarActive.sonarIsReady && _player.currentSub == _player.players[0])
                 {
                     GetComponent<MeshRenderer>().material = _mats[1];
                     this.gameObject.layer = 31;
                 }
+                //else if(!_sonarActive.sonarIsReady && _player.currentSub == _player.players[1])
+                //{
+                //    if (this.gameObject.tag == "EnergyGeode")
+                //    {
+                //        print(this.gameObject.name.ToString());
+                //        GetComponent<MeshRenderer>().material = _mats[1];
+                //        this.gameObject.layer = 31;
+                //    }
+                //}
             }        
         }
         if (_sonarActive.sonarIsReady)

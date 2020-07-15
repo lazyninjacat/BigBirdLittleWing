@@ -29,7 +29,7 @@ public class Sonar : MonoBehaviour
         
 
 
-        if (Input.GetButtonDown("Radar") && _player.currentSub == _player.players[0])
+        if (Input.GetButtonDown("Radar"))
         {
             if (sonarIsReady)
             {
