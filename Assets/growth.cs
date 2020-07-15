@@ -33,14 +33,14 @@ public class growth : MonoBehaviour
     void Update()
     {
         _destructTimer -= 1 * Time.deltaTime;
-        if (_destructTimer <= 0) Destroy(this.gameObject);
+        if (_destructTimer <= 0 && !_canGrow) Destroy(this.gameObject);
         if (_canGrow)
         {
             if (_isColor)
             {
                 _plant = (GameObject)Instantiate(_plantPrefab[Random.Range(0,_plantPrefab.Length)], _spawnPoint, _rot);
                 _plant.layer = this.gameObject.layer;
-                _plant.transform.parent = this.transform.parent;
+                _plant.transform.parent = this.transform;
                 _plant.transform.localScale = _cache;
                 Destroy(this.gameObject);
             }
@@ -48,7 +48,7 @@ public class growth : MonoBehaviour
             {
                 _plant = (GameObject)Instantiate(_plantPrefab[0], _spawnPoint, _rot);
                 _plant.layer = this.gameObject.layer;
-                _plant.transform.parent = this.transform.parent;
+                _plant.transform.parent = this.transform;
                 _plant.transform.localScale = _cache;
                 Destroy(this.gameObject);
             }
@@ -65,10 +65,10 @@ public class growth : MonoBehaviour
             {
                 _cache = collision.transform.localScale / Random.Range(1.5f, 2);
             }
-            else if (dist < rad)
-            {
-                Destroy(this.gameObject);
-            }
+            //else if (dist < rad)
+            //{
+            //    Destroy(this.gameObject);
+            //}
             else
             {
                 _cache = collision.transform.localScale / Random.Range(1.3f, 1.6f);
@@ -77,21 +77,21 @@ public class growth : MonoBehaviour
         else
         {
             ContactPoint spawn = collision.contacts[0];
-            if (!_canGrow)
+            if (_rb)
             {
                 _rb.isKinematic = true;
-                _spawnPoint = spawn.point;
-                _spawnPoint.y = _spawnPoint.y + 0.1f;
-                if (!_isSeaweed)
-                {
-                    _rot = Quaternion.FromToRotation(Vector3.up, spawn.normal);
-                }
-                else
-                {
-                    _rot = Quaternion.FromToRotation(Vector3.up, Vector3.zero);
-                }
-                _canGrow = true;
             }
+            _spawnPoint = spawn.point;
+            _spawnPoint.y = _spawnPoint.y + 0.1f;
+            if (!_isSeaweed)
+            {
+                _rot = Quaternion.FromToRotation(Vector3.up, spawn.normal);
+            }
+            else
+            {
+                _rot = Quaternion.FromToRotation(Vector3.up, Vector3.zero);
+            }
+            _canGrow = true;
         }
     }
 }

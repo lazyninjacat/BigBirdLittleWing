@@ -45,7 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _plantType: 4
   _Bounds: {x: 2, y: 1, z: 2}
-  _spawnPrefab: {fileID: 545594327191432053, guid: 958864d89b652b44197e40faf647f727,
-    type: 3}
+  _spawnPrefab:
+  - {fileID: 1157753232022587406, guid: 781a0d9ceda026c43a69f1f55f6c0071, type: 3}
   _spawnCount: 10
-  seedingDistance: 3
