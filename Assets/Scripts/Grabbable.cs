@@ -5,6 +5,7 @@ using UnityEngine;
 public class Grabbable : MonoBehaviour
 {
     PlayerManager _player;
+    Gather _gather;
    [SerializeField] Material[] _mats;
     Sonar _sonarActive;
     public bool activate;
@@ -13,6 +14,7 @@ public class Grabbable : MonoBehaviour
     {
         _sonarActive = FindObjectOfType<Sonar>();
         _player = FindObjectOfType<PlayerManager>();
+        _gather = FindObjectOfType<Gather>();
     }
     private void Update()
     {
@@ -20,20 +22,11 @@ public class Grabbable : MonoBehaviour
         {
             if (Vector3.Distance(this.transform.position, _player.currentSub.transform.position) <= 50)
             {
-                if (!_sonarActive.sonarIsReady && _player.currentSub == _player.players[0])
+                if (!_sonarActive.sonarIsReady)
                 {
                     GetComponent<MeshRenderer>().material = _mats[1];
                     this.gameObject.layer = 31;
                 }
-                //else if(!_sonarActive.sonarIsReady && _player.currentSub == _player.players[1])
-                //{
-                //    if (this.gameObject.tag == "EnergyGeode")
-                //    {
-                //        print(this.gameObject.name.ToString());
-                //        GetComponent<MeshRenderer>().material = _mats[1];
-                //        this.gameObject.layer = 31;
-                //    }
-                //}
             }        
         }
         if (_sonarActive.sonarIsReady)
@@ -45,6 +38,17 @@ public class Grabbable : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 13) activate = true;
+        if (other.gameObject.layer == 13)
+        {
+            for (int i = 0; i < _gather.activeGeodesList.Count; i++)
+            {
+                if (_gather.activeGeodesList[i] == this.gameObject)
+                {
+                    activate = true;
+                }
+                else
+                    this.gameObject.layer = 14;
+            }
+        }
     }
 }
