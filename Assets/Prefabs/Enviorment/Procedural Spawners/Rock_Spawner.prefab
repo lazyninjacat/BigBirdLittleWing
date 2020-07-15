@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3784679194844415043}
   - component: {fileID: 3463709223072644523}
   m_Layer: 0
-  m_Name: SeaWeed_Spawner
+  m_Name: Rock_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccb95eca272caa469a311f995e52c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _plantType: 2
-  _Bounds: {x: 40, y: 1, z: 40}
+  _plantType: 5
+  _Bounds: {x: 50, y: 1, z: 100}
   _spawnPrefab:
-  - {fileID: 1355752733874030857, guid: 74666887dbe53604aa7f0d50206b4430, type: 3}
-  _spawnCount: 1
+  - {fileID: 2688634335100444484, guid: fe9757edda8e56f4f8a12d912122f44e, type: 3}
+  - {fileID: 2697422070358372884, guid: 1d8a961e30ac007489ac832ead1660a0, type: 3}
+  - {fileID: 2638309015327476621, guid: 9bfaace17f42c304493f6afb287a1e34, type: 3}
+  - {fileID: 8002208555453575503, guid: 5183267db9bf7ca40a8bfce241cf7306, type: 3}
+  - {fileID: 462555627881280241, guid: c24a7acf7f0ce4840adda91401acbfd9, type: 3}
+  - {fileID: 2936480199219804047, guid: aced0965fe9f2a84f82d305bc8c178b3, type: 3}
+  - {fileID: 3401716036701796952, guid: eef3dd11ec324a341943404e435baa6e, type: 3}
+  - {fileID: 7366895944062378807, guid: e0f92285fb8009e439e3017ac832c7a0, type: 3}
+  _spawnCount: 100
