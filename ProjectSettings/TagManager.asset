@@ -9,6 +9,7 @@ TagManager:
   - BB
   - LW
   - Ground
+  - Dock
   layers:
   - Default
   - TransparentFX

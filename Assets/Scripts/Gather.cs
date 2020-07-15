@@ -17,16 +17,18 @@ public class Gather : MonoBehaviour
     private bool isCountingBB;
     private bool isCountingLW;
 
-    public List<GameObject> energyGeodesInSceneList;
+    public List<GameObject> activeGeodesList;
+    public List<GameObject> inactiveGeodesList;
 
     void Start()
     {
-        energyGeodesInSceneList = new List<GameObject>();
-        energyGeodesInSceneList = GameObject.FindGameObjectsWithTag("EnergyGeode").ToList();
+        activeGeodesList = new List<GameObject>();
+        inactiveGeodesList = new List<GameObject>();
+        activeGeodesList = GameObject.FindGameObjectsWithTag("EnergyGeode").ToList();
 
-        foreach (GameObject geode in energyGeodesInSceneList)
+        foreach (GameObject geode in activeGeodesList)
         {
-            geode.GetComponent<Animation>().Play("energyGeodeIdle");
+            geode.GetComponent<Animation>().Play("energyGeodesIdle");
         }
 
         totalEnergyLW = 25;
@@ -102,7 +104,7 @@ public class Gather : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (energyGeodesInSceneList.Contains(collision.gameObject))
+        if (activeGeodesList.Contains(collision.gameObject))
         {
             Debug.Log("gathering started");
 
@@ -112,8 +114,11 @@ public class Gather : MonoBehaviour
 
             collision.gameObject.GetComponent<Animation>().Stop("energyGeodeIdle");
             collision.gameObject.GetComponent<Animation>().Play("geodeGatherDim");
+
+            activeGeodesList.Remove(collision.gameObject);
+            inactiveGeodesList.Add(collision.gameObject);
         }
-        else if (collision.gameObject.tag == "BB")
+        else if (collision.gameObject.tag == "Dock")
         {
             StartCoroutine(EnergyTransferHelper());
         }
@@ -122,7 +127,7 @@ public class Gather : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (energyGeodesInSceneList.Contains(collision.gameObject))
+        if (activeGeodesList.Contains(collision.gameObject))
         {
             Debug.Log("gathering ended");
         }
