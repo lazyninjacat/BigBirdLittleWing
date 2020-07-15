@@ -28,13 +28,13 @@ public class Docking : MonoBehaviour
     {
         DockPosition = new Vector3(Dock.position.x, Dock.position.y, Dock.position.z);
 
-        if (!isStart)
+        if (isStart == false)
         {
             if (isInsideDockingCollider)
             {
                 if (Input.GetButtonDown("Grab"))
                 {                  
-                    DockingHelper();
+                    StartCoroutine(DockingHelper());
                 }
             }      
         }     
@@ -47,15 +47,15 @@ public class Docking : MonoBehaviour
     private IEnumerator DockingHelper()
     {
         Debug.Log("Docking Helper");
-        gameObject.GetComponent<SmallSub>().enabled = false;
-        gameObject.transform.position = DollyCart.position;
+        //gameObject.GetComponent<SmallSub>().enabled = false;
+        //gameObject.transform.position = DollyCart.position;
         DockingPromptUI.SetActive(false);
-        isInsideDockingCollider = false;
-        DockingDollyPath.m_Waypoints[1].position = Dock.position;
-        DockingDollyPath.m_Waypoints[0].position = gameObject.transform.position;
-        isOnDollyCart = true;
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        yield return new WaitUntil(() => gameObject.transform.position == DockPosition);
+        //isInsideDockingCollider = false;
+        //DockingDollyPath.m_Waypoints[1].position = Dock.position;
+        //DockingDollyPath.m_Waypoints[0].position = gameObject.transform.position;
+        //isOnDollyCart = true;
+        //gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        //yield return new WaitUntil(() => gameObject.transform.position == DockPosition);
         StartCoroutine(gather.EnergyTransferHelper());
         yield return new WaitUntil(() => gather.isTransferingEnergy = false);
         isOnDollyCart = false;
@@ -87,6 +87,7 @@ public class Docking : MonoBehaviour
             }
             else
             {
+                Debug.Log("Start now off");
                 isStart = false;
             }
             Debug.Log("exit docking collider");
