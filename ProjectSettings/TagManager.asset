@@ -10,6 +10,8 @@ TagManager:
   - LW
   - Ground
   - Dock
+  - DockingSphereCollider
+  - DockingCollider
   layers:
   - Default
   - TransparentFX

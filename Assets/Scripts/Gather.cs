@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,16 @@ public class Gather : MonoBehaviour
     [SerializeField] Image EnergyBarLW;
     [SerializeField] Image EnergyBarBB;
 
+
+
     public int totalEnergyLW;
     public int totalEnergyBB;
 
     private bool isCountingBB;
     private bool isCountingLW;
+    public bool isTransferingEnergy;
+
+
 
     public List<GameObject> activeGeodesList;
     public List<GameObject> inactiveGeodesList;
@@ -50,7 +56,9 @@ public class Gather : MonoBehaviour
         {
             StartCoroutine(EnergyDrainBB());
         }
+        
     }
+
 
     private IEnumerator EnergyDrainLW()
     {
@@ -118,20 +126,10 @@ public class Gather : MonoBehaviour
             activeGeodesList.Remove(collision.gameObject);
             inactiveGeodesList.Add(collision.gameObject);
         }
-        else if (collision.gameObject.tag == "Dock")
-        {
-            StartCoroutine(EnergyTransferHelper());
-        }
+       
+       
     }
 
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (activeGeodesList.Contains(collision.gameObject))
-        {
-            Debug.Log("gathering ended");
-        }
-    }
 
     private IEnumerator GatherHelperLW(int energyAmount)
     {
@@ -143,8 +141,10 @@ public class Gather : MonoBehaviour
         }
     }
 
-    private IEnumerator EnergyTransferHelper()
+    public IEnumerator EnergyTransferHelper()
     {
+        isTransferingEnergy = true;
+
         for (int i = 1; i < totalEnergyLW; i++)
         {
             if (totalEnergyBB < 50)
@@ -161,5 +161,8 @@ public class Gather : MonoBehaviour
             }
        
         }
+
+        isTransferingEnergy = false;
+
     }
 }

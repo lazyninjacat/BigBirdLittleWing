@@ -22916,7 +22916,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 1798731896}
+      objectReference: {fileID: 0}
     - target: {fileID: 6188441251110154010, guid: ea171726a8a5fb84c900671fc80da962,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53218,12 +53218,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791577141}
   m_Mesh: {fileID: -6794295459225122087, guid: db88f5c09d50ce944b074121a47ea708, type: 3}
---- !u!82 &1798731896 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7826821314228014934, guid: ea171726a8a5fb84c900671fc80da962,
-    type: 3}
-  m_PrefabInstance: {fileID: 777980624}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1801282727
 GameObject:
   m_ObjectHideFlags: 0
@@ -60128,6 +60122,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1586807259783463288, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000008940697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586807259783463288, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5216084
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586807259783463288, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.3981018
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586807259783463288, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.717012
+      objectReference: {fileID: 0}
     - target: {fileID: 6966708081944541275, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -60146,7 +60160,7 @@ PrefabInstance:
     - target: {fileID: 7095373581184559546, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 457.99304
+      value: 472
       objectReference: {fileID: 0}
     - target: {fileID: 7095373581184559546, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
@@ -60201,7 +60215,7 @@ PrefabInstance:
     - target: {fileID: 7630308840438655184, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1020.16943
+      value: 1006.1625
       objectReference: {fileID: 0}
     - target: {fileID: 7630308840438655184, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
