@@ -2791,6 +2791,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 8246812645387815764, guid: 0bcca4172e8a83246a3d543de7d43daa,
+        type: 3}
+      propertyPath: m_Name
+      value: DockingCollider
+      objectReference: {fileID: 0}
     - target: {fileID: 8390958611846994916, guid: 0bcca4172e8a83246a3d543de7d43daa,
         type: 3}
       propertyPath: m_RootOrder
