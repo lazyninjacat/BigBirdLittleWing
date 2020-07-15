@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8393989821443043874}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plantType: 2
-  _Bounds: {x: 2, y: 1, z: 2}
+  _Bounds: {x: 40, y: 1, z: 40}
   _spawnPrefab:
-  - {fileID: 1355752733874030857, guid: 74666887dbe53604aa7f0d50206b4430, type: 3}
+  - {fileID: 2667274872115080426, guid: 39d83c4e2c66645409b4d3a1ac4b31db, type: 3}
   _spawnCount: 1
+  _layer:
+    serializedVersion: 2
+    m_Bits: 16384

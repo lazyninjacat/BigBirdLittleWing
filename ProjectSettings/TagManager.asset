@@ -9,6 +9,9 @@ TagManager:
   - BB
   - LW
   - Ground
+  - Dock
+  - DockingSphereCollider
+  - DockingCollider
   layers:
   - Default
   - TransparentFX

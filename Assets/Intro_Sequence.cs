@@ -11,6 +11,7 @@ public class Intro_Sequence : MonoBehaviour
     [SerializeField] GameObject Text4;
     [SerializeField] GameObject Text5;
     [SerializeField] GameObject Text6;
+    [SerializeField] GameObject SkipText;
     [SerializeField] GameObject PlayerCam;
     [SerializeField] GameObject SurfaceCam;
 
@@ -23,6 +24,23 @@ public class Intro_Sequence : MonoBehaviour
         StartCoroutine(StartSequence());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            StopAllCoroutines();
+            SurfaceCam.SetActive(false);
+            PlayerCam.SetActive(true);
+            
+            Text1.SetActive(false);
+            Text2.SetActive(false);
+            Text3.SetActive(false);
+            Text4.SetActive(false);
+            Text5.SetActive(false);
+            Text6.SetActive(false);
+            SkipText.SetActive(false);
+        }
+    }
 
     private IEnumerator StartSequence()
     {

@@ -26,10 +26,10 @@ public class Sonar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = _player.currentSub.transform.position;
 
 
-        if (Input.GetButtonDown("Radar") && _player.currentSub == _player.players[0])
+        if (Input.GetButtonDown("Radar"))
         {
             if (sonarIsReady)
             {

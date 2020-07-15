@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588997623845378196}
-  - component: {fileID: 3677049940749564813}
   m_Layer: 0
   m_Name: Swayer
   m_TagString: Untagged
@@ -119,20 +118,6 @@ Transform:
   m_Father: {fileID: 3656608326087372428}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3677049940749564813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7582421178807414316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e9a5b823db323049b8bc2e76d4f9329, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _anem: []
-  _targets: []
 --- !u!1001 &104344149550058853
 PrefabInstance:
   m_ObjectHideFlags: 0

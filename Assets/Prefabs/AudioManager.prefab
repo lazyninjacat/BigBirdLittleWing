@@ -183,6 +183,8 @@ MonoBehaviour:
   levelMusic: {fileID: 2091448267798880596}
   sfxSource: {fileID: 2091448267856939965}
   sfx:
+  - name: GrindingRock
+    clip: {fileID: 8300000, guid: ba60ea476cbc8874a99905eeb6c18bdf, type: 3}
   - name: ArmOpen
     clip: {fileID: 8300000, guid: 9c731c08a76bf0145be22cce263e43c0, type: 3}
   lvl_Music:
