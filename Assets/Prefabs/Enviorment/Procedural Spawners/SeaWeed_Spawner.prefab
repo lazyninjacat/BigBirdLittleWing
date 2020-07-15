@@ -46,5 +46,8 @@ MonoBehaviour:
   _plantType: 2
   _Bounds: {x: 40, y: 1, z: 40}
   _spawnPrefab:
-  - {fileID: 1355752733874030857, guid: 74666887dbe53604aa7f0d50206b4430, type: 3}
+  - {fileID: 2667274872115080426, guid: 39d83c4e2c66645409b4d3a1ac4b31db, type: 3}
   _spawnCount: 1
+  _layer:
+    serializedVersion: 2
+    m_Bits: 16384

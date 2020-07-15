@@ -18,6 +18,7 @@ public class Seeding : MonoBehaviour
     public int _spawnCount;
     PlayerManager _player;
     RaycastHit hit;
+    public LayerMask _layer = 1 << 14;
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(0, 1, 0, 1);
@@ -41,18 +42,21 @@ public class Seeding : MonoBehaviour
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     _objIndex[i].transform.parent = this.transform;               
                     _objIndex[i].layer = 12;
+                    CheckNeighbours(12,i);
                     break;
                 case PlantType.Anemone:
                     Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     _objIndex[i].transform.parent = this.transform;
                     _objIndex[i].layer = 10;
+                    CheckNeighbours(10,i);
                     break;
                 case PlantType.SeaWeed:
                     Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.zero));
                     _objIndex[i].transform.parent = this.transform;
                     _objIndex[i].layer = 12;
+                    CheckNeighbours(12,i);
                     break;
                 case PlantType.Fish:
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[0], pos, Quaternion.identity);
@@ -64,6 +68,7 @@ public class Seeding : MonoBehaviour
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     _objIndex[i].transform.parent = this.transform;
                     _objIndex[i].layer = 12;
+                    CheckNeighbours(12,i);
                     break;
                 case PlantType.Rock:
                     Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
@@ -78,19 +83,23 @@ public class Seeding : MonoBehaviour
             _rot = _objIndex[i].transform.rotation;
             _rot.y = Random.Range(0, 360);
             transform.rotation = _rot;
-            Collider[] colliders = Physics.OverlapSphere(_objIndex[i].transform.position, 0.5f, 1 << 12);
-            foreach (var item in colliders)
-            {
-                if (Random.Range(0, 100) < 2)
-                {
-                    item.gameObject.SetActive(false);                
-                }
-                else
-                    item.transform.localScale = transform.localScale / Random.Range(1.3f, 2);
-            }
+          
         }
     }
 
+    void CheckNeighbours(int x, int i)
+    {
+        Collider[] colliders = Physics.OverlapSphere(_objIndex[i].transform.position, 0.5f, 1 << x);
+        foreach (var item in colliders)
+        {
+            if (Random.Range(0, 100) < 2)
+            {
+                item.gameObject.SetActive(false);
+            }
+            else
+                item.transform.localScale = transform.localScale / Random.Range(1.3f, 2);
+        }
+    }
     private void Update()
     {
         switch (_plantType)
@@ -118,5 +127,6 @@ public class Seeding : MonoBehaviour
             default:
                 break;
         }
+
     }
 }
