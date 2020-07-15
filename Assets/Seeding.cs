@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.PlayerLoop;
@@ -7,7 +8,7 @@ using UnityEngine.PlayerLoop;
 public class Seeding : MonoBehaviour
 {
 
-    public enum PlantType { Algae_Red, Anemone, SeaWeed, Fish, Coral }
+    public enum PlantType { Algae_Red, Anemone, SeaWeed, Fish, Coral, Rock }
     public PlantType _plantType;
     public Vector3 _Bounds = new Vector3(2, 1, 2);
     static int _maxObj = 1000;
@@ -23,7 +24,6 @@ public class Seeding : MonoBehaviour
         Gizmos.DrawCube(transform.position, new Vector3(_Bounds.x * 2, _Bounds.y * 2, _Bounds.z * 2));
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _player = FindObjectOfType<PlayerManager>();
@@ -37,19 +37,19 @@ public class Seeding : MonoBehaviour
             switch (_plantType)
             {
                 case PlantType.Algae_Red:
-                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity);
+                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    _objIndex[i].transform.parent = this.transform;
+                    _objIndex[i].transform.parent = this.transform;               
                     _objIndex[i].layer = 12;
                     break;
                 case PlantType.Anemone:
-                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity);
+                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     _objIndex[i].transform.parent = this.transform;
                     _objIndex[i].layer = 10;
                     break;
                 case PlantType.SeaWeed:
-                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity);
+                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.zero));
                     _objIndex[i].transform.parent = this.transform;
                     _objIndex[i].layer = 12;
@@ -60,10 +60,16 @@ public class Seeding : MonoBehaviour
                     _objIndex[i].layer = 11;
                     break;
                 case PlantType.Coral:
-                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity);
+                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
                     _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     _objIndex[i].transform.parent = this.transform;
                     _objIndex[i].layer = 12;
+                    break;
+                case PlantType.Rock:
+                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
+                    _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.zero));
+                    _objIndex[i].transform.parent = this.transform;
+                    _objIndex[i].layer = 14;
                     break;
                 default:
                     break;
@@ -72,6 +78,16 @@ public class Seeding : MonoBehaviour
             _rot = _objIndex[i].transform.rotation;
             _rot.y = Random.Range(0, 360);
             transform.rotation = _rot;
+            Collider[] colliders = Physics.OverlapSphere(_objIndex[i].transform.position, 0.5f, 1 << 12);
+            foreach (var item in colliders)
+            {
+                if (Random.Range(0, 100) < 2)
+                {
+                    item.gameObject.SetActive(false);                
+                }
+                else
+                    item.transform.localScale = transform.localScale / Random.Range(1.3f, 2);
+            }
         }
     }
 
