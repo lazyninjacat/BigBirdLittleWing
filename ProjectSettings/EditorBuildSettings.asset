@@ -9,12 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/MainGameScenes/StartMenuScene.unity
     guid: c6f6e8747e37b3e409970625b6846ac5
   - enabled: 1
-    path: Assets/Scenes/TestScenes/TestLevel.unity
-    guid: 0528bb957dac1144381cf6a42f81df38
-  - enabled: 1
     path: Assets/Scenes/MainGameScenes/AboutScene.unity
     guid: 9865d1bfffe2dc548a05625a27a53744
   - enabled: 1
     path: Assets/Scenes/MainGameScenes/MainScene.unity
     guid: c2052c9a156e7dc42b1039bae376440c
+  - enabled: 1
+    path: Assets/Scenes/Section1.unity
+    guid: 76ca47d0a6b2d2d4bbc6caae83683bd5
+  - enabled: 1
+    path: Assets/Scenes/Section2.unity
+    guid: 343113eeb15c37842bda597719518c7a
+  - enabled: 1
+    path: Assets/Scenes/Section3.unity
+    guid: 60ad11d21756e694889d805623d00d0c
+  - enabled: 1
+    path: Assets/Scenes/ALLMANAGERS.unity
+    guid: 1ba876d4167e6ee47a5aba4cf3c2082e
+  - enabled: 0
+    path: Assets/Scenes/TestScenes/TestLevel.unity
+    guid: 0528bb957dac1144381cf6a42f81df38
   m_configObjects: {}

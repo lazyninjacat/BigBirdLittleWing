@@ -12,6 +12,7 @@ TagManager:
   - Dock
   - DockingSphereCollider
   - DockingCollider
+  - LevelSections
   layers:
   - Default
   - TransparentFX
