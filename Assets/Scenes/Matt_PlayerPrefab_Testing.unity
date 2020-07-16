@@ -49796,6 +49796,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e2a8c120b9f88499125001562ed3c5, type: 3}
+--- !u!1 &1652474290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7095373580872386651, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2036648871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1653701771
 GameObject:
   m_ObjectHideFlags: 0
@@ -60154,6 +60160,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -23.717012
       objectReference: {fileID: 0}
+    - target: {fileID: 3416172130574673099, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
+        type: 3}
+      propertyPath: LW_Cam
+      value: 
+      objectReference: {fileID: 1652474290}
     - target: {fileID: 5854379493355597364, guid: 63e60bc0f8ba80344a415fe9b8f5eaf8,
         type: 3}
       propertyPath: m_LocalRotation.x
