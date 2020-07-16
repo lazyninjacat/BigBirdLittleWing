@@ -13,6 +13,10 @@ public class LevelManager : MonoBehaviour
     public bool _load01 = false;
     public bool _load02 = false;
     public bool _load03 = false;
+    public bool _load04 = false;
+    public bool _load05 = false;
+    public bool _load06 = false;
+    public bool _load07 = false;
     // Start is called before the first frame update
 
     private void Start()
@@ -25,7 +29,7 @@ public class LevelManager : MonoBehaviour
         _player = FindObjectOfType<PlayerManager>();
         if (!_managers)
         {
-            SceneManager.LoadSceneAsync("ALLMANAGERS", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("Section1", LoadSceneMode.Additive);
             _managers = true;
         }
     }

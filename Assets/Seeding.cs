@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.PlayerLoop;
@@ -22,7 +21,7 @@ public class Seeding : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(0, 1, 0, 1);
-        Gizmos.DrawCube(transform.position, new Vector3(_Bounds.x * 2, _Bounds.y * 2, _Bounds.z * 2));
+        Gizmos.DrawCube(transform.position, new Vector3(_Bounds.x * 2, _Bounds.y * 2, _Bounds.z * 2)); 
     }
 
     void Start()
