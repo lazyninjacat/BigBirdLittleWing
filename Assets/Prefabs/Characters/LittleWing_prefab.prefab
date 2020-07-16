@@ -17069,6 +17069,7 @@ GameObject:
   - component: {fileID: 4880151765684122026}
   - component: {fileID: 4312847859574445355}
   - component: {fileID: 6224982630621819283}
+  - component: {fileID: 4586871384348800631}
   m_Layer: 30
   m_Name: LittleWing_prefab
   m_TagString: Untagged
@@ -17119,8 +17120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b4756e827095b45b39e95c2de307f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 3695550442112726485}
-  cameraPosition: {fileID: 0}
   rb: {fileID: 1336533080123070148}
   anim: {fileID: 3779083810309388631}
   _inputs: {x: 0, y: 0}
@@ -17133,6 +17132,7 @@ MonoBehaviour:
   _inv: 0
   mouseWheelInput: 0
   _lerpSpeed: 0
+  _mat: []
 --- !u!136 &4312847859574445355
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17163,7 +17163,26 @@ MonoBehaviour:
   EnergyBarBB: {fileID: 0}
   totalEnergyLW: 0
   totalEnergyBB: 0
-  energyGeodesInSceneList: []
+  isTransferingEnergy: 0
+  activeGeodesList: []
+  inactiveGeodesList: []
+--- !u!114 &4586871384348800631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207068318585945993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a9c787e5d1bbf48a389834c4a9641c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Path: {fileID: 0}
+  m_UpdateMethod: 0
+  m_PositionUnits: 1
+  m_Speed: 3
+  m_Position: 0
 --- !u!1 &4297931672326201500
 GameObject:
   m_ObjectHideFlags: 0

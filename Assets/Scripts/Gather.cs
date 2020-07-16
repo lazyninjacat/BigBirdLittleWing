@@ -143,6 +143,7 @@ public class Gather : MonoBehaviour
 
     public IEnumerator EnergyTransferHelper()
     {
+        Debug.Log("Start Energy Transfer");
         isTransferingEnergy = true;
 
         for (int i = 1; i < totalEnergyLW; i++)

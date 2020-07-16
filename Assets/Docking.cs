@@ -10,30 +10,33 @@ public class Docking : MonoBehaviour
 
     [SerializeField] CinemachineSmoothPath DockingDollyPath;
     [SerializeField] Transform Dock;
-    [SerializeField] Transform DollyCart;
     [SerializeField] GameObject DockingCollider;
     [SerializeField] Gather gather;
     [SerializeField] GameObject DockingPromptUI;
 
     private bool isOnDollyCart;
-    private bool isInsideDockingCollider;
+    private bool triggeredDockingCollider;
     private bool isStart;
+    private bool justFinishedEnergyTransfer;
 
     private void Start()
     {
         isStart = true;
+        gameObject.GetComponent<CinemachineDollyCart>().enabled = false;
     }
 
     void Update()
     {
         DockPosition = new Vector3(Dock.position.x, Dock.position.y, Dock.position.z);
 
+
+
         if (isStart == false)
         {
-            if (isInsideDockingCollider)
+            if (triggeredDockingCollider)
             {
                 if (Input.GetButtonDown("Grab"))
-                {                  
+                {    
                     StartCoroutine(DockingHelper());
                 }
             }      
@@ -42,28 +45,66 @@ public class Docking : MonoBehaviour
         {
             DockingPromptUI.SetActive(false);
         }
+
+        if (isOnDollyCart)
+        {
+            gameObject.GetComponent<SmallSub>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<CinemachineDollyCart>().enabled = true;
+          
+        }
+        else
+        {
+            gameObject.GetComponent<CinemachineDollyCart>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            gameObject.GetComponent<SmallSub>().enabled = true;
+
+        }
+
+
+
+
     }
 
     private IEnumerator DockingHelper()
     {
         Debug.Log("Docking Helper");
-        //gameObject.GetComponent<SmallSub>().enabled = false;
-        //gameObject.transform.position = DollyCart.position;
+
+        //reset trigger
+        triggeredDockingCollider = false;        
+
+        //turn off the UI prompt
         DockingPromptUI.SetActive(false);
-        //isInsideDockingCollider = false;
-        //DockingDollyPath.m_Waypoints[1].position = Dock.position;
-        //DockingDollyPath.m_Waypoints[0].position = gameObject.transform.position;
-        //isOnDollyCart = true;
-        //gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        //yield return new WaitUntil(() => gameObject.transform.position == DockPosition);
+
+        //Turn on the Dolly Cart
+        isOnDollyCart = true;
+
+        //Set the first waypoint of the dolly track to the little sub's current position.
+        // DockingDollyPath.m_Waypoints[0].position = gameObject.transform.position;
+
+        //Set the little sub to position 0
+        gameObject.GetComponent<CinemachineDollyCart>().m_Position = 0;
+
+
+        // Wait a second then begin energy transfer
+        yield return new WaitForSeconds(1);
         StartCoroutine(gather.EnergyTransferHelper());
-        yield return new WaitUntil(() => gather.isTransferingEnergy = false);
-        isOnDollyCart = false;
-        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
+        // Wait two seconds for energy to transfer
+        yield return new WaitForSeconds(2);
         DockingPromptUI.SetActive(true);
+        justFinishedEnergyTransfer = true;
+        isOnDollyCart = false;
+        
         DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Energy transfer complete";
-        gameObject.GetComponent<SmallSub>().enabled = true;
+        yield return new WaitForSeconds(4);
+        DockingPromptUI.SetActive(false);
+        justFinishedEnergyTransfer = false;
+
+
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -71,18 +112,24 @@ public class Docking : MonoBehaviour
         {
             Debug.Log("in docking collider");
             DockingPromptUI.SetActive(true);
-            DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "press 'A' to transfer energy";
-            isInsideDockingCollider = true;
+            if (!justFinishedEnergyTransfer)
+            {
+                DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "press 'A' to transfer energy";
+
+            }
+            triggeredDockingCollider = true;
         }     
     }
 
     private void OnTriggerExit(Collider other)
     {
+        
         if (other.gameObject.tag == "DockingCollider")
         {
             if (!isStart)
             {
-                isInsideDockingCollider = false;
+                //justFinishedEnergyTransfer = false;
+                triggeredDockingCollider = false;
                 DockingPromptUI.SetActive(false);
             }
             else
