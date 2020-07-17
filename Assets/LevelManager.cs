@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public GameObject[] _levelLoaders;
     PlayerManager _player;
     bool _managers;
-    public bool _load01 = false;
+    public bool _load01 = true;
     public bool _load02 = false;
     public bool _load03 = false;
     public bool _load04 = false;
@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-     
+    
     }
     public void LoadScene(string x)
     {

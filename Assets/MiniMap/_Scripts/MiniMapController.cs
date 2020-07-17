@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Reflection;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+
 [ExecuteInEditMode]
 public class MiniMapController : MonoBehaviour {
 	//public bool isRadialMask = false;
@@ -65,8 +68,6 @@ public class MiniMapController : MonoBehaviour {
 	private Vector3 prevRotOfCam;
 	Vector2 res;
 	Image miniMapPanelImage;
-
-	//Initialize everything here
 	public void OnEnable(){
 		ownerIconMap.Clear ();
 		GameObject maskPanelGO = transform.GetComponentInChildren<Mask> ().gameObject;
@@ -89,11 +90,11 @@ public class MiniMapController : MonoBehaviour {
 		miniMapPanelImage.enabled = !showBackground;
 		SetupRenderTexture();
 		target = FindObjectOfType<PlayerManager>().currentSub.transform;
-
 	}
 	private void Start()
 	{
 		DontDestroyOnLoad(this.gameObject);
+		SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName("ALLMANAGERS"));
 	}
 	//Release the unmanaged objects
 	void OnDisable(){

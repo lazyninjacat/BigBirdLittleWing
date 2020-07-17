@@ -29,6 +29,7 @@ public class Docking : MonoBehaviour
     {
         isStart = true;
         gameObject.GetComponent<CinemachineDollyCart>().enabled = false;
+        StartCoroutine(DockingHelper());
     }
 
     void Update()
@@ -108,6 +109,7 @@ public class Docking : MonoBehaviour
         {
             DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "";
         }
+        if(Vector3.Distance(transform.position,Dock.position) >= 100) StartCoroutine(DockingHelper());
     }
 
     private IEnumerator UndockingHelper()

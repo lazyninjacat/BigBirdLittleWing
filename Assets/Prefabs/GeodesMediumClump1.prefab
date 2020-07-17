@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3492752994029895421}
   - component: {fileID: 7325862833193992469}
   - component: {fileID: 5152282559767486613}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: 4
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 7403348520297414885}
   - component: {fileID: 2157318327580554324}
   - component: {fileID: 364461912383797521}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: 5
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
@@ -9790,7 +9790,7 @@ GameObject:
   - component: {fileID: 6499194942882179184}
   - component: {fileID: 4181615189064091034}
   - component: {fileID: 600959496758241872}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: 7
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
@@ -14659,7 +14659,7 @@ GameObject:
   - component: {fileID: 7968613980474835983}
   - component: {fileID: 3724378434334785003}
   - component: {fileID: 5632187911739293299}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: 2
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
@@ -19528,7 +19528,7 @@ GameObject:
   - component: {fileID: 1677502808041051321}
   - component: {fileID: 1605919622686114846}
   - component: {fileID: 7428503623035866792}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: 1
   m_TagString: EnergyGeode
   m_Icon: {fileID: 0}
