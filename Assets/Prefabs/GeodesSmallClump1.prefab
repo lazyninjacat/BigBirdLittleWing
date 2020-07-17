@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2302615585209117958}
   - component: {fileID: 2302615585209118073}
   - component: {fileID: 9143684104366687310}
+  - component: {fileID: 1152586916867138112}
   m_Layer: 31
   m_Name: 1
   m_TagString: EnergyGeode
@@ -107,7 +108,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2302615585209117956}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14822933, y: 0.14342913, z: 0.16408503}
@@ -145,6 +146,25 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
+--- !u!114 &1152586916867138112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302615585209117956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
+  size: {x: 20, y: 20}
+  rotateWithObject: 0
+  upAxis: {x: 0, y: 1, z: 0}
+  initialIconRotation: 0
+  clampIconInBorder: 1
+  clampDistance: 100
 --- !u!1 &3995482375538923853
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +180,7 @@ GameObject:
   - component: {fileID: 3995482375538923855}
   - component: {fileID: 3995482375538923854}
   - component: {fileID: 6609258798037781314}
+  - component: {fileID: 2765507489234289088}
   m_Layer: 31
   m_Name: 2
   m_TagString: EnergyGeode
@@ -252,7 +273,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3995482375538923853}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.20683779, y: 0.172018, z: 0.17119989}
@@ -290,6 +311,25 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
+--- !u!114 &2765507489234289088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995482375538923853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
+  size: {x: 20, y: 20}
+  rotateWithObject: 0
+  upAxis: {x: 0, y: 1, z: 0}
+  initialIconRotation: 0
+  clampIconInBorder: 1
+  clampDistance: 100
 --- !u!1 &4384366066620749584
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +380,7 @@ GameObject:
   - component: {fileID: 8983079735240931305}
   - component: {fileID: 371340830048066347}
   - component: {fileID: 7951408039288513833}
+  - component: {fileID: 6320179461787136651}
   m_Layer: 31
   m_Name: 1
   m_TagString: EnergyGeode
@@ -432,7 +473,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5884877026869624032}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14822933, y: 0.14342913, z: 0.16408503}
@@ -470,6 +511,25 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
+--- !u!114 &6320179461787136651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884877026869624032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
+  size: {x: 20, y: 20}
+  rotateWithObject: 0
+  upAxis: {x: 0, y: 1, z: 0}
+  initialIconRotation: 0
+  clampIconInBorder: 1
+  clampDistance: 100
 --- !u!1 &6296852908974255009
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +545,7 @@ GameObject:
   - component: {fileID: 5880102555805712611}
   - component: {fileID: 8040282749846132550}
   - component: {fileID: 5887929781042260360}
+  - component: {fileID: 8680751339620350143}
   m_Layer: 31
   m_Name: 2
   m_TagString: EnergyGeode
@@ -577,7 +638,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6296852908974255009}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.20683779, y: 0.172018, z: 0.17119989}
@@ -615,6 +676,25 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
+--- !u!114 &8680751339620350143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296852908974255009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
+  size: {x: 20, y: 20}
+  rotateWithObject: 0
+  upAxis: {x: 0, y: 1, z: 0}
+  initialIconRotation: 0
+  clampIconInBorder: 1
+  clampDistance: 100
 --- !u!1 &7090612972081792630
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +710,7 @@ GameObject:
   - component: {fileID: 7090612972081792617}
   - component: {fileID: 7090612972081792619}
   - component: {fileID: 6644519003904730856}
+  - component: {fileID: 5045389316189686459}
   m_Layer: 31
   m_Name: 4
   m_TagString: EnergyGeode
@@ -722,7 +803,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7090612972081792630}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.19244601, y: 0.1914081, z: 0.24833545}
@@ -760,3 +841,22 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
+--- !u!114 &5045389316189686459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090612972081792630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
+  size: {x: 20, y: 20}
+  rotateWithObject: 0
+  upAxis: {x: 0, y: 1, z: 0}
+  initialIconRotation: 0
+  clampIconInBorder: 1
+  clampDistance: 100

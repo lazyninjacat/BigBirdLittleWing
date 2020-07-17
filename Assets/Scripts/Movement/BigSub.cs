@@ -31,7 +31,7 @@ public class BigSub : PlayerController
     /////////////////////////////////////////
     
     //grabber
-    [SerializeField] private LayerMask grabLayer;
+    [SerializeField] public LayerMask grabLayer;
     private GameObject grabbedObject = null;
     private float grabberSpeedH = 5f;
     public Vector3 grabObjDistance;
