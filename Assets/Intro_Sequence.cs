@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Intro_Sequence : MonoBehaviour
 {
-    [SerializeField] GameObject BackgroundPanel;
     [SerializeField] GameObject Text1;
     [SerializeField] GameObject Text2;
     [SerializeField] GameObject Text3;
@@ -14,6 +14,10 @@ public class Intro_Sequence : MonoBehaviour
     [SerializeField] GameObject SkipText;
     [SerializeField] GameObject PlayerCam;
     [SerializeField] GameObject SurfaceCam;
+    [SerializeField] GameObject Player;
+    [SerializeField] GameObject dollyCart;
+
+    private bool isStartSequence;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,11 @@ public class Intro_Sequence : MonoBehaviour
 
     private void Update()
     {
+        if (isStartSequence)
+        {
+            Player.transform.position = dollyCart.transform.position;
+        }
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
             StopAllCoroutines();
@@ -44,6 +53,9 @@ public class Intro_Sequence : MonoBehaviour
 
     private IEnumerator StartSequence()
     {
+        isStartSequence = true;
+        dollyCart.GetComponent<CinemachineDollyCart>().m_Position = 0;
+
         Text1.SetActive(true);
         yield return new WaitUntil(() => !Text1.GetComponent<Animation>().isPlaying);
         Text1.SetActive(false);
@@ -62,10 +74,7 @@ public class Intro_Sequence : MonoBehaviour
         Text6.SetActive(true);
         yield return new WaitUntil(() => !Text6.GetComponent<Animation>().isPlaying);
         Text6.SetActive(false);
-
-        //BackgroundPanel.GetComponent<Animation>().Play();
-        //yield return new WaitUntil(() => !BackgroundPanel.GetComponent<Animation>().isPlaying);
-
+        isStartSequence = false;
         PlayerCam.SetActive(true);
     }
 

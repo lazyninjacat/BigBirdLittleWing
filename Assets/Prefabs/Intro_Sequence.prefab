@@ -499,7 +499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde49c4f30f89a34795d5c492e8be55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundPanel: {fileID: 5227772939087741352}
   Text1: {fileID: 5227772938050031049}
   Text2: {fileID: 5227772939466790103}
   Text3: {fileID: 5227772938653822344}
@@ -509,6 +508,8 @@ MonoBehaviour:
   SkipText: {fileID: 5227772938701010315}
   PlayerCam: {fileID: 0}
   SurfaceCam: {fileID: 5227772939236998740}
+  Player: {fileID: 0}
+  dollyCart: {fileID: 5227772938928229685}
 --- !u!1 &5227772938701010315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,8 +1149,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227772938928229685}
-  m_LocalRotation: {x: 0.34396312, y: 0.6546376, z: -0.44881666, w: 0.50169975}
-  m_LocalPosition: {x: 4.252762, y: 1005.04376, z: 3.3137817}
+  m_LocalRotation: {x: 0.5062349, y: -0.11254536, z: 0.066839665, w: 0.8524038}
+  m_LocalPosition: {x: -49.60914, y: 21.92102, z: -76.88562}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3561052018645912841}
@@ -1171,7 +1172,7 @@ MonoBehaviour:
   m_UpdateMethod: 1
   m_PositionUnits: 1
   m_Speed: 100
-  m_Position: 0
+  m_Position: 2057.207
 --- !u!1 &5227772939068838485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,8 +1461,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227772939236998740}
-  m_LocalRotation: {x: -0.36882183, y: -0.6409606, z: 0.42924038, w: -0.51854867}
-  m_LocalPosition: {x: 0.77165985, y: 1014.3713, z: 4.2509766}
+  m_LocalRotation: {x: -0.51716506, y: 0.03847003, z: 0.05661042, w: -0.8531446}
+  m_LocalPosition: {x: -48.367188, y: 30.701813, z: -81.506836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5227772938738200896}
@@ -1707,8 +1708,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227772939802125225}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.252762, y: 5.0436707, z: 3.3137817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -52, y: 5.0436707, z: -68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3561052018645912841}
@@ -1733,15 +1734,15 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: 0, y: 1000, z: 0}
+  - position: {x: 0, y: 1500, z: 0}
     roll: 0
-  - position: {x: 50, y: 800, z: 0}
+  - position: {x: 200, y: 1250, z: 0}
     roll: 0
-  - position: {x: 0, y: 600, z: 50}
+  - position: {x: 0, y: 1000, z: 200}
     roll: 0
-  - position: {x: -50, y: 400, z: 0}
+  - position: {x: -200, y: 750, z: 0}
     roll: 0
-  - position: {x: 0, y: 200, z: -50}
+  - position: {x: 0, y: 500, z: -200}
     roll: 0
   - position: {x: 0, y: 0, z: 0}
     roll: 0
