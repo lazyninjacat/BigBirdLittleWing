@@ -109,10 +109,13 @@ public class MiniMapController : MonoBehaviour {
 			}
 		}
 	}
-
+	private void Update()
+	{
+		target = FindObjectOfType<PlayerManager>().currentSub.transform;
+		
+	}
 	//As this script is ExecuteInEditMode, this function will be called when something in scene changes
 	public void LateUpdate(){
-		target = FindObjectOfType<PlayerManager>().currentSub.transform;
 
 		//Set minimap images and colors
 		mapPanelMask.sprite = miniMapMask;
