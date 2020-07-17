@@ -91,6 +91,10 @@ public class MiniMapController : MonoBehaviour {
 		target = FindObjectOfType<PlayerManager>().currentSub.transform;
 
 	}
+	private void Start()
+	{
+		DontDestroyOnLoad(this.gameObject);
+	}
 	//Release the unmanaged objects
 	void OnDisable(){
 		if (renderTex != null) {

@@ -17,8 +17,11 @@ public class LoadSection : MonoBehaviour
                     {
                         LevelManager.L_Instance.LoadScene("Section1");
                         LevelManager.L_Instance._load01 = true;
-                        LevelManager.L_Instance.UnloadScene("Section3");
-                        LevelManager.L_Instance._load03 = false;
+                        if (LevelManager.L_Instance._load03)
+                        {
+                            LevelManager.L_Instance.UnloadScene("Section3");
+                            LevelManager.L_Instance._load03 = false;
+                        }
                     }
                     break;
                 case "Load_02":
@@ -33,8 +36,12 @@ public class LoadSection : MonoBehaviour
                     {
                         LevelManager.L_Instance.LoadScene("Section3");
                         LevelManager.L_Instance._load03 = true;
-                        LevelManager.L_Instance.UnloadScene("Section1");
-                        LevelManager.L_Instance._load01 = false;
+
+                        if (LevelManager.L_Instance._load01)
+                        {
+                            LevelManager.L_Instance.UnloadScene("Section1");
+                            LevelManager.L_Instance._load01 = false;
+                        }
                     }
                     break;
                 case "Load_04":
@@ -42,8 +49,12 @@ public class LoadSection : MonoBehaviour
                     {
                         LevelManager.L_Instance.LoadScene("Section4");
                         LevelManager.L_Instance._load04 = true;
-                        LevelManager.L_Instance.UnloadScene("Section2");
-                        LevelManager.L_Instance._load02 = false;
+
+                        if (LevelManager.L_Instance._load02)
+                        {
+                            LevelManager.L_Instance.UnloadScene("Section2");
+                            LevelManager.L_Instance._load02 = false;
+                        }
                     }
                     break;
         
@@ -52,15 +63,23 @@ public class LoadSection : MonoBehaviour
                     {
                         LevelManager.L_Instance.LoadScene("Section5");
                         LevelManager.L_Instance._load05 = true;
-                        LevelManager.L_Instance.UnloadScene("Section3");
-                        LevelManager.L_Instance._load03 = false;
+                        if (LevelManager.L_Instance._load03)
+                        {
+                            LevelManager.L_Instance.UnloadScene("Section3");
+                            LevelManager.L_Instance._load03 = false;
+                        }
+                        if (LevelManager.L_Instance._load06)
+                        {
+                            LevelManager.L_Instance.UnloadScene("Section6");
+                            LevelManager.L_Instance._load06 = false;
+                        }
                     }
                     break;
                 case "Load_06":
                     if (!LevelManager.L_Instance._load06)
                     {
                         LevelManager.L_Instance.LoadScene("Section6");
-                        LevelManager.L_Instance._load05 = true;
+                        LevelManager.L_Instance._load06 = true;
                         LevelManager.L_Instance.UnloadScene("Section4");
                         LevelManager.L_Instance._load03 = false;
                     }
