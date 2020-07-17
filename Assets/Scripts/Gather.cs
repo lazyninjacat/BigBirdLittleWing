@@ -14,6 +14,7 @@ public class Gather : MonoBehaviour
     [SerializeField] Image EnergyBarBB;
     [SerializeField] Docking docking;
     [SerializeField] GameObject gatherParticles;
+    [SerializeField] ParticleSystem BBparticles;
 
     public int totalEnergyLW;
     public int totalEnergyBB;
@@ -125,7 +126,7 @@ public class Gather : MonoBehaviour
         {
             Debug.Log("gathering started");
             int energyAmount = Int16.Parse(collision.gameObject.name);
-            StartCoroutine(GatherHelperLW(energyAmount));
+            StartCoroutine(GatherHelperLW(energyAmount, collision.gameObject.GetComponent<ParticleSystem>()));
             collision.gameObject.GetComponent<Animation>().Stop("energyGeodeIdle");
             collision.gameObject.GetComponent<Animation>().Play("geodeGatherDim");
             activeGeodesList.Remove(collision.gameObject);
@@ -134,9 +135,10 @@ public class Gather : MonoBehaviour
     }
 
 
-    private IEnumerator GatherHelperLW(int energyAmount)
+    private IEnumerator GatherHelperLW(int energyAmount, ParticleSystem particleSys)
     {
         gatherParticles.SetActive(true);
+        particleSys.Play();
         for (int i = energyAmount; i > 0; i--)
         {
             totalEnergyLW++;
@@ -144,6 +146,7 @@ public class Gather : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         gatherParticles.SetActive(false);
+        particleSys.Stop();
     }
 
     public IEnumerator EnergyTransferHelper()
@@ -151,6 +154,7 @@ public class Gather : MonoBehaviour
         Debug.Log("Start Energy Transfer");
         isTransferingEnergy = true;
         gatherParticles.SetActive(true);
+        BBparticles.Play();
         for (int i = 1; i < totalEnergyLW; i++)
         {
             if (totalEnergyBB < 50 && totalEnergyLW > 10)
@@ -167,6 +171,7 @@ public class Gather : MonoBehaviour
             }       
         }
         gatherParticles.SetActive(false);
+        BBparticles.Stop();
         docking.DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Energy transfer complete";
         isTransferingEnergy = false;
         docking.justFinishedEnergyTransfer = true;
