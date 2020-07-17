@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 380406467546219131}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791037499
 GameObject:
@@ -2359,6 +2359,11 @@ PrefabInstance:
       propertyPath: DockingCollider
       value: 
       objectReference: {fileID: 1154404494801949128}
+    - target: {fileID: 6224982630621819283, guid: 540a51098447a40418873a5f6ed7f548,
+        type: 3}
+      propertyPath: docking
+      value: 
+      objectReference: {fileID: 3416172130574673099}
     - target: {fileID: 9064880483843917773, guid: 540a51098447a40418873a5f6ed7f548,
         type: 3}
       propertyPath: m_Animations.Array.size
@@ -2462,7 +2467,7 @@ PrefabInstance:
     - target: {fileID: 1517363756871610766, guid: 0bcca4172e8a83246a3d543de7d43daa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1571999262619850796, guid: 0bcca4172e8a83246a3d543de7d43daa,
         type: 3}

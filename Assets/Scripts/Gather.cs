@@ -13,7 +13,7 @@ public class Gather : MonoBehaviour
     [SerializeField] Image EnergyBarLW;
     [SerializeField] Image EnergyBarBB;
     [SerializeField] Docking docking;
-
+    [SerializeField] GameObject gatherParticles;
 
     public int totalEnergyLW;
     public int totalEnergyBB;
@@ -21,9 +21,6 @@ public class Gather : MonoBehaviour
     private bool isCountingBB;
     private bool isCountingLW;
     public bool isTransferingEnergy;
-
-
-
 
     public List<GameObject> activeGeodesList;
     public List<GameObject> inactiveGeodesList;
@@ -59,15 +56,23 @@ public class Gather : MonoBehaviour
             StartCoroutine(EnergyDrainBB());
         }
 
-    
-        
+        if (totalEnergyBB > 50)
+        {
+            totalEnergyBB = 50;
+        }
+
+        if (totalEnergyLW > 50)
+        {
+            totalEnergyLW = 50;
+        }
+
     }
 
 
     private IEnumerator EnergyDrainLW()
     {
         isCountingLW = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         totalEnergyLW--;
         UpdateEnergyBarLW();
         isCountingLW = false;
@@ -76,7 +81,7 @@ public class Gather : MonoBehaviour
     private IEnumerator EnergyDrainBB()
     {
         isCountingBB = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         totalEnergyBB--;
         UpdateEnergyBarBB();
         isCountingBB = false;
@@ -119,37 +124,33 @@ public class Gather : MonoBehaviour
         if (activeGeodesList.Contains(collision.gameObject))
         {
             Debug.Log("gathering started");
-
             int energyAmount = Int16.Parse(collision.gameObject.name);
-
             StartCoroutine(GatherHelperLW(energyAmount));
-
             collision.gameObject.GetComponent<Animation>().Stop("energyGeodeIdle");
             collision.gameObject.GetComponent<Animation>().Play("geodeGatherDim");
-
             activeGeodesList.Remove(collision.gameObject);
             inactiveGeodesList.Add(collision.gameObject);
-        }
-       
-       
+        }      
     }
 
 
     private IEnumerator GatherHelperLW(int energyAmount)
     {
+        gatherParticles.SetActive(true);
         for (int i = energyAmount; i > 0; i--)
         {
             totalEnergyLW++;
             UpdateEnergyBarLW();
             yield return new WaitForSeconds(0.5f);
         }
+        gatherParticles.SetActive(false);
     }
 
     public IEnumerator EnergyTransferHelper()
     {
         Debug.Log("Start Energy Transfer");
         isTransferingEnergy = true;
-
+        gatherParticles.SetActive(true);
         for (int i = 1; i < totalEnergyLW; i++)
         {
             if (totalEnergyBB < 50 && totalEnergyLW > 10)
@@ -163,15 +164,11 @@ public class Gather : MonoBehaviour
             else
             {
                 break;
-            }
-       
+            }       
         }
-        
-
+        gatherParticles.SetActive(false);
         docking.DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Energy transfer complete";
-
         isTransferingEnergy = false;
         docking.justFinishedEnergyTransfer = true;
-
     }
 }
