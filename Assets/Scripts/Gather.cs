@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class Gather : MonoBehaviour
     
     [SerializeField] Image EnergyBarLW;
     [SerializeField] Image EnergyBarBB;
-
+    [SerializeField] Docking docking;
 
 
     public int totalEnergyLW;
@@ -20,6 +21,7 @@ public class Gather : MonoBehaviour
     private bool isCountingBB;
     private bool isCountingLW;
     public bool isTransferingEnergy;
+
 
 
 
@@ -47,7 +49,7 @@ public class Gather : MonoBehaviour
     void Update()
     {
 
-        if (!isCountingLW && totalEnergyLW > 0)
+        if (!isCountingLW && totalEnergyLW > 0 && docking.isDocked == false)
         {
             StartCoroutine(EnergyDrainLW());
         }
@@ -56,6 +58,8 @@ public class Gather : MonoBehaviour
         {
             StartCoroutine(EnergyDrainBB());
         }
+
+    
         
     }
 
@@ -148,7 +152,7 @@ public class Gather : MonoBehaviour
 
         for (int i = 1; i < totalEnergyLW; i++)
         {
-            if (totalEnergyBB < 50)
+            if (totalEnergyBB < 50 && totalEnergyLW > 10)
             {
                 totalEnergyLW--;
                 totalEnergyBB++;
@@ -162,8 +166,12 @@ public class Gather : MonoBehaviour
             }
        
         }
+        
+
+        docking.DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Energy transfer complete";
 
         isTransferingEnergy = false;
+        docking.justFinishedEnergyTransfer = true;
 
     }
 }

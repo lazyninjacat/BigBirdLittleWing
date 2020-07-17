@@ -11,13 +11,15 @@ public class Docking : MonoBehaviour
     [SerializeField] Transform Dock;
     [SerializeField] GameObject DockingCollider;
     [SerializeField] Gather gather;
-    [SerializeField] GameObject DockingPromptUI;
+    [SerializeField] public GameObject DockingPromptUI;
     [SerializeField] GameObject LW_Cam;
 
     private bool isOnDollyCart;
     private bool triggeredDockingCollider;
     private bool isStart;
-    private bool justFinishedEnergyTransfer;
+    public bool justFinishedEnergyTransfer;
+    public bool isDocked;
+    public bool isUndocking;
 
     private Vector3 DockPosition;
 
@@ -39,10 +41,13 @@ public class Docking : MonoBehaviour
             {
                 if (triggeredDockingCollider)
                 {
-                    if (Input.GetButtonDown("Grab"))
+                    if (!isDocked)
                     {
-                        StartCoroutine(DockingHelper());
-                    }
+                        if (Input.GetButtonDown("Grab"))
+                        {
+                            StartCoroutine(DockingHelper());
+                        }
+                    }                  
                 }
             }
             else
@@ -63,6 +68,56 @@ public class Docking : MonoBehaviour
                 gameObject.GetComponent<SmallSub>().enabled = true;
             }
         }
+
+        if (isDocked)
+        {
+            gameObject.transform.position = DockPosition;
+            gameObject.GetComponent<SmallSub>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+
+        if (isUndocking)
+        {
+            isDocked = false;
+            isOnDollyCart = true;
+
+            StartCoroutine(UndockingHelper());
+
+          
+        }
+
+        if (isDocked && LW_Cam.activeSelf)
+        {
+            DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Docked. Press 'X' (or keyboard 'T') to begin energy transfer, press 'Y' (or keyboard 'U') to undock, press 'B' to switch to bigsub";
+
+            if (Input.GetKeyDown(KeyCode.JoystickButton2) || Input.GetKeyDown(KeyCode.T))
+            {
+                Debug.Log("x button");
+                StartCoroutine(gather.EnergyTransferHelper());
+            }
+
+            if (Input.GetKeyDown(KeyCode.JoystickButton3) || Input.GetKeyDown(KeyCode.U))
+            {
+                Debug.Log("y button");
+                isUndocking = true;
+                DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Undocked";
+            }
+
+        }
+        else if (LW_Cam.activeSelf == false)
+        {
+            DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "";
+        }
+    }
+
+    private IEnumerator UndockingHelper()
+    {
+        gameObject.GetComponent<Animation>().Play("undock");
+        yield return new WaitForSeconds(1);
+        isUndocking = false;
+        isOnDollyCart = false;
+
+
     }
 
     private IEnumerator DockingHelper()
@@ -78,44 +133,29 @@ public class Docking : MonoBehaviour
         //Turn on the Dolly Cart
         isOnDollyCart = true;
 
-        //Set the first waypoint of the dolly track to the little sub's current position.
-        // DockingDollyPath.m_Waypoints[0].position = gameObject.transform.position;
-
         //Set the little sub to position 0
-        gameObject.GetComponent<CinemachineDollyCart>().m_Position = 0;
+        gameObject.GetComponent<Animation>().Play("docking");
 
-        // Wait a second then begin energy transfer
+        // wait for dolly to complete track to dock position then set isDocked to true
         yield return new WaitForSeconds(1);
-        StartCoroutine(gather.EnergyTransferHelper());
-
-        // Wait 3 seconds for energy to transfer
-        yield return new WaitForSeconds(3);
-
-        // Change DockingUI text, and reset bools
-        DockingPromptUI.SetActive(true);
-        justFinishedEnergyTransfer = true;
-        isOnDollyCart = false;        
-        DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Energy transfer complete";
-
-        //Wait two second then clear the docking UI and reset justfinishedenergytransfer bool to false
-        yield return new WaitForSeconds(2);
-        DockingPromptUI.SetActive(false);
-        justFinishedEnergyTransfer = false;
+        isDocked = true;
     }
 
 
 
     private void OnTriggerEnter(Collider other)
     {
+        // Chck that player is currently on the LW sub by checking the active vcam
         if (LW_Cam.activeSelf)
         {
+            // Check that the collider is the docking collider
             if (other.gameObject.tag == "DockingCollider")
             {
                 Debug.Log("in docking collider");
                 DockingPromptUI.SetActive(true);
                 if (!justFinishedEnergyTransfer)
                 {
-                    DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "press 'A' to transfer energy";
+                    DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "press 'A' to dock";
                 }
                 triggeredDockingCollider = true;
             }
@@ -133,6 +173,8 @@ public class Docking : MonoBehaviour
                     //justFinishedEnergyTransfer = false;
                     triggeredDockingCollider = false;
                     DockingPromptUI.SetActive(false);
+                    justFinishedEnergyTransfer = false;
+
                 }
                 else
                 {

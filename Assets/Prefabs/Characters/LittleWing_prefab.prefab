@@ -17070,6 +17070,7 @@ GameObject:
   - component: {fileID: 4312847859574445355}
   - component: {fileID: 6224982630621819283}
   - component: {fileID: 4586871384348800631}
+  - component: {fileID: 9064880483843917773}
   m_Layer: 30
   m_Name: LittleWing_prefab
   m_TagString: Untagged
@@ -17161,6 +17162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnergyBarLW: {fileID: 0}
   EnergyBarBB: {fileID: 0}
+  docking: {fileID: 0}
   totalEnergyLW: 0
   totalEnergyBB: 0
   isTransferingEnergy: 0
@@ -17181,8 +17183,24 @@ MonoBehaviour:
   m_Path: {fileID: 0}
   m_UpdateMethod: 0
   m_PositionUnits: 1
-  m_Speed: 3
+  m_Speed: 2
   m_Position: 0
+--- !u!111 &9064880483843917773
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207068318585945993}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 809e1e1768497c943823c8a276d6b406, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 809e1e1768497c943823c8a276d6b406, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4297931672326201500
 GameObject:
   m_ObjectHideFlags: 0

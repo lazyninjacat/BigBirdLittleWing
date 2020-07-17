@@ -528,13 +528,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7465236740255563647}
-  m_LocalRotation: {x: -0.047069397, y: -0.9596577, z: -0.07137197, w: -0.26785752}
-  m_LocalPosition: {x: -0.721, y: 1.033, z: -1.018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07, y: 1.27, z: -1.48}
   m_LocalScale: {x: 3.8503995, y: 3.8503995, z: 3.8503995}
   m_Children: []
   m_Father: {fileID: 7435633232212138215}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: -6.4170003, y: -211.60799, z: 7.4340005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3337461015503475438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,22 +552,12 @@ MonoBehaviour:
     pathColor: {r: 0, g: 1, b: 0, a: 1}
     inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     width: 0.2
-  m_Looped: 0
+  m_Looped: 1
   m_Waypoints:
-  - position: {x: 0.5549045, y: 1.0566294, z: 1.4078966}
+  - position: {x: 0, y: 0.7246348, z: -1.42}
     roll: 0
-  - position: {x: -1.2775338, y: 0.63304335, z: 0.58666575}
-    roll: 10
-  - position: {x: -1.3360864, y: 0.47084045, z: -0.69787043}
-    roll: 15
-  - position: {x: 0.2663518, y: 0.42435282, z: -0.8814354}
-    roll: 20
-  - position: {x: 1.0386204, y: 0.5785652, z: 0.35597283}
-    roll: 25
-  - position: {x: 0.71197003, y: 0.2448752, z: 0.6814907}
-    roll: 30
   - position: {x: 0, y: 0, z: 0}
-    roll: 50.23
+    roll: 0
 --- !u!1 &7519243095602481113
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,8 +585,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7519243095602481113}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.78, y: 1.91, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.017, y: 2.832, z: -0.492}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7435633232212138215}
   m_RootOrder: 9
@@ -616,7 +606,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7519243095602481113}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -719,7 +709,7 @@ Transform:
   m_GameObject: {fileID: 8246812645387815764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.07, y: -0.14, z: 0.25}
-  m_LocalScale: {x: 30, y: 30, z: 15}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 7435633232212138215}
   m_RootOrder: 10
