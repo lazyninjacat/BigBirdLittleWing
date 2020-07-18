@@ -6,24 +6,22 @@ using UnityEngine;
 
 public class Docking : MonoBehaviour
 {
-
     [SerializeField] CinemachineSmoothPath DockingDollyPath;
     [SerializeField] Transform Dock;
     [SerializeField] GameObject DockingCollider;
     [SerializeField] Gather gather;
     [SerializeField] public GameObject DockingPromptUI;
     [SerializeField] GameObject LW_Cam;
-
-    private bool isOnDollyCart;
-    private bool triggeredDockingCollider;
-    private bool isStart;
+        
     public bool justFinishedEnergyTransfer;
     public bool isDocked;
     public bool isUndocking;
 
+    private bool isOnDollyCart;
+    private bool triggeredDockingCollider;
+    private bool isStart;
+
     private Vector3 DockPosition;
-
-
 
     private void Start()
     {
@@ -82,8 +80,6 @@ public class Docking : MonoBehaviour
             isOnDollyCart = true;
 
             StartCoroutine(UndockingHelper());
-
-          
         }
 
         if (isDocked && LW_Cam.activeSelf)
@@ -102,7 +98,6 @@ public class Docking : MonoBehaviour
                 isUndocking = true;
                 DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Undocked";
             }
-
         }
         else if (LW_Cam.activeSelf == false)
         {
@@ -116,8 +111,6 @@ public class Docking : MonoBehaviour
         yield return new WaitForSeconds(1);
         isUndocking = false;
         isOnDollyCart = false;
-
-
     }
 
     private IEnumerator DockingHelper()
@@ -174,7 +167,6 @@ public class Docking : MonoBehaviour
                     triggeredDockingCollider = false;
                     DockingPromptUI.SetActive(false);
                     justFinishedEnergyTransfer = false;
-
                 }
                 else
                 {

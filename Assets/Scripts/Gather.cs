@@ -12,6 +12,11 @@ public class Gather : MonoBehaviour
     
     [SerializeField] Image EnergyBarLW;
     [SerializeField] Image EnergyBarBB;
+    [SerializeField] GameObject EnergyBarDeathAnimationLW;
+    [SerializeField] GameObject EnergyBarDeathAnimationBB;
+    [SerializeField] TextMeshProUGUI EnergyWarningText;
+    [SerializeField] GameObject EnergyBarWarningAnimationLW;
+    [SerializeField] GameObject EnergyBarWarningAnimationBB;
     [SerializeField] Docking docking;
     [SerializeField] GameObject gatherParticles;
     [SerializeField] ParticleSystem BBparticles;
@@ -21,10 +26,15 @@ public class Gather : MonoBehaviour
 
     private bool isCountingBB;
     private bool isCountingLW;
+
+    public bool LWisDead;
+    public bool BBisDead;
     public bool isTransferingEnergy;
 
     public List<GameObject> activeGeodesList;
     public List<GameObject> inactiveGeodesList;
+
+
 
     void Start()
     {
@@ -46,27 +56,91 @@ public class Gather : MonoBehaviour
 
     void Update()
     {
-
+        // Check conditions before draining energy from BB or LW
         if (!isCountingLW && totalEnergyLW > 0 && docking.isDocked == false)
         {
             StartCoroutine(EnergyDrainLW());
         }
-
         if (!isCountingBB && totalEnergyBB > 0)
         {
             StartCoroutine(EnergyDrainBB());
-        }
+        }             
 
+        // Cap both BB and LW energy at 50
+        if (totalEnergyLW > 50)
+        {
+            totalEnergyLW = 50;
+        }
         if (totalEnergyBB > 50)
         {
             totalEnergyBB = 50;
         }
 
-        if (totalEnergyLW > 50)
+        // Check if LW is dead
+        if (totalEnergyLW == 0)
         {
-            totalEnergyLW = 50;
+            LWisDead = true;
+            EnergyBarDeathAnimationLW.SetActive(true);
+        }
+        else
+        {
+            EnergyBarDeathAnimationLW.SetActive(false);
+            LWisDead = false;
         }
 
+        // Check if BB is dead
+        if (totalEnergyBB == 0)
+        {
+            BBisDead = true;
+            EnergyBarDeathAnimationBB.SetActive(true);
+            
+        }
+        else
+        {
+            BBisDead = false;
+            EnergyBarDeathAnimationBB.SetActive(false);
+        }
+
+        // Play low energy warning animation is charge falls below 10
+        if (totalEnergyBB < 10 && !BBisDead)
+        {
+            EnergyBarWarningAnimationBB.SetActive(true);
+            EnergyBarWarningAnimationBB.GetComponent<Image>().fillAmount = EnergyBarBB.fillAmount;
+        }
+        else
+        {
+            EnergyBarWarningAnimationBB.SetActive(false);
+        }
+
+        if (totalEnergyLW < 10 && !LWisDead)
+        {
+            EnergyBarWarningAnimationLW.SetActive(true);
+            EnergyBarWarningAnimationLW.GetComponent<Image>().fillAmount = EnergyBarLW.fillAmount;
+
+        }
+        else
+        {
+            EnergyBarWarningAnimationLW.SetActive(false);
+        }
+
+
+        // set UI text depending on which subs are dead
+        if (BBisDead && LWisDead)
+        {
+            EnergyWarningText.text = "Game Over";
+        }
+        else if (BBisDead)
+        {
+            EnergyWarningText.text = "Big Bird has run out of energy. Recharge required.";
+        }
+        else if (LWisDead)
+        {
+            EnergyWarningText.text = "Little Wing has run out of energy.Recharge required.";
+        }
+        else
+        {
+            EnergyWarningText.text = "";
+        }
     }
 
 

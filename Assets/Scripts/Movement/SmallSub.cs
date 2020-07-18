@@ -12,7 +12,7 @@ public class SmallSub : PlayerController
     [SerializeField] float _lerpSpeed;
     [SerializeField] Material[] _mat;
 
-
+    private bool isDead;
 
 
 
@@ -34,45 +34,60 @@ public class SmallSub : PlayerController
 
     public override void RunFixedUpdate()
     {
-        //sub movement        
-        if (_inputs == Vector2.zero)
+        // Check if LW is dead
+        if (gameObject.GetComponent<Gather>().LWisDead)
         {
-            //slow down sub by -velocity
-            if (rb.velocity != Vector3.zero)
-            {
-                rb.AddForce(-rb.velocity * speed);
-            }
+            isDead = true;
         }
         else
         {
-            rb.AddForce((transform.forward * _inputs.y + transform.right * _inputs.x).normalized * speed);
-            if (rb.velocity.magnitude > maxVelocity)
+            isDead = false;
+        }
+
+        
+        if (!isDead)
+        {
+            //sub movement        
+            if (_inputs == Vector2.zero)
             {
-                rb.velocity = rb.velocity.normalized * maxVelocity;
+                //slow down sub by -velocity
+                if (rb.velocity != Vector3.zero)
+                {
+                    rb.AddForce(-rb.velocity * speed);
+                }
+            }
+            else
+            {
+                rb.AddForce((transform.forward * _inputs.y + transform.right * _inputs.x).normalized * speed);
+                if (rb.velocity.magnitude > maxVelocity)
+                {
+                    rb.velocity = rb.velocity.normalized * maxVelocity;
+                }
+            }
+
+            //sub rotation
+            if (_lookCoOrds != Vector2.zero)
+            {
+                _lookStorage += _lookCoOrds * Time.fixedDeltaTime * _lookSensitivity;
+
+                _rot = Quaternion.Slerp(transform.rotation,
+                                     Quaternion.Euler((_lookStorage.y * 4) * -1, _lookStorage.x * 3, 0f),
+                                     _turnSpeed * Time.fixedDeltaTime);
+
+                transform.rotation = RotationClamp(_rot);
+
+            }
+
+            if (mouseWheelInput != 0f)
+            {
+                rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
+                if (rb.velocity.magnitude > maxVelocity)
+                {
+                    rb.velocity = rb.velocity.normalized * maxVelocity;
+                }
             }
         }
-
-        //sub rotation
-        if (_lookCoOrds != Vector2.zero)
-        {
-            _lookStorage += _lookCoOrds * Time.fixedDeltaTime * _lookSensitivity;
-
-            _rot = Quaternion.Slerp(transform.rotation,
-                                 Quaternion.Euler((_lookStorage.y * 4) * -1, _lookStorage.x * 3, 0f),
-                                 _turnSpeed * Time.fixedDeltaTime);
-
-            transform.rotation = RotationClamp(_rot);
-
-        }
-
-        if (mouseWheelInput != 0f)
-        {
-            rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
-            if (rb.velocity.magnitude > maxVelocity)
-            {
-                rb.velocity = rb.velocity.normalized * maxVelocity;
-            }
-        }
+        
     }
 
     Quaternion RotationClamp(Quaternion q)

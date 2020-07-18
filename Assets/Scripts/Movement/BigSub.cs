@@ -41,6 +41,7 @@ public class BigSub : PlayerController
     [SerializeField] float _smoothing = 0.7f;
     float _distanceFromPickup = Mathf.Infinity;
     GameObject closest = null;
+    [SerializeField] Gather gather;
 
     //spotlight
     public GameObject _spotlight;
@@ -84,12 +85,13 @@ public class BigSub : PlayerController
 
         /////////////////////////////////////////
         /// EnegyCharge stuff
+        totalEnergy = gather.totalEnergyBB;
 
         if (totalEnergy > 0)
         {
             isCharged = true;
         }
-        else
+        else if (totalEnergy <= 0)
         {
             isCharged = false;
         }
