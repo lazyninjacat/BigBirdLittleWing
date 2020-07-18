@@ -50,7 +50,7 @@ public class BigSub : PlayerController
 
     /// Move sub up/down
     public float mouseWheelInput;
-    private readonly int ballast = 20;
+    private readonly int ballast = 50;
 
     //Controller Support
     public bool isCon;

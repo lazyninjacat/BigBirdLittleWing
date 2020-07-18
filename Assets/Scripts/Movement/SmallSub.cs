@@ -6,7 +6,7 @@ using UnityEngine;
 public class SmallSub : PlayerController
 {
     public float mouseWheelInput;
-    private readonly int ballast = 20;
+    private readonly int ballast = 50;
     Quaternion _rot;
     private bool isCon;
     [SerializeField] float _lerpSpeed;

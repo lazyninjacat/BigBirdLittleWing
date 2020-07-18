@@ -54,4 +54,8 @@ MonoBehaviour:
   - {fileID: 2936480199219804047, guid: aced0965fe9f2a84f82d305bc8c178b3, type: 3}
   - {fileID: 3401716036701796952, guid: eef3dd11ec324a341943404e435baa6e, type: 3}
   - {fileID: 7366895944062378807, guid: e0f92285fb8009e439e3017ac832c7a0, type: 3}
+  - {fileID: 7366895944062378807, guid: 6b0970ccdfc313548b633dfde90a4309, type: 3}
   _spawnCount: 100
+  _layer:
+    serializedVersion: 2
+    m_Bits: 16384
