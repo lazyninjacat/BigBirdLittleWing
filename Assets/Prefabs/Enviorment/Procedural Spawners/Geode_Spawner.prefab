@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8393989821443043874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3784679194844415043}
+  - component: {fileID: 3463709223072644523}
+  m_Layer: 0
+  m_Name: Geode_Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3784679194844415043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8393989821443043874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3463709223072644523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8393989821443043874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dccb95eca272caa469a311f995e52c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _plantType: 6
+  _Bounds: {x: 50, y: 1, z: 100}
+  _spawnPrefab:
+  - {fileID: 2070278781492222790, guid: 4a2a526b80e1d28498806ab45e17a7de, type: 3}
+  - {fileID: 5896746955850329170, guid: a2e2a8c120b9f88499125001562ed3c5, type: 3}
+  - {fileID: 4384366066620749584, guid: 15328294fe830e84586a40f976de49cc, type: 3}
+  _spawnCount: 20
+  _layer:
+    serializedVersion: 2
+    m_Bits: 16384

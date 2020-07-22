@@ -7,7 +7,7 @@ using UnityEngine.PlayerLoop;
 public class Seeding : MonoBehaviour
 {
 
-    public enum PlantType { Algae_Red, Anemone, SeaWeed, Fish, Coral, Rock }
+    public enum PlantType { Algae_Red, Anemone, SeaWeed, Fish, Coral, Rock, Geode }
     public PlantType _plantType;
     public Vector3 _Bounds = new Vector3(2, 1, 2);
     static int _maxObj = 1000;
@@ -75,6 +75,16 @@ public class Seeding : MonoBehaviour
                     _objIndex[i].transform.parent = this.transform;
                     _objIndex[i].layer = 14;
                     break;
+
+                case PlantType.Geode:
+                    Physics.Raycast(pos, -Vector3.up, out hit, Mathf.Infinity, 1 << 14);
+                    _objIndex[i] = (GameObject)Instantiate(_spawnPrefab[Random.Range(0, _spawnPrefab.Length)], hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.zero));
+                    _objIndex[i].transform.parent = this.transform;
+                    _objIndex[i].layer = 14;
+                    break;
+
+   
+
                 default:
                     break;
             }

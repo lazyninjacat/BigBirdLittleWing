@@ -18,8 +18,8 @@ public class Gather : MonoBehaviour
     [SerializeField] GameObject EnergyBarWarningAnimationLW;
     [SerializeField] GameObject EnergyBarWarningAnimationBB;
     [SerializeField] Docking docking;
-    [SerializeField] GameObject gatherParticles;
-    [SerializeField] ParticleSystem BBparticles;
+    [SerializeField] GameObject LWParticles;
+    [SerializeField] GameObject BBparticles;
 
     public int totalEnergyLW;
     public int totalEnergyBB;
@@ -57,7 +57,7 @@ public class Gather : MonoBehaviour
     void Update()
     {
         // Check conditions before draining energy from BB or LW
-        if (!isCountingLW && totalEnergyLW > 0 && docking.isDocked == false)
+        if (!isCountingLW && totalEnergyLW > 0 && !docking.isDocked)
         {
             StartCoroutine(EnergyDrainLW());
         }
@@ -211,7 +211,7 @@ public class Gather : MonoBehaviour
 
     private IEnumerator GatherHelperLW(int energyAmount, ParticleSystem particleSys)
     {
-        gatherParticles.SetActive(true);
+        LWParticles.SetActive(true);
         particleSys.Play();
         for (int i = energyAmount; i > 0; i--)
         {
@@ -219,7 +219,7 @@ public class Gather : MonoBehaviour
             UpdateEnergyBarLW();
             yield return new WaitForSeconds(0.5f);
         }
-        gatherParticles.SetActive(false);
+        LWParticles.SetActive(false);
         particleSys.Stop();
     }
 
@@ -227,8 +227,8 @@ public class Gather : MonoBehaviour
     {
         Debug.Log("Start Energy Transfer");
         isTransferingEnergy = true;
-        gatherParticles.SetActive(true);
-        BBparticles.Play();
+        LWParticles.SetActive(true);
+        BBparticles.SetActive(true); ;
         for (int i = 1; i < totalEnergyLW; i++)
         {
             if (totalEnergyBB < 50 && totalEnergyLW > 10)
@@ -244,8 +244,8 @@ public class Gather : MonoBehaviour
                 break;
             }       
         }
-        gatherParticles.SetActive(false);
-        BBparticles.Stop();
+        LWParticles.SetActive(false);
+        BBparticles.SetActive(false); ;
         docking.DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "Energy transfer complete";
         isTransferingEnergy = false;
         docking.justFinishedEnergyTransfer = true;
