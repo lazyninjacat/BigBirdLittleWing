@@ -104,7 +104,8 @@ public class Docking : MonoBehaviour
         {
             DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "";
         }
-        if(Vector3.Distance(transform.position,Dock.position) >= 100) StartCoroutine(DockingHelper());
+
+        //if(Vector3.Distance(transform.position,Dock.position) >= 100) StartCoroutine(DockingHelper());
     }
 
     private IEnumerator UndockingHelper()

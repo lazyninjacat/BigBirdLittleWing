@@ -16837,7 +16837,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3779083810309388630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
@@ -16847,7 +16847,7 @@ Transform:
   - {fileID: 3779083809694470534}
   m_Father: {fileID: 3695550442112726485}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &3779083810309388631
 Animator:
   serializedVersion: 3
@@ -17071,9 +17071,10 @@ GameObject:
   - component: {fileID: 6224982630621819283}
   - component: {fileID: 4586871384348800631}
   - component: {fileID: 9064880483843917773}
+  - component: {fileID: 3416172130574673099}
   m_Layer: 30
   m_Name: LittleWing_prefab
-  m_TagString: Untagged
+  m_TagString: LW
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17103,7 +17104,7 @@ Rigidbody:
   m_GameObject: {fileID: 4207068318585945993}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -17122,18 +17123,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b4756e827095b45b39e95c2de307f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1336533080123070148}
-  anim: {fileID: 3779083810309388631}
+  rb: {fileID: 0}
+  anim: {fileID: 0}
   _inputs: {x: 0, y: 0}
-  _lookSensitivity: 2
-  speed: 0.5
-  maxVelocity: 2
+  _lookSensitivity: 5
+  speed: 10
+  maxVelocity: 25
   _lookCoOrds: {x: 0, y: 0}
-  _lookStorage: {x: 0, y: 0}
-  _turnSpeed: 2
+  _lookStorage: {x: 1.845001, y: 1.3399994}
+  _turnSpeed: 3
   _inv: 0
-  mouseWheelInput: 0
-  _lerpSpeed: 0
+  mouseWheelInput: 1
+  _lerpSpeed: 3
   _mat: []
 --- !u!136 &4312847859574445355
 CapsuleCollider:
@@ -17163,10 +17164,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnergyBarLW: {fileID: 0}
   EnergyBarBB: {fileID: 0}
-  docking: {fileID: 0}
+  EnergyBarDeathAnimationLW: {fileID: 0}
+  EnergyBarDeathAnimationBB: {fileID: 0}
+  EnergyWarningText: {fileID: 0}
+  EnergyBarWarningAnimationLW: {fileID: 0}
+  EnergyBarWarningAnimationBB: {fileID: 0}
+  docking: {fileID: 3416172130574673099}
   gatherParticles: {fileID: 4312871683612150477}
+  BBparticles: {fileID: 0}
   totalEnergyLW: 0
   totalEnergyBB: 0
+  LWisDead: 0
+  BBisDead: 0
   isTransferingEnergy: 0
   activeGeodesList: []
   inactiveGeodesList: []
@@ -17183,10 +17192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 0}
-  m_UpdateMethod: 0
+  m_UpdateMethod: 1
   m_PositionUnits: 1
-  m_Speed: 2
-  m_Position: 0
+  m_Speed: 30
+  m_Position: 7.00358
 --- !u!111 &9064880483843917773
 Animation:
   m_ObjectHideFlags: 0
@@ -17199,10 +17208,32 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 809e1e1768497c943823c8a276d6b406, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 809e1e1768497c943823c8a276d6b406, type: 2}
+  - {fileID: 7400000, guid: 2971bd9e33123904f9acef71d0fd4957, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &3416172130574673099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207068318585945993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec51d03e74571ae4ba522965dff4ee61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DockingDollyPath: {fileID: 0}
+  Dock: {fileID: 0}
+  DockingCollider: {fileID: 0}
+  gather: {fileID: 6224982630621819283}
+  DockingPromptUI: {fileID: 0}
+  LW_Cam: {fileID: 0}
+  justFinishedEnergyTransfer: 0
+  isDocked: 0
+  isUndocking: 0
 --- !u!1 &4297931672326201500
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,8 @@ public class Intro_Sequence : MonoBehaviour
         if (isStartSequence)
         {
             Player.transform.position = dollyCart.transform.position;
+            PlayerCam.SetActive(false);
+            SurfaceCam.SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -53,6 +55,9 @@ public class Intro_Sequence : MonoBehaviour
 
     private IEnumerator StartSequence()
     {
+        PlayerCam.SetActive(false);
+        SurfaceCam.SetActive(true);
+
         isStartSequence = true;
         dollyCart.GetComponent<CinemachineDollyCart>().m_Position = 0;
 

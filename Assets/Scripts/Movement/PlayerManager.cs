@@ -11,7 +11,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] GameObject BigBirdCam;
     [SerializeField] GameObject LittleWingCam;
 
-    private Camera mainCamera;
     public PlayerController currentSub;
 
     private void SwapPlayer()
