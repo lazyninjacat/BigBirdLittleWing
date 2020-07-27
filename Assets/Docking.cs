@@ -65,6 +65,7 @@ public class Docking : MonoBehaviour
                 gameObject.GetComponent<CinemachineDollyCart>().enabled = false;
                 gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 gameObject.GetComponent<SmallSub>().enabled = true;
+
             }
         }
 
@@ -104,6 +105,9 @@ public class Docking : MonoBehaviour
         {
             DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "";
         }
+
+
+        //TODO replace this with an invisable boundary collider sphere gameobject
 
         //if(Vector3.Distance(transform.position,Dock.position) >= 100) StartCoroutine(DockingHelper());
     }
