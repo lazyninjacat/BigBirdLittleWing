@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Reflection;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 [ExecuteInEditMode]
