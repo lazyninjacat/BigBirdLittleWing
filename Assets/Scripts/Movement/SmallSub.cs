@@ -45,8 +45,8 @@ public class SmallSub : PlayerController
         }
 
         
-        if (!isDead)
-        {
+        //if (!isDead)
+        //{
             //sub movement        
             if (_inputs == Vector2.zero)
             {
@@ -86,7 +86,7 @@ public class SmallSub : PlayerController
                     rb.velocity = rb.velocity.normalized * maxVelocity;
                 }
             }
-        }
+      //  }
         
     }
 
