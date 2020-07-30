@@ -97,8 +97,8 @@ public class BigSub : PlayerController
         }
         //////////////////////////////////////////
 
-        //if (isCharged)
-        //{
+        if (isCharged)
+        {
             switch (currentState)
             {
                 case state.MOVEEMPTY:
@@ -146,11 +146,11 @@ public class BigSub : PlayerController
                 default:
                     break;
             }
-      //  }
-        //else
-        //{
-        //    Debug.Log("Energy is empty! Need to re-charge in order to operate big sub");
-        //}
+        }
+        else
+        {
+            Debug.Log("Energy is empty! Need to re-charge in order to operate big sub");
+        }
 
     }
 
