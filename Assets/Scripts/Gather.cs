@@ -47,10 +47,10 @@ public class Gather : MonoBehaviour
             geode.GetComponent<Animation>().Play("energyGeodesIdle");
         }
 
-        totalEnergyLW = 25;
+        totalEnergyLW = 50;
         UpdateEnergyBarLW();
 
-        totalEnergyBB = 25;
+        totalEnergyBB = 50;
         UpdateEnergyBarBB();
     }
 
@@ -147,7 +147,7 @@ public class Gather : MonoBehaviour
     private IEnumerator EnergyDrainLW()
     {
         isCountingLW = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
         totalEnergyLW--;
         UpdateEnergyBarLW();
         isCountingLW = false;
@@ -156,7 +156,7 @@ public class Gather : MonoBehaviour
     private IEnumerator EnergyDrainBB()
     {
         isCountingBB = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
         totalEnergyBB--;
         UpdateEnergyBarBB();
         isCountingBB = false;
