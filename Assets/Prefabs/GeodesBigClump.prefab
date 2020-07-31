@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 831562461861585033}
   - component: {fileID: 831562461861585034}
   - component: {fileID: 4687102403322017421}
-  - component: {fileID: 1449130839043488388}
   m_Layer: 28
   m_Name: 5
   m_TagString: EnergyGeode
@@ -146,25 +145,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 92829259a6a219846b8ee730dc00c6d0, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &1449130839043488388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831562461861585036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &1662303445983384859
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +160,6 @@ GameObject:
   - component: {fileID: 1662303445983384857}
   - component: {fileID: 1662303445983384856}
   - component: {fileID: 3045872878780807876}
-  - component: {fileID: 8486081940183273111}
   m_Layer: 28
   m_Name: 2
   m_TagString: EnergyGeode
@@ -311,25 +290,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &8486081940183273111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662303445983384859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &1818894782784968799
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +305,6 @@ GameObject:
   - component: {fileID: 1818894782784968798}
   - component: {fileID: 1818894782784968796}
   - component: {fileID: 3019625552001925599}
-  - component: {fileID: 3913422290496572545}
   m_Layer: 28
   m_Name: 7
   m_TagString: EnergyGeode
@@ -476,25 +435,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7b7e1c2fb4e1a654fbf3b49ec0282600, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &3913422290496572545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818894782784968799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &2070278781492222790
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +489,6 @@ GameObject:
   - component: {fileID: 2397647521538288670}
   - component: {fileID: 2397647521538288669}
   - component: {fileID: 3886942163258585291}
-  - component: {fileID: 6425175356107609819}
   m_Layer: 28
   m_Name: 9
   m_TagString: EnergyGeode
@@ -680,25 +619,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7b7e1c2fb4e1a654fbf3b49ec0282600, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &6425175356107609819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2397647521538288640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &2452713934876053938
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +634,6 @@ GameObject:
   - component: {fileID: 2452713934876053936}
   - component: {fileID: 2452713934876053903}
   - component: {fileID: 3557125444005634136}
-  - component: {fileID: 5529714573668398044}
   m_Layer: 28
   m_Name: 3
   m_TagString: EnergyGeode
@@ -845,25 +764,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 92829259a6a219846b8ee730dc00c6d0, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &5529714573668398044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452713934876053938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &4582402230119915858
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +779,6 @@ GameObject:
   - component: {fileID: 4582402230119915856}
   - component: {fileID: 4582402230119915823}
   - component: {fileID: 7573760686772146046}
-  - component: {fileID: 4661901494168173681}
   m_Layer: 28
   m_Name: 1
   m_TagString: EnergyGeode
@@ -1010,25 +909,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &4661901494168173681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582402230119915858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &4757372194984413728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +924,6 @@ GameObject:
   - component: {fileID: 4757372194984413759}
   - component: {fileID: 4757372194984413757}
   - component: {fileID: 7541590367869803183}
-  - component: {fileID: 7543248467469605843}
   m_Layer: 28
   m_Name: 4
   m_TagString: EnergyGeode
@@ -1175,25 +1054,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &7543248467469605843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4757372194984413728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &6779112351774602930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,7 +1069,6 @@ GameObject:
   - component: {fileID: 6779112351774602929}
   - component: {fileID: 6779112351774602895}
   - component: {fileID: 7026662649686904544}
-  - component: {fileID: 5113501006264114585}
   m_Layer: 28
   m_Name: 6
   m_TagString: EnergyGeode
@@ -1340,25 +1199,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7b7e1c2fb4e1a654fbf3b49ec0282600, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &5113501006264114585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6779112351774602930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100
 --- !u!1 &8406361945214243927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,7 +1214,6 @@ GameObject:
   - component: {fileID: 8406361945214243926}
   - component: {fileID: 8406361945214243924}
   - component: {fileID: 346015968108473911}
-  - component: {fileID: 4460860359959827968}
   m_Layer: 28
   m_Name: 8
   m_TagString: EnergyGeode
@@ -1505,22 +1344,3 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f919082e6b286474f85944bc0a194e41, type: 2}
   - {fileID: 2100000, guid: 69437dff42a087d448dec89f5c4405e8, type: 2}
   activate: 0
---- !u!114 &4460860359959827968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8406361945214243927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  size: {x: 20, y: 20}
-  rotateWithObject: 0
-  upAxis: {x: 0, y: 1, z: 0}
-  initialIconRotation: 0
-  clampIconInBorder: 1
-  clampDistance: 100

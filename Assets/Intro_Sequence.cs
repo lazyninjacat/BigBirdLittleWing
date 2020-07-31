@@ -40,17 +40,28 @@ public class Intro_Sequence : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             StopAllCoroutines();
-            SurfaceCam.SetActive(false);
-            PlayerCam.SetActive(true);
-            
-            Text1.SetActive(false);
-            Text2.SetActive(false);
-            Text3.SetActive(false);
-            Text4.SetActive(false);
-            Text5.SetActive(false);
-            Text6.SetActive(false);
-            SkipText.SetActive(false);
+            StartCoroutine(SkipStart());
+
         }
+    }
+
+    private IEnumerator SkipStart()
+    {
+        dollyCart.GetComponent<CinemachineDollyCart>().m_Position = 1978f;
+        yield return new WaitForSeconds(1);
+
+        isStartSequence = false;
+        SurfaceCam.SetActive(false);
+        PlayerCam.SetActive(true);
+
+
+        Text1.SetActive(false);
+        Text2.SetActive(false);
+        Text3.SetActive(false);
+        Text4.SetActive(false);
+        Text5.SetActive(false);
+        Text6.SetActive(false);
+        SkipText.SetActive(false);
     }
 
     private IEnumerator StartSequence()
@@ -79,6 +90,8 @@ public class Intro_Sequence : MonoBehaviour
         Text6.SetActive(true);
         yield return new WaitUntil(() => !Text6.GetComponent<Animation>().isPlaying);
         Text6.SetActive(false);
+        yield return new WaitUntil(() => dollyCart.GetComponent<CinemachineDollyCart>().m_Position == 1978f);
+
         isStartSequence = false;
         PlayerCam.SetActive(true);
     }
