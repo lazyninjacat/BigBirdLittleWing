@@ -155,7 +155,7 @@ public class Docking : MonoBehaviour
                 DockingPromptUI.SetActive(true);
                 if (!justFinishedEnergyTransfer)
                 {
-                    DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "press 'A' to dock";
+                    DockingPromptUI.GetComponent<TextMeshProUGUI>().text = "press 'A' on gamepad, or click LMB to dock";
                 }
                 triggeredDockingCollider = true;
             }

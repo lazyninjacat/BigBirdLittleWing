@@ -147,7 +147,7 @@ public class Gather : MonoBehaviour
     private IEnumerator EnergyDrainLW()
     {
         isCountingLW = true;
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(5);
         totalEnergyLW--;
         UpdateEnergyBarLW();
         isCountingLW = false;
@@ -156,7 +156,7 @@ public class Gather : MonoBehaviour
     private IEnumerator EnergyDrainBB()
     {
         isCountingBB = true;
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(5);
         totalEnergyBB--;
         UpdateEnergyBarBB();
         isCountingBB = false;

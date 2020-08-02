@@ -17072,6 +17072,7 @@ GameObject:
   - component: {fileID: 4586871384348800631}
   - component: {fileID: 9064880483843917773}
   - component: {fileID: 3416172130574673099}
+  - component: {fileID: 5789747813452604577}
   m_Layer: 30
   m_Name: LittleWing_prefab
   m_TagString: LW
@@ -17118,7 +17119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4207068318585945993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92b4756e827095b45b39e95c2de307f5, type: 3}
   m_Name: 
@@ -17234,6 +17235,32 @@ MonoBehaviour:
   justFinishedEnergyTransfer: 0
   isDocked: 0
   isUndocking: 0
+--- !u!114 &5789747813452604577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207068318585945993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afabf00221e30b43ab162940f2d43fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxEnginePower: 40
+  m_Lift: 0.002
+  m_ZeroLiftSpeed: 300
+  m_RollEffect: 1
+  m_PitchEffect: 1
+  m_YawEffect: 0.2
+  m_BankedTurnEffect: 0.5
+  m_AerodynamicEffect: 0.02
+  m_AutoTurnPitch: 0.5
+  m_AutoRollLevel: 0.2
+  m_AutoPitchLevel: 0.2
+  m_AirBrakesEffect: 3
+  m_ThrottleChangeSpeed: 0.3
+  m_DragIncreaseFactor: 0.001
 --- !u!1 &4297931672326201500
 GameObject:
   m_ObjectHideFlags: 0
