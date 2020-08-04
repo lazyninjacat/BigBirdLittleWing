@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: FAE_SunshaftParticle
   m_Shader: {fileID: 4800000, guid: 9fe67a59c15773a4a8bdbf006a7e43c5, type: 3}
   m_ShaderKeywords: 
@@ -85,6 +86,7 @@ Material:
     - _Noisesize: 0.006
     - _OcclusionStrength: 1
     - _Opacity: 0.425
+    - _PanningSpeed: 0.33
     - _Parallax: 0.02
     - _SrcBlend: 1
     - _UVSec: 0
