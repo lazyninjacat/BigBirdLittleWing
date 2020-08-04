@@ -13,6 +13,9 @@ TagManager:
   - DockingSphereCollider
   - DockingCollider
   - LevelSections
+  - key1
+  - key2
+  - key3
   layers:
   - Default
   - TransparentFX
@@ -41,7 +44,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Key
   - StoneIdle
   - BigSub
   - SmallSub
