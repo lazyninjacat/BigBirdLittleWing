@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 0.3, z: 1.5}
   m_XDamping: 0
-  m_YDamping: 0
+  m_YDamping: 0.1
   m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -6676,7 +6676,7 @@ PrefabInstance:
     - target: {fileID: 1336533080123070148, guid: 540a51098447a40418873a5f6ed7f548,
         type: 3}
       propertyPath: m_Constraints
-      value: 80
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 1336533080123070148, guid: 540a51098447a40418873a5f6ed7f548,
         type: 3}

@@ -90,7 +90,7 @@ public class Intro_Sequence : MonoBehaviour
         Text6.SetActive(true);
         yield return new WaitUntil(() => !Text6.GetComponent<Animation>().isPlaying);
         Text6.SetActive(false);
-        yield return new WaitUntil(() => dollyCart.GetComponent<CinemachineDollyCart>().m_Position == 1978f);
+        yield return new WaitUntil(() => dollyCart.GetComponent<CinemachineDollyCart>().m_Position >= 1900f);
 
         isStartSequence = false;
         PlayerCam.SetActive(true);
