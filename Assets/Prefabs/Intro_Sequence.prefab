@@ -843,7 +843,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Space to switch subs. "c" to switch to gamepad.
+  m_text: Press "C" to switch to gamepad. Esc or Start button for pause menu and
+    controls guide.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1461,7 +1462,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227772939236998740}
-  m_LocalRotation: {x: 0.05049789, y: 0.9140657, z: -0.38404214, w: 0.120189145}
+  m_LocalRotation: {x: 0.050497897, y: 0.9140657, z: -0.38404217, w: 0.12018914}
   m_LocalPosition: {x: -111.60467, y: 20.791107, z: -87.7193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
