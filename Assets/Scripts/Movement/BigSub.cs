@@ -100,6 +100,9 @@ public class BigSub : PlayerController
 
         if (isCharged)
         {
+            if (_defaultIk.transform.position.y > transform.position.y + 4) { _defaultIk.transform.position = new Vector3(_defaultIk.position.x, transform.position.y + 3.8f, _defaultIk.transform.position.z); }
+            if(grabbedObject != null && grabbedObject.transform.position.y > transform.position.y + 4) { grabbedObject.transform.position = new Vector3(grabbedObject.transform.position.x, transform.position.y + 3.8f, grabbedObject.transform.position.z); }
+            
             switch (currentState)
             {
                 case state.MOVEEMPTY:
@@ -208,7 +211,6 @@ public class BigSub : PlayerController
                 default:
                     break;
             }
-           if(_defaultIk.transform.position.y > transform.position.y + 4) { _defaultIk.transform.position = new Vector3(_defaultIk.position.x, transform.position.y + 3.8f, _defaultIk.transform.position.z); }
         }
         else
         {
@@ -331,7 +333,6 @@ public class BigSub : PlayerController
                     closest = hitCollider.gameObject;
                     _distanceFromPickup = currentDistance;
                 }
-                return closest;
             }
             else
                 return closest;
