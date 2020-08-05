@@ -101,7 +101,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Deep under the sea...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea3a696a964f59e478b2146624415329, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -274,7 +274,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: And some energy geodes and crystals and stuff...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea3a696a964f59e478b2146624415329, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -577,8 +577,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press "Enter" to skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea3a696a964f59e478b2146624415329, type: 2}
+  m_sharedMaterial: {fileID: 7999361003951554799, guid: ea3a696a964f59e478b2146624415329,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -603,7 +604,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 22.35
+  m_fontSize: 23.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -846,7 +847,7 @@ MonoBehaviour:
   m_text: Press "C" to switch to gamepad. Esc or Start button for pause menu and
     controls guide.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea3a696a964f59e478b2146624415329, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -924,7 +925,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1020,7 +1021,7 @@ MonoBehaviour:
   m_text: It was pretty awesome, so you decide to hop in your submarine and take
     a look
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea3a696a964f59e478b2146624415329, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1098,7 +1099,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1150,8 +1151,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227772938928229685}
-  m_LocalRotation: {x: 0.050497748, y: 0.9140649, z: -0.384044, w: 0.120189935}
-  m_LocalPosition: {x: -110.69999, y: 17.220001, z: -91.099976}
+  m_LocalRotation: {x: 0.1897775, y: 0.80996597, z: -0.38090178, w: 0.40355107}
+  m_LocalPosition: {x: -32.409927, y: 20.448547, z: -1.1749268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3561052018645912841}
@@ -1172,8 +1173,8 @@ MonoBehaviour:
   m_Path: {fileID: 5227772939802125224}
   m_UpdateMethod: 1
   m_PositionUnits: 1
-  m_Speed: 60
-  m_Position: 1980.0619
+  m_Speed: 80
+  m_Position: 1943.4
 --- !u!1 &5227772939068838485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1242,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Good Luck!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea3a696a964f59e478b2146624415329, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1319,7 +1320,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1462,8 +1463,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227772939236998740}
-  m_LocalRotation: {x: 0.050497897, y: 0.9140657, z: -0.38404217, w: 0.12018914}
-  m_LocalPosition: {x: -111.60467, y: 20.791107, z: -87.7193}
+  m_LocalRotation: {x: 0.69873416, y: 0.4514752, z: 0.005804751, w: 0.5548938}
+  m_LocalPosition: {x: -34.95569, y: 24.29956, z: 0.7456665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5227772938738200896}
@@ -1579,7 +1580,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: There was a sunken temple
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea3a696a964f59e478b2146624415329, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1657,7 +1658,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1747,5 +1748,5 @@ MonoBehaviour:
     roll: 0
   - position: {x: -100, y: 250, z: 100}
     roll: 0
-  - position: {x: -100, y: 0, z: -100}
+  - position: {x: -19.575298, y: 0, z: -11.68512}
     roll: 0
