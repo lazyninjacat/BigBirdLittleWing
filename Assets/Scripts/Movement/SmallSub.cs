@@ -73,9 +73,7 @@ public class SmallSub : PlayerController
                 _rot = Quaternion.Slerp(transform.rotation,
                                      Quaternion.Euler((_lookStorage.y * 4) * -1, _lookStorage.x * 3, 0f),
                                      _turnSpeed * Time.fixedDeltaTime);
-
                 transform.rotation = RotationClamp(_rot);
-
             }
 
             if (mouseWheelInput != 0f)
@@ -86,8 +84,7 @@ public class SmallSub : PlayerController
                     rb.velocity = rb.velocity.normalized * maxVelocity;
                 }
             }
-        }
-        
+        }        
     }
 
     Quaternion RotationClamp(Quaternion q)

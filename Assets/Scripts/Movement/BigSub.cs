@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +33,7 @@ public class BigSub : PlayerController
     
     //grabber
     [SerializeField] public LayerMask grabLayer;
-    private GameObject grabbedObject = null;
+    [SerializeField] GameObject grabbedObject = null;
     private float grabberSpeedH = 5f;
     public Vector3 grabObjDistance;
     [SerializeField] CCDIK _ik;
@@ -40,7 +41,7 @@ public class BigSub : PlayerController
     [SerializeField] GameObject _defaulIKRestPos;
     [SerializeField] float _smoothing = 0.7f;
     float _distanceFromPickup = Mathf.Infinity;
-    GameObject closest = null;
+    [SerializeField] GameObject closest = null;
     [SerializeField] Gather gather;
 
     //spotlight
@@ -177,11 +178,8 @@ public class BigSub : PlayerController
             switch (currentState)
             {
                 case state.MOVEEMPTY:
-                    Move(speed);
-                    //if(rb.velocity.magnitude < maxSpotlightVelocity)
-                    //{
+                    Move(speed);               
                     Spotlight();
-                    // }
                     SubRotate();
                     break;
                 case state.MOVEWITHGRAB:
@@ -191,7 +189,6 @@ public class BigSub : PlayerController
                     UpdateGrab();
                     break;
                 case state.TRYGRAB:
-                    //SubRotate();
                     Spotlight();
                     Move(speed-1);
                     if (_lookCoOrds != Vector2.zero)
@@ -211,7 +208,7 @@ public class BigSub : PlayerController
                 default:
                     break;
             }
-           
+           if(_defaultIk.transform.position.y > transform.position.y + 4) { _defaultIk.transform.position = new Vector3(_defaultIk.position.x, transform.position.y + 3.8f, _defaultIk.transform.position.z); }
         }
         else
         {
@@ -230,10 +227,10 @@ public class BigSub : PlayerController
         //sub movement        
         if (_inputs == Vector2.zero)
         {
-            if (rb.velocity != Vector3.zero) //slow down sub by -velocity
+            if (rb.velocity != Vector3.zero)
                 rb.AddForce(-rb.velocity * _speed);
         }
-        else //move Sub along z and x axis
+        else
         {
             rb.AddForce((transform.forward * _inputs.y + transform.right * _inputs.x).normalized * _speed);
             if (rb.velocity.magnitude > maxVelocity)
@@ -242,7 +239,6 @@ public class BigSub : PlayerController
 
         if (mouseWheelInput != 0f)
         {
-            //AudioManager.a_Instance.PlayOneShotByName("Bubble");
             rb.AddForce(new Vector3(0f, mouseWheelInput, 0f) * ballast);
             if (rb.velocity.magnitude > maxVelocity)
                 rb.velocity = rb.velocity.normalized * maxVelocity;
@@ -321,11 +317,12 @@ public class BigSub : PlayerController
     GameObject GrabObject()
     {
         closest = null;
-        Collider[] hitColliders = Physics.OverlapSphere(_defaulIKRestPos.transform.position, 2f, grabLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(_defaulIKRestPos.transform.position, 2.5f, grabLayer);
         foreach (var hitCollider in hitColliders)
         {
+            print(hitCollider.name);
             // hitCollider.gameObject.GetComponent<MeshRenderer>().material = _edgeGlow;
-            if (Vector3.Distance(_defaulIKRestPos.transform.position, hitCollider.transform.position) < 2)
+            if (Vector3.Distance(_defaulIKRestPos.transform.position, hitCollider.transform.position) < 2.5)
             {
                 Vector3 dist = hitCollider.transform.position - _defaulIKRestPos.transform.position;
                 float currentDistance = dist.sqrMagnitude;
@@ -348,6 +345,7 @@ public class BigSub : PlayerController
         grabbedObject.transform.parent = null;
         grabbedObject.GetComponent<Rigidbody>().useGravity = true;
         grabbedObject = null;
+        closest = null;
         Cursor.lockState = CursorLockMode.Locked;
         //reset Ik target
         _ik.solver.target = _defaultIk;
